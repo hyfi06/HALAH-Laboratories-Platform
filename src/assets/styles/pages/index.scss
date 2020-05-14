@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@700&display=swap');
+
+body {
+  margin: 0;
+  background-color: #00224E;
+  color: white;
+  font-family: 'Muli', sans-serif;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  fill: white;
+  stroke: white;
+  width: 48px;
+  height: 48px;
+}
