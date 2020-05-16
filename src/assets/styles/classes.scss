@@ -1,0 +1,139 @@
+// Buttons
+@mixin btn {
+  height: $space_x6;
+  min-width: 100px;
+  margin: 0 $space_x3;
+  padding: 0 $space_x3;
+  cursor: pointer;
+  outline-style: none;
+  border: none;
+  border-radius: $space_x2;
+  box-shadow: $shadow;
+  font-family: $text_font;
+  font-size: $text_size;
+  font-weight: bold;
+  text-shadow: $shadow;
+  color: $white_color;
+}
+
+.btn {
+  @include btn;
+  background-color: $secondary_color;
+
+  &--positive {
+    @include btn;
+    background-color: $positive_color;
+  }
+
+  &--negative {
+    @include btn;
+    background-color: $negative_color;
+  }
+
+  &:first-child,
+  &--positive:first-child,
+  &--negative:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child,
+  &--positive:last-child,
+  &--negative:last-child {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &--positive:hover,
+  &--negative:hover {
+    filter: saturate(150%);
+  }
+
+  &:active,
+  &--positive:active,
+  &--negative:active {
+    transform: scale(0.95);
+  }
+}
+
+//Card
+.card {
+  width: fit-content;
+  padding: $space_x3;
+  border-radius: $space_x3;
+  box-shadow: $shadow;
+  background-color: $white_color;
+
+  &--column {
+    display: flex;
+  }
+}
+
+//Inputs
+.input {
+  display: flex;
+  flex-direction: column;
+  margin: $space_x2 $space_x3;
+
+  &__label {
+    margin-bottom: $space;
+  }
+
+  input,
+  select {
+    height: $space_x6;
+    min-width: 100px;
+    padding: 0 $space_x2;
+    outline-style: none;
+    border: none;
+    border-radius: $space_x2;
+    box-shadow: $shadow;
+    font-size: $text_size;
+    background-color: $back-grey_color;
+  }
+
+  &__error {
+    color: $negative_color;
+  }
+
+  &:first-child,
+  &--positive:first-child,
+  &--negative:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child,
+  &--positive:last-child,
+  &--negative:last-child {
+    margin-right: 0;
+  }
+}
+
+//Title
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__icon {
+    width: $space_x9;
+    height: $space_x9;
+    fill: $secondary_color;
+  }
+
+  &__text {
+    margin-left: $space_x3;
+  }
+}
+
+.lg {
+  width: 100%;
+  margin: $space_x3 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

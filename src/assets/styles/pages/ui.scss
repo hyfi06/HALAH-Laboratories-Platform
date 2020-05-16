@@ -1,0 +1,13 @@
+@import '../main.scss';
+
+.ui {
+  margin: $space_x6;
+  
+  section {
+    padding: $space_x3;
+  }
+}
+
+.forms {
+  display: flex;
+}
