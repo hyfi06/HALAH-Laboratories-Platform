@@ -1,0 +1,35 @@
+@import '../vars.scss';
+@import '../classes.scss';
+
+.login {
+  width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 30px;
+}
+
+.form {
+  width: 100%;
+}
+.background-image {
+  background-color: $primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  margin: 15px 0;
+}
+.logo {
+  width: 90px;
+  height: 90px;
+  fill: white;
+  stroke: white;
+}
+
+.form__login {
+  margin: 30px 0 15px;
+}

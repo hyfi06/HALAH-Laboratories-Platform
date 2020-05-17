@@ -30,18 +30,6 @@
     background-color: $negative_color;
   }
 
-  &:first-child,
-  &--positive:first-child,
-  &--negative:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child,
-  &--positive:last-child,
-  &--negative:last-child {
-    margin-right: 0;
-  }
-
   &:hover,
   &--positive:hover,
   &--negative:hover {
@@ -57,8 +45,7 @@
 
 //Card
 .card {
-  width: fit-content;
-  padding: $space_x3;
+  // padding: $space_x3;
   border-radius: $space_x3;
   box-shadow: $shadow;
   background-color: $white_color;
@@ -127,13 +114,5 @@
 
 .lg {
   width: 100%;
-  margin: $space_x3 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin: $space_x3 0 0 0;
 }
