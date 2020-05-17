@@ -8,28 +8,29 @@
   align-items: center;
   flex-direction: column;
   padding: 40px 30px;
+
+  &__logo {
+    background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 100px;
+    margin: 15px 0;
+    &__icon {
+      width: 90px;
+      height: 90px;
+      fill: white;
+      stroke: white;
+    }
+  }
 }
 
 .form {
   width: 100%;
-}
-.background-image {
-  background-color: $primary-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 150px;
-  height: 150px;
-  border-radius: 100px;
-  margin: 15px 0;
-}
-.logo {
-  width: 90px;
-  height: 90px;
-  fill: white;
-  stroke: white;
-}
 
-.form__login {
-  margin: 30px 0 15px;
+  &form__login {
+    margin: 30px 0 15px;
+  }
 }

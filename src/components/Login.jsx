@@ -4,8 +4,8 @@ import '../assets/styles/components/Login.scss';
 export default function Login() {
   return (
     <section className='login card'>
-      <div class='background-image'>
-        <Logo className='logo' />
+      <div className='login__logo'>
+        <Logo className='login__logo__icon' />
       </div>
       <form action='' className='form'>
         <div className='input lg'>
