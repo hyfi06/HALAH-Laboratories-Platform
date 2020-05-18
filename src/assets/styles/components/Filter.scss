@@ -1,11 +1,12 @@
 @import '../main.scss';
 
 .filter{
-  grid-area: content;
+  margin-bottom: $space_x6;
 }
 
 .title{
   display: flex;
+  margin-bottom: $space_x3;
 }
 
 .icon{

@@ -6,7 +6,7 @@ export default function Filter() {
   return (
     <main className="filter">
       <section className="title">
-        <Icon className="logo icon"/>
+        <Icon className="logo icon" />
         <h1>Users</h1>
       </section>
       <section className="filter__inputs">

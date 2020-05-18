@@ -1,5 +1,28 @@
 @import '../main.scss';
 
 .table{
-  grid-area: content;
+  width: 690px;
+  padding: 0px !important;
+  border-collapse: collapse;
+}
+
+.table__image{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  box-shadow: $shadow;
+}
+
+thead{
+  background-color: $primary_color;
+  color: $white_color;
+  font-weight: bold;
+}
+
+tr{
+  height: 50px;
+}
+
+td{
+  text-align: center;
 }
