@@ -1,0 +1,19 @@
+@import '../main.scss';
+
+.filter{
+  grid-area: content;
+}
+
+.title{
+  display: flex;
+}
+
+.icon{
+  width: 35px;
+  height: 35px;
+}
+
+.filter__inputs{
+  display: flex;
+  align-items: flex-end;
+}

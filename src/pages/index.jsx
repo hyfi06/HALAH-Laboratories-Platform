@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import '../assets/styles/pages/index.scss';
+
 import Logo from '../assets/icons/logo.svg';
 import Title from '../components/Title';
+import '../assets/styles/pages/index.scss';
 
 export default function Home() {
   return (

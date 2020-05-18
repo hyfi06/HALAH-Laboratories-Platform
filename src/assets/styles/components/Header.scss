@@ -1,0 +1,19 @@
+@import '../main.scss';
+
+header{
+  grid-area: header;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primary_color;
+  color: $white_color;
+}
+
+.logo--white{
+  fill: $white_color;
+  stroke: $white_color;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+}

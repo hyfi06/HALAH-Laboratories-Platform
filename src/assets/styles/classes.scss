@@ -72,7 +72,7 @@
 .input {
   display: flex;
   flex-direction: column;
-  margin: $space_x2 $space_x3;
+  margin: 0 $space_x3;
 
   &__label {
     margin-bottom: $space;

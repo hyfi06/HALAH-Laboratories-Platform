@@ -1,0 +1,22 @@
+@import '../main.scss';
+
+.container{
+  width: 175px;
+  height: 435px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  grid-area: navbar;
+  justify-self: end;
+  align-self: center;
+}
+
+.image{
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin: 10px;
+  box-shadow: $shadow;
+}

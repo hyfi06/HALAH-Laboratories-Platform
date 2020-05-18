@@ -1,0 +1,12 @@
+@import '../main.scss';
+
+.layout{
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template: 75px auto / 25% auto;
+  grid-template-areas: 
+    "header header"
+    "navbar content";
+  column-gap: 30px;
+}
