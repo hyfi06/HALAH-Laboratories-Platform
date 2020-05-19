@@ -1,0 +1,7 @@
+@import '../main.scss';
+
+.home {
+  @include colCenCen;
+  width: 100vw;
+  height: 100vh;
+}

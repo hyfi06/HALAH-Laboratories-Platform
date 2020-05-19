@@ -1,0 +1,37 @@
+// Button
+@mixin btn {
+  height: $space_x7;
+  min-width: 100px;
+  padding: 0 $space_x3;
+  cursor: pointer;
+  outline-style: none;
+  border: none;
+  border-radius: $space_x3;
+  box-shadow: $shadow;
+  font-family: $text_font;
+  font-size: $text_size;
+  font-weight: bold;
+  text-shadow: $shadow;
+  color: $white_color;
+}
+
+// Card
+@mixin card {
+  border-radius: $space_x3;
+  box-shadow: $shadow;
+  background-color: $white_color;
+}
+
+// Displays
+@mixin flexCenCen   {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin colCenCen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
