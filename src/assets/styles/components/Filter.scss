@@ -1,0 +1,42 @@
+@import '../main.scss';
+
+.filter{
+  margin-bottom: $space_x6;
+
+  &__title{
+    @include flexStaCen;
+    margin-bottom: $space_x3;
+
+    &__logo{
+      width: $space_x8;
+      height: $space_x8;
+      fill: $secondary_color;
+    }
+
+    &__text{
+      margin-left: $space_x2;
+    }
+  }
+
+  &__inputs{
+
+    &__item{
+      @include colStaSta;
+      margin-right: $space_x6;
+      
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.icon{
+  width: 35px;
+  height: 35px;
+}
+
+.filter__inputs{
+  display: flex;
+  align-items: flex-end;
+}
