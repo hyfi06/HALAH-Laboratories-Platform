@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import '../assets/styles/pages/index.scss';
-import Login from '../components/Login';
+import Navbar from '../components/Navbar';
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       </Head>
 
       <main className="home">
-        <Login />
+        <Navbar />
       </main>
     </>
   );
