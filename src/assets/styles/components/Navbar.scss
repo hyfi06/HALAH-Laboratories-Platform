@@ -4,12 +4,13 @@
   @include colCenCen;
   @include card;
   width: 175px;
+  margin: 0 $space_x6;
   padding: $space_x3;
 
   &__user {
     @include colCenCen;
     margin: $space_x3 0;
-    
+
     &__photo {
       width: 120px;
       height: 120px;

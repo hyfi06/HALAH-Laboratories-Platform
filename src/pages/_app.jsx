@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -9,9 +10,9 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <>
+    <Layout>
       <Component {...pageProps} />
-    </>
+    </Layout>
   );
 }
 

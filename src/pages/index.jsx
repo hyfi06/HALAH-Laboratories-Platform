@@ -1,16 +1,16 @@
 import Head from 'next/head';
 import '../assets/styles/pages/index.scss';
-import Navbar from '../components/Navbar';
+import Login from '../components/Login';
 
 function Home() {
   return (
     <>
       <Head>
-        <title>HALAH Laboratories Login</title>
+        <title>HALAH Laboratories: Login</title>
       </Head>
 
       <main className="home">
-        <Navbar />
+        <Login />
       </main>
     </>
   );
