@@ -7,10 +7,10 @@
     @include flexCenSta;
     width: 100%;
     max-width: 1440px;
-    padding: $space_x9 $space_x6;
+    padding: $space_x9 $space_x12;
 
     &__content {
-      width: 100%;
+      width: calc(100% - 205px);
     }
   }
 }
