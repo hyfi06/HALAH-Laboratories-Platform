@@ -1,17 +1,18 @@
 import Head from 'next/head';
-import '../assets/styles/main.scss';
+import '../assets/styles/pages/index.scss';
+import Login from '../components/Login';
 
 function Home() {
   return (
-    <div className="container">
+    <>
       <Head>
-        <title>HALAH Laboratories</title>
+        <title>HALAH Laboratories Login</title>
       </Head>
 
-      <main>
-        <h1 className="title">Welcome</h1>
+      <main className="home">
+        <Login />
       </main>
-    </div>
+    </>
   );
 }
 
