@@ -1,7 +1,7 @@
 import Table from '../components/Table';
 import Filter from '../components/Filter';
 
-export default function () {
+export default function adminUser() {
   return (
     <>
       <Filter />

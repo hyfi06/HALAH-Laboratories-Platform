@@ -7,6 +7,10 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
+    if (Component.name === 'Home') {
+      return <Component {...pageProps} />;
+    }
+
     return (
       <Layout name="Alberto Camarena" typeOfUser="Administrator">
         <Component {...pageProps} />
