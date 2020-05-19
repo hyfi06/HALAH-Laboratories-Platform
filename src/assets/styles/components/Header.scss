@@ -1,0 +1,17 @@
+@import '../main.scss';
+
+.header {
+  @include flexCenCen;
+  width: 100%;
+  height: 75px;
+  background-color: $primary_color;
+  color: $white_color;
+  font-family: $title_font;
+
+  &__logo {
+    width: 45px;
+    height: 45px;
+    margin-right: $space_x3;
+    fill: $white_color;
+  }
+}

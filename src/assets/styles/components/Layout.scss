@@ -1,0 +1,16 @@
+@import '../main.scss';
+
+.layout {
+  @include colCenSta;
+
+  &__container {
+    @include flexCenSta;
+    width: 100%;
+    max-width: 1440px;
+    padding: $space_x9 $space_x6;
+
+    &__content {
+      width: 100%;
+    }
+  }
+}

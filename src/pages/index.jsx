@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>HALAH Laboratories Login</title>
+        <title>HALAH Laboratories: Login</title>
       </Head>
 
       <main className="home">

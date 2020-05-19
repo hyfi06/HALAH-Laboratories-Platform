@@ -23,10 +23,29 @@
 }
 
 // Displays
-@mixin flexCenCen   {
+@mixin flexStaCen {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin flexCenSta {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin flexCenCen {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin colCenSta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 @mixin colCenCen {
