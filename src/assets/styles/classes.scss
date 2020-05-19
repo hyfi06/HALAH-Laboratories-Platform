@@ -36,12 +36,12 @@
   }
 
   &__field {
-    height: $space_x7;
+    height: $space_x6;
     min-width: 100px;
     padding: 0 $space_x3;
     outline-style: none;
     border: none;
-    border-radius: $space_x3;
+    border-radius: $space_x2;
     box-shadow: $shadow;
     font-size: $text_size;
     background-color: $back-grey_color;
@@ -49,18 +49,6 @@
 
   &__error {
     color: $negative_color;
-  }
-
-  &:first-child,
-  &--positive:first-child,
-  &--negative:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child,
-  &--positive:last-child,
-  &--negative:last-child {
-    margin-right: 0;
   }
 }
 

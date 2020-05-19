@@ -14,4 +14,8 @@
     margin-right: $space_x3;
     fill: $white_color;
   }
+
+  &__text {
+    font-size: $topic_size;
+  }
 }
