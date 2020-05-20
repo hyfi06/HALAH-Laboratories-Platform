@@ -1,6 +1,7 @@
 @import '../main.scss';
 
 .modal {
+  @include colCenCen;
   z-index: 9999999;
   position: fixed;
   top: 0;
@@ -8,11 +9,6 @@
   bottom: 0;
   right: 0;
   background-color: $modal_color;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .modal__close {
