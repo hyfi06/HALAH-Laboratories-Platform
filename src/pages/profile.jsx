@@ -6,7 +6,7 @@ function Profile() {
   return (
     <>
       <User />
-      <DataUser />
+      <DataUser className='data-user' />
     </>
   );
 }
