@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import PropTypes from 'prop-types';
 
-import EditIcon from '../assets/icons/logo.svg';
-import DeleteIcon from '../assets/icons/logout.svg';
-import ActivateIcon from '../assets/icons/user-add.svg';
+import EditIcon from '../assets/icons/edit.svg';
+import DeleteIcon from '../assets/icons/delete.svg';
+import ActivateIcon from '../assets/icons/activate.svg';
 
 import '../assets/styles/components/Table.scss';
 
