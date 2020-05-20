@@ -1,31 +1,31 @@
 @import '../main.scss';
 
-.filter{
+.filter {
   margin-bottom: $space_x6;
 
-  &__title{
+  &__title {
     @include flexStaCen;
     margin-bottom: $space_x3;
 
-    &__logo{
+    &__logo {
       width: $space_x8;
       height: $space_x8;
       fill: $secondary_color;
     }
 
-    &__text{
+    &__text {
       margin-left: $space_x2;
     }
   }
 
-  &__inputs{
-    @include flexStaEnd
+  &__inputs {
+    @include flexStaEnd;
 
-    &__item{
+    &__item {
       @include colStaSta;
       margin-right: $space_x6;
-      
-      &:last-child{
+
+      &:last-child {
         margin-right: 0;
       }
     }
