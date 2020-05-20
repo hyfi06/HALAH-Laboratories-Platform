@@ -1,0 +1,34 @@
+@import '../main.scss';
+
+.modal {
+  z-index: 9999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $modal_color;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  height: 30px;
+  width: 30px;
+  fill: $white_color;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  fill: $negative_color;
+}
+
+.modal__close:active {
+  transform: scale(0.95);
+}
