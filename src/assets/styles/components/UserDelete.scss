@@ -1,0 +1,26 @@
+@import '../main.scss';
+
+.user-delete {
+  @include colCenCen;
+  text-align: center;
+
+  &__icon {
+    width: $space_x10;
+    height: $space_x10;
+    fill: $secondary_color;
+  }
+
+  &__text {
+    margin: $space_x2 0px;
+  }
+
+  &__buttons {
+    @include flexCenCen
+
+  }
+
+  button:first-child {
+    margin-right: $space_x4;
+  }
+
+}
