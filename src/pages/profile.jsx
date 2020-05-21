@@ -1,12 +1,12 @@
 import '../assets/styles/pages/profile.scss';
-import DataUser from '../components/DataUser';
+import DataUser from '../components/UserData';
 import User from '../components/User';
 
 function Profile() {
   return (
     <>
       <User />
-      <DataUser className='data-user' />
+      <DataUser />
     </>
   );
 }
