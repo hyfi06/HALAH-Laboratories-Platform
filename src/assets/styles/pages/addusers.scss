@@ -1,0 +1,33 @@
+@import '../main.scss';
+
+.add {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__img {
+    width: 45px;
+    height: 45px;
+    fill: $secondary-color;
+    margin-right: $space;
+  }
+}
+.form {
+  @include card;
+  max-width: 690px;
+  height: 170px;
+  margin-top: $space_x6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  &__container {
+    padding-left: 30px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 120px;
+  }
+  &__input {
+  }
+}
