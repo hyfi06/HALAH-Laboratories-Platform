@@ -1,7 +1,7 @@
-import UserDelete from '../components/UserDelete';
+import UserEnable from '../components/UserEnable';
 
 function Test() {
-  return <UserDelete />;
+  return <UserEnable />;
 }
 
 export default Test;
