@@ -1,0 +1,30 @@
+@import '../main.scss';
+
+.user-edit {
+
+  &__title {
+    @include flexStaCen;
+    margin-bottom: $space_x6;
+
+    &__icon {
+      width: $space_x8;
+      height: $space_x8;
+      fill: $secondary_color;
+    }
+
+    &__text {
+      margin-left: $space_x2;
+    }
+  }
+
+  &__form {
+
+    &__input {
+      margin-bottom: $space_x3;
+    }
+
+    &__button {
+      margin-top: $space_x3;
+    }
+  }
+}
