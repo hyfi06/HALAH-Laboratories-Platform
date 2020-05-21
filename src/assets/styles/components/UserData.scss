@@ -1,0 +1,29 @@
+@import '../main.scss';
+
+.user-data {
+  width: 100%;
+  margin-top: $space_x6;
+  padding-left: $space_x6;
+  display: flex;
+  flex-direction: column;
+  &__title {
+    margin-top: $space_x6;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 600px;
+    height: 100%;
+    justify-content: space-between;
+  }
+  &__element {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+    margin: $space_x3 0;
+    &__title {
+      font-family: $title_font;
+    }
+  }
+}
