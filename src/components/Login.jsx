@@ -25,11 +25,8 @@ function Login() {
           },
         },
       );
-      document.cookie = `token=${JSON.stringify(response.data.token)};max-age=${
-        60 * 60 * 15
-      }`;
-      document.cookie = `user=${JSON.stringify(response.data.user)};max-age=${
-        60 * 60 * 15
+      document.cookie = `session=${JSON.stringify(response.data)};max-age=${
+        60 * 15
       }`;
       Router.push('/users');
     } catch (err) {
