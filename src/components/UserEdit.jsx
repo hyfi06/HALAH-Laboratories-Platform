@@ -1,8 +1,28 @@
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import UserIcon from '../assets/icons/user.svg';
 import '../assets/styles/components/UserEdit.scss';
 
 function UserEdit() {
+  // eslint-disable-next-line prefer-const
+  let [status, setStatus] = useState({
+    loading: false,
+    error: false,
+    success: false,
+  });
+
+  if (status.loading) {
+    return <h3>Loading...</h3>;
+  }
+
+  if (status.error) {
+    return <h3>Sorry we could not update the user info, please try again</h3>;
+  }
+
+  if (status.success) {
+    return <h3>User info updated successfully</h3>;
+  }
+
   return (
     <div className="user-edit">
       <div className="user-edit__title">
@@ -25,10 +45,32 @@ function UserEdit() {
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+          const result = new Promise((res, rej) => {
+            setTimeout(() => {
+              res(values);
+            }, 400);
+          });
+          result.then((data) => {
+            alert(JSON.stringify(data, null, 2));
             setSubmitting(false);
-          }, 400);
+            setStatus(status = {
+              loading: false,
+              error: false,
+              success: true,
+            });
+          })
+            .catch(() => {
+              setStatus(status = {
+                loading: false,
+                error: true,
+                success: false,
+              });
+            });
+          setStatus(status = {
+            loading: true,
+            error: false,
+            success: false,
+          });
         }}
       >
         {({ isSubmitting }) => (
@@ -72,7 +114,11 @@ function UserEdit() {
                 name="phoneNumber"
               />
             </div>
-            <button className="user-edit__form__button btn lg" type="submit" disabled={isSubmitting}>
+            <button
+              className="user-edit__form__button btn lg"
+              type="submit"
+              disabled={isSubmitting}
+            >
               Update user
             </button>
           </Form>
