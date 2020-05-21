@@ -1,7 +1,7 @@
-import UserEdit from '../components/UserEdit';
+import UserDelete from '../components/UserDelete';
 
 function Test() {
-  return <UserEdit />;
+  return <UserDelete />;
 }
 
 export default Test;
