@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import Filter from '../components/Filter';
-import AdminTable from '../components/AdminTable';
+import UsersTable from '../components/UsersTable';
 
 function Users({ userType }) {
   return (
     <>
       <Filter typeOfUser={userType} />
-      <AdminTable />
+      <UsersTable />
     </>
   );
 }
