@@ -24,6 +24,11 @@
   &--negative:active {
     transform: scale(0.95);
   }
+
+  &:disabled {
+    cursor: default;
+    opacity: 50%;
+  }
 }
 
 // Inputs

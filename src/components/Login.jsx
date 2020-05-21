@@ -1,12 +1,51 @@
+import { useState } from 'react';
+import Router from 'next/router';
+import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../assets/styles/components/Login.scss';
 import Logo from '../assets/icons/logo.svg';
+import Loader from './Loader';
 
 function Login() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const handleLoginSubmit = async (values) => {
+    setLoading(true);
+    const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`;
+    try {
+      const response = await axios.post(
+        URL,
+        {
+          apiKeyToken: process.env.NEXT_PUBLIC_API_KEY,
+        },
+        {
+          auth: {
+            username: values.username,
+            password: values.password,
+          },
+        },
+      );
+      document.cookie = `token=${JSON.stringify(response.data.token)};max-age=${
+        60 * 60 * 15
+      }`;
+      document.cookie = `user=${JSON.stringify(response.data.user)};max-age=${
+        60 * 60 * 15
+      }`;
+      Router.push('/users');
+    } catch (err) {
+      setError(err);
+    }
+    setLoading(false);
+  };
+
+  if (error) {
+    return <h1>Error</h1>;
+  }
+
   return (
     <div className="login">
       <figure className="login__logo">
-        <Logo className="login__logo__icon" />
+        {loading ? <Loader /> : <Logo className="login__logo__icon" />}
       </figure>
       <Formik
         initialValues={{ username: '', password: '' }}
@@ -20,22 +59,23 @@ function Login() {
           }
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={async (values, { setSubmitting }) => {
+          await handleLoginSubmit(values);
+          setSubmitting(false);
         }}
       >
         {({ isSubmitting }) => (
           <Form className="login__form lg">
             <div className="input lg">
-              <strong className="input__label">Username / email</strong>
-              <Field
-                className="input__field lg"
-                type="username"
-                name="username"
-              />
+              <label className="input__label">
+                Username / email
+                <Field
+                  className="input__field lg"
+                  type="username"
+                  name="username"
+                  disabled={isSubmitting}
+                />
+              </label>
               <ErrorMessage
                 name="username"
                 component="div"
@@ -43,12 +83,15 @@ function Login() {
               />
             </div>
             <div className="input lg">
-              <strong className="input__label">Password</strong>
-              <Field
-                className="input__field lg"
-                type="password"
-                name="password"
-              />
+              <label className="input__label">
+                Password
+                <Field
+                  className="input__field lg"
+                  type="password"
+                  name="password"
+                  disabled={isSubmitting}
+                />
+              </label>
               <ErrorMessage
                 name="password"
                 component="div"
