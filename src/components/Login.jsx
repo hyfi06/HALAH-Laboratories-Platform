@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../assets/styles/components/Login.scss';
@@ -24,9 +25,13 @@ function Login() {
           },
         },
       );
-      document.cookie = `sessionData=${JSON.stringify(response.data)};max-age=${
-        60 * 60 * 24 * 5
+      document.cookie = `token=${JSON.stringify(response.data.token)};max-age=${
+        60 * 60 * 15
       }`;
+      document.cookie = `user=${JSON.stringify(response.data.user)};max-age=${
+        60 * 60 * 15
+      }`;
+      Router.push('/users');
     } catch (err) {
       setError(err);
     }
