@@ -7,7 +7,7 @@ import ActivateIcon from '../assets/icons/activate.svg';
 
 import '../assets/styles/components/Table.scss';
 
-function Table({ data }) {
+function AdminTable({ data }) {
   const tableContent = data.map((user) => (
     <tr className="table__body__row">
       <td className="table__body__row__cell">
@@ -56,15 +56,15 @@ function Table({ data }) {
   );
 }
 
-Table.propTypes = {
+AdminTable.propTypes = {
   data: PropTypes.arrayOf,
 };
 
-Table.defaultProps = {
+AdminTable.defaultProps = {
   data: [
     { firstName: 'alberto', lastName: 'camarena', username: 'alberto.camarena.1234', imageURL: '/default.png', isActive: true, type: 'Doctor' },
     { firstName: 'luis', lastName: 'flores', username: 'luis.flores.5678', imageURL: '/default.png', type: 'Administrator' },
   ],
 };
 
-export default Table;
+export default AdminTable;
