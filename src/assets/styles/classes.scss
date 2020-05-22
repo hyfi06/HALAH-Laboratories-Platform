@@ -73,6 +73,65 @@
   }
 }
 
+// Tables
+.table {
+  @include card;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  text-align: center;
+
+  &__head {
+    color: $white_color;
+
+    &__row {
+      height: 50px;
+
+      &__cell {
+        background: $primary_color;
+      }
+    }
+  }
+
+  &__body {
+    &__row {
+      height: 60px;
+
+      &__cell {
+        &__user {
+          width: 60px;
+
+          &__image {
+            margin: 0 $space_x2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        &__options {
+          text-align: end;
+        }
+
+        &__icon {
+          @include tableIcon;
+          fill: $secondary_color;
+
+          &--positive {
+            @include tableIcon;
+            fill: $positive_color;
+          }
+
+          &--negative {
+            @include tableIcon;
+            fill: $negative_color;
+          }
+        }
+      }
+    }
+  }
+}
+
 .lg {
   width: 100%;
 }
