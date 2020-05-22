@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../assets/styles/components/Login.scss';
 import Logo from '../assets/icons/logo.svg';
-import Loader from './Loader';
 
 function Login() {
   const [loading, setLoading] = useState(false);
@@ -42,7 +41,11 @@ function Login() {
   return (
     <div className="login">
       <figure className="login__logo">
-        {loading ? <Loader /> : <Logo className="login__logo__icon" />}
+        {loading ? (
+          <div className="loader loader--white" />
+        ) : (
+          <Logo className="login__logo__icon" />
+        )}
       </figure>
       <Formik
         initialValues={{ username: '', password: '' }}
