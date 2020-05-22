@@ -1,0 +1,35 @@
+@import '../main.scss';
+
+.add-users {
+  display: flex;
+
+  &__img {
+    width: 45px;
+    height: 45px;
+    margin-right: $space;
+    fill: $secondary_color;
+  }
+}
+.add-users-form {
+  @include card;
+  width: 100%;
+  min-height: 170px;
+  margin-top: $space_x6;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__container {
+    margin-left: $space_x6;
+    max-width: 350px;
+    height: 120px;
+  }
+  &__input {
+    margin-bottom: $space_x6;
+  }
+  &__button {
+    @include btn;
+    background-color: $secondary_color;
+    margin: 0 36%;
+  }
+}
