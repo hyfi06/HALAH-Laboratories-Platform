@@ -1,6 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import '../assets/styles/components/AddUsersForm.scss';
-import UsersAddIcon from '../assets/icons/users-add.svg';
 
 function AddUsersForm() {
   return (

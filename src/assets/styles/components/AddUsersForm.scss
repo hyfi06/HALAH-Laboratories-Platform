@@ -1,15 +1,5 @@
 @import '../main.scss';
 
-.add-users {
-  display: flex;
-
-  &__img {
-    width: 45px;
-    height: 45px;
-    margin-right: $space;
-    fill: $secondary_color;
-  }
-}
 .add-users-form {
   @include card;
   width: 100%;
