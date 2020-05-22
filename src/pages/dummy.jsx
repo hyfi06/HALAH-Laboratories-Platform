@@ -1,6 +1,7 @@
-import AddUserForm from '../components/AddUserForm';
+import AddUsersForm from '../components/AddUsersForm';
 
 function dummy() {
-  return <AddUserForm />;
+  return <AddUsersForm />;
 }
+
 export default dummy;

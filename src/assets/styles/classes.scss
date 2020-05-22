@@ -24,6 +24,27 @@
   &--negative:active {
     transform: scale(0.95);
   }
+
+  &:disabled {
+    cursor: default;
+    opacity: 50%;
+  }
+}
+
+// Titles
+.title {
+  @include flexStaCen;
+  margin-bottom: $space_x3;
+
+  &__logo {
+    width: $space_x9;
+    height: $space_x9;
+    fill: $secondary_color;
+  }
+
+  &__text {
+    margin-left: $space_x2;
+  }
 }
 
 // Inputs

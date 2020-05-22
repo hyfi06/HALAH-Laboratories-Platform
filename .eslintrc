@@ -18,10 +18,12 @@
   },
   "plugins": ["react"],
   "rules": {
+    "no-useless-escape": "off",
     "object-curly-newline": "off",
     "react/forbid-prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }
