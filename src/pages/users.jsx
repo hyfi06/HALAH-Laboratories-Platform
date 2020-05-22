@@ -8,7 +8,7 @@ function Users({ userType }) {
     <main className="users">
       <div className="title">
         <UsersIcon className="title__logo" />
-        <h1 className="filter__title__text">Users</h1>
+        <h1 className="title__text">Users</h1>
       </div>
       <Filter typeOfUser={userType} />
       <UsersTable />
