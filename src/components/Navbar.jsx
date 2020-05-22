@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+import { useSession } from '../context/SessionContext';
 import '../assets/styles/components/Navbar.scss';
 import UserIcon from '../assets/icons/user.svg';
 import UsersIcon from '../assets/icons/users.svg';
 import UserAddIcon from '../assets/icons/user-add.svg';
 import UsersAddIcon from '../assets/icons/users-add.svg';
 import LogoutIcon from '../assets/icons/logout.svg';
+import Loader from './Loader';
 
-function Navbar({ id, firstName, lastName, typeOfUser, imageURL }) {
+function Navbar() {
+  const { session } = useSession();
+
   function TypeOptions({ type }) {
     switch (type) {
       case 'admin':
@@ -37,15 +41,6 @@ function Navbar({ id, firstName, lastName, typeOfUser, imageURL }) {
             </Link>
           </>
         );
-      case 'doctor':
-        return (
-          <Link href="/patients">
-            <li className="navbar__options__item">
-              <UsersIcon className="navbar__options__item__icon" />
-              <strong className="navbar__options__item__text">Patients</strong>
-            </li>
-          </Link>
-        );
       case 'patient':
         return (
           <Link href="/test">
@@ -66,53 +61,48 @@ function Navbar({ id, firstName, lastName, typeOfUser, imageURL }) {
         );
     }
   }
-
   TypeOptions.propTypes = {
     type: PropTypes.string.isRequired,
   };
 
-  return (
-    <section className="navbar">
-      <div className="navbar__user">
-        <figure className="navbar__user__photo">
-          <img className="navbar__user__photo__img" src={imageURL} alt="user" />
-        </figure>
-        <strong className="navbar__user__name">{`${firstName} ${lastName}`}</strong>
-        <span className="navbar__user__type">{typeOfUser}</span>
-      </div>
-      <ul className="navbar__options">
-        <Link href={`/profile/${id}`}>
-          <li className="navbar__options__item">
-            <UserIcon className="navbar__options__item__icon" />
-            <strong className="navbar__options__item__text">Profile</strong>
-          </li>
-        </Link>
-        <TypeOptions type={typeOfUser} />
-        <Link href="/">
-          <li className="navbar__options__item">
-            <LogoutIcon className="navbar__options__item__icon" />
-            <strong className="navbar__options__item__text">Logout</strong>
-          </li>
-        </Link>
-      </ul>
-    </section>
-  );
+  if (session && session.user) {
+    return (
+      <section className="navbar">
+        <div className="navbar__user">
+          <figure className="navbar__user__photo">
+            <img
+              className="navbar__user__photo__img"
+              src={
+                session.user.imageURL
+                  ? session.user.imageURL
+                  : 'https://i.imgur.com/oMJFiLX.jpg'
+              }
+              alt="user"
+            />
+          </figure>
+          <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
+          <span className="navbar__user__type">{session.user.typeOfUser}</span>
+        </div>
+        <ul className="navbar__options">
+          <Link href={`/profile/${session.user.id}`}>
+            <li className="navbar__options__item">
+              <UserIcon className="navbar__options__item__icon" />
+              <strong className="navbar__options__item__text">Profile</strong>
+            </li>
+          </Link>
+          <TypeOptions type={session.user.typeOfUser} />
+          <Link href="/">
+            <li className="navbar__options__item">
+              <LogoutIcon className="navbar__options__item__icon" />
+              <strong className="navbar__options__item__text">Logout</strong>
+            </li>
+          </Link>
+        </ul>
+      </section>
+    );
+  }
+
+  return <Loader />;
 }
-
-Navbar.propTypes = {
-  id: PropTypes.string,
-  firstName: PropTypes.string,
-  lastName: PropTypes.string,
-  typeOfUser: PropTypes.string,
-  imageURL: PropTypes.string,
-};
-
-Navbar.defaultProps = {
-  id: '',
-  firstName: '',
-  lastName: '',
-  typeOfUser: '',
-  imageURL: 'https://i.imgur.com/oMJFiLX.jpg',
-};
 
 export default Navbar;

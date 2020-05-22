@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { SessionProvider } from '../context/SessionContext';
 import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <SessionProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
   );
 }
 
