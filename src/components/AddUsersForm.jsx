@@ -5,10 +5,6 @@ import UsersAddIcon from '../assets/icons/users-add.svg';
 function AddUsersForm() {
   return (
     <>
-      <div className='add-users'>
-        <UsersAddIcon className='add-users__img' />
-        <h1 className='add-users__title'>Add Users</h1>
-      </div>
       <div className='add-users-form'>
         <Formik>
           <Form className='add-users-form__container lg'>
