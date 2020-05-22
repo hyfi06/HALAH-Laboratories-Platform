@@ -29,8 +29,12 @@ function UserRecordOptions({ active }) {
   return '';
 }
 
+UserRecordOptions.defaultProps = {
+  active: false,
+};
+
 UserRecordOptions.propTypes = {
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.bool,
 };
 
 export default UserRecordOptions;
