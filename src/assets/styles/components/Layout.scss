@@ -5,8 +5,7 @@
 
   &__container {
     @include flexCenSta;
-    width: 100%;
-    max-width: 1024px;
+    width: 1024px;
     padding: $space_x9 $space_x12;
 
     &__content {
