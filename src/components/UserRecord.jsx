@@ -7,7 +7,9 @@ function UserRecord({ user }) {
       <td className="table__body__row__cell__user">
         <img
           alt="user profile pic"
-          src={user.imageURL}
+          src={
+            user.imageURL ? user.imageURL : 'https://i.imgur.com/oMJFiLX.jpg'
+          }
           className="table__body__row__cell__user__image"
         />
       </td>
@@ -18,7 +20,7 @@ function UserRecord({ user }) {
         <p>{`${user.firstName} ${user.lastName}`}</p>
       </td>
       <td className="table__body__row__cell">
-        <p>{user.type}</p>
+        <p>{user.typeOfUser}</p>
       </td>
       <UserRecordOptions active={user.isActive} />
     </tr>
