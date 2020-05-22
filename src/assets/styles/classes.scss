@@ -132,6 +132,46 @@
   }
 }
 
+// Loader
+.loader {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+}
+
+.loader:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid $secondary_color;
+  border-color: $secondary_color transparent $secondary_color transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+.loader--white:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid $white_color;
+  border-color: $white_color transparent $white_color transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .lg {
   width: 100%;
 }

@@ -7,7 +7,6 @@ import UsersIcon from '../assets/icons/users.svg';
 import UserAddIcon from '../assets/icons/user-add.svg';
 import UsersAddIcon from '../assets/icons/users-add.svg';
 import LogoutIcon from '../assets/icons/logout.svg';
-import Loader from './Loader';
 
 function Navbar() {
   const { session } = useSession();
@@ -102,7 +101,7 @@ function Navbar() {
     );
   }
 
-  return <Loader />;
+  return <div className="loader" />;
 }
 
 export default Navbar;
