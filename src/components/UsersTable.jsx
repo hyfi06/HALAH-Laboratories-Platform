@@ -1,10 +1,10 @@
 import { useSession } from '../context/SessionContext';
-import useData from '../hooks/useData';
+import useRequest from '../hooks/useRequest';
 import UserRecord from './UserRecord';
 
 function UsersTable() {
   const { session } = useSession();
-  const { data, loading, error } = useData(
+  const { response, loading, error } = useRequest(
     session.token,
     `${process.env.NEXT_PUBLIC_API_URL}/users/`,
   );
@@ -15,7 +15,7 @@ function UsersTable() {
 
   return (
     <>
-      {data && data.data ? (
+      {response && response.data ? (
         <table className="table">
           <thead className="table__head">
             <tr className="table__head__row">
@@ -35,7 +35,7 @@ function UsersTable() {
           </thead>
 
           <tbody className="table__body">
-            {data.data.map((user) => (
+            {response.data.map((user) => (
               <UserRecord key={user.username} user={user} />
             ))}
           </tbody>
