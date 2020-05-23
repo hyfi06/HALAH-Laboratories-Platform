@@ -15,7 +15,6 @@ function UsersTable() {
 
   return (
     <>
-      {console.log(data)}
       {data && data.data ? (
         <table className="table">
           <thead className="table__head">
