@@ -2,13 +2,9 @@
 
 .user-data {
   width: 100%;
-  margin-top: $space_x6;
-  padding-left: $space_x6;
   display: flex;
   flex-direction: column;
-  &__title {
-    margin-top: $space_x6;
-  }
+
   &__container {
     display: flex;
     flex-direction: row;

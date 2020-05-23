@@ -2,13 +2,18 @@
 
 .user {
   @include flexStaCen;
-}
-.user__img {
-  width: 75px;
-  height: 75px;
-  padding: 0;
-  margin-bottom: $space_x2;
-  margin-right: $space_x6;
-  border-radius: 50%;
-  overflow: hidden;
+  margin-bottom: $space_x6;
+
+  &__img {
+    width: 75px;
+    height: 75px;
+    padding: 0;
+    margin-right: $space_x6;
+    border-radius: 50%;
+    overflow: hidden;
+
+    &.disabled {
+      opacity: 50%;
+    }
+  }
 }
