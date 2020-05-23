@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useData = (token, url) => {
-  const [data, setData] = useState({});
+const useRequest = (token, url) => {
+  const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,8 +15,8 @@ const useData = (token, url) => {
         const config = {
           headers: { Authorization: `Bearer ${token}` },
         };
-        const response = await axios.get(url, config);
-        if (!ignore) setData(response.data);
+        const res = await axios.get(url, config);
+        if (!ignore) setResponse(res.data);
       } catch (err) {
         setError(err);
       }
@@ -28,7 +28,7 @@ const useData = (token, url) => {
     };
   }, [url]);
 
-  return { data, loading, error };
+  return { response, loading, error };
 };
 
-export default useData;
+export default useRequest;
