@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { useSession } from '../context/SessionContext';
@@ -83,12 +84,15 @@ function Navbar() {
           <span className="navbar__user__type">{session.user.typeOfUser}</span>
         </div>
         <ul className="navbar__options">
-          <Link href={`/profile/${session.user.id}`}>
-            <li className="navbar__options__item">
-              <UserIcon className="navbar__options__item__icon" />
-              <strong className="navbar__options__item__text">Profile</strong>
-            </li>
-          </Link>
+          <li
+            className="navbar__options__item"
+            onClick={() => {
+              Router.push(`/profile/${session.user.id}`);
+            }}
+          >
+            <UserIcon className="navbar__options__item__icon" />
+            <strong className="navbar__options__item__text">Profile</strong>
+          </li>
           <TypeOptions type={session.user.typeOfUser} />
           <Link href="/">
             <li className="navbar__options__item">
