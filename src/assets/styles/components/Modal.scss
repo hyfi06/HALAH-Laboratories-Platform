@@ -10,21 +10,3 @@
   right: 0;
   background-color: $modal_color;
 }
-
-.modal__close {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  height: 30px;
-  width: 30px;
-  fill: $white_color;
-  cursor: pointer;
-}
-
-.modal__close:hover {
-  fill: $negative_color;
-}
-
-.modal__close:active {
-  transform: scale(0.95);
-}
