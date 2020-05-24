@@ -14,7 +14,7 @@ function Navbar() {
 
   function TypeOptions({ type }) {
     switch (type) {
-      case 'admin':
+      case 'Administrator':
         return (
           <>
             <Link href="/users">
@@ -41,7 +41,7 @@ function Navbar() {
             </Link>
           </>
         );
-      case 'patient':
+      case 'Patient':
         return (
           <Link href="/test">
             <li className="navbar__options__item">

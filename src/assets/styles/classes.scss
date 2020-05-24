@@ -49,15 +49,17 @@
 
 // Inputs
 .input {
-  display: flex;
-  flex-direction: column;
+  @include colStaSta;
 
   &__label {
-    margin-bottom: $space;
+    @include colStaSta;
+    font-weight: bold;
+    text-shadow: $shadow;
   }
 
   &__field {
     height: $space_x6;
+    margin-top: $space;
     min-width: 100px;
     padding: 0 $space_x3;
     outline-style: none;
@@ -68,7 +70,12 @@
     background-color: $back-grey_color;
   }
 
+  &__field--img {
+    margin-top: $space;
+  }
+
   &__error {
+    margin-top: $space;
     color: $negative_color;
   }
 }
@@ -129,6 +136,37 @@
         }
       }
     }
+  }
+}
+
+// Messages
+.message {
+  @include colCenSta;
+  @include card;
+  width: 360px;
+  padding: $space_x3;
+
+  &__icon--positive {
+    width: 50px;
+    height: 50px;
+    margin-bottom: $space_x3;
+    fill: $positive_color;
+  }
+
+  &__icon--negative {
+    width: 50px;
+    height: 50px;
+    margin-bottom: $space_x3;
+    fill: $negative_color;
+  }
+
+  &__text {
+    font-size: $topic_size;
+    text-align: center;
+  }
+
+  .btn {
+    margin-top: $space_x3;
   }
 }
 

@@ -31,6 +31,12 @@
 }
 
 // Displays
+@mixin flexStaSta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 @mixin flexStaCen {
   display: flex;
   justify-content: flex-start;

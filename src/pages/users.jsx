@@ -9,7 +9,7 @@ function Users() {
   const { session } = useSession();
 
   useEffect(() => {
-    if (session && session.user.typeOfUser !== 'admin') {
+    if (session && session.user.typeOfUser !== 'Administrator') {
       Router.push('/');
     }
   }, [session]);
