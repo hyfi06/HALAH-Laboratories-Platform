@@ -7,7 +7,7 @@ import ActivateIcon from '../assets/icons/activate.svg';
 function UserRecordOptions({ active }) {
   const { session } = useSession();
 
-  if (session && session.user.typeOfUser === 'admin') {
+  if (session && session.user.typeOfUser === 'Administrator') {
     return (
       <>
         {active ? (
