@@ -1,0 +1,6 @@
+@import '../main.scss';
+
+.downloads {
+  @include flexEndCen;
+  margin-bottom: $space_x3;
+}
