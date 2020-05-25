@@ -1,0 +1,18 @@
+@import '../main.scss';
+
+.filter {
+  margin-bottom: $space_x6;
+
+  &__inputs {
+    @include flexStaEnd;
+
+    &__item {
+      @include colStaSta;
+      margin-right: $space_x6;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

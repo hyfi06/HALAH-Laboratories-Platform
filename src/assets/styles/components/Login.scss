@@ -1,0 +1,41 @@
+@import '../main.scss';
+
+.login {
+  @include colCenCen;
+  @include card;
+  width: 320px;
+  padding: $space_x5 $space_x6;
+
+  &__logo {
+    @include flexCenCen;
+    width: 150px;
+    height: 150px;
+    margin: $space_x6;
+    padding: 0;
+    border-radius: 50%;
+    background-color: $primary_color;
+
+    &__icon {
+      width: 90px;
+      height: 90px;
+      fill: $white_color;
+    }
+  }
+
+  &__form {
+    @include colCenCen;
+    margin-bottom: $space_x6;
+
+    .input {
+      margin-bottom: $space_x3;
+    }
+
+    .input__label {
+      text-align: center;
+    }
+
+    .btn {
+      margin-top: $space_x3;
+    }
+  }
+}

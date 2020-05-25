@@ -1,0 +1,42 @@
+@import './mixins.scss';
+@import './vars.scss';
+@import './classes.scss';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $back-blue_color;
+  font-size: $text_size;
+  font-family: $text_font;
+  color: $black_color;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $title_font;
+  text-shadow: $shadow;
+}
+
+strong {
+  text-shadow: $shadow;
+}
+
+h1 {
+  font-size: $title_size;
+}
+
+h2 {
+  font-size: $subtitle_size;
+}
+
+h3 {
+  font-size: $topic_size;
+}
+
+small {
+  font-size: $small_size;
+}

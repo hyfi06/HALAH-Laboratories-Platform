@@ -1,0 +1,89 @@
+// Button
+@mixin btn {
+  height: $space_x6;
+  min-width: 100px;
+  padding: 0 $space_x3;
+  cursor: pointer;
+  outline-style: none;
+  border: none;
+  border-radius: $space_x2;
+  box-shadow: $shadow;
+  font-family: $text_font;
+  font-size: $text_size;
+  font-weight: bold;
+  text-shadow: $shadow;
+  color: $white_color;
+}
+
+// Tables
+@mixin tableIcon {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin-right: $space_x2;
+}
+
+// Card
+@mixin card {
+  border-radius: $space_x3;
+  box-shadow: $shadow;
+  background-color: $white_color;
+}
+
+// Displays
+@mixin flexStaSta {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@mixin flexStaCen {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin flexStaEnd {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+@mixin flexCenSta {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin flexCenCen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexEveCen {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@mixin colCenSta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin colCenCen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin colStaSta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}

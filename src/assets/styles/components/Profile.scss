@@ -1,0 +1,9 @@
+@import '../main.scss';
+
+.profile {
+  &__user-data {
+    @include card;
+    width: 100%;
+    padding: $space_x6;
+  }
+}

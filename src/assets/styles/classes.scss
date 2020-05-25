@@ -1,0 +1,221 @@
+// Buttons
+.btn {
+  @include btn;
+  background-color: $secondary_color;
+
+  &--positive {
+    @include btn;
+    background-color: $positive_color;
+  }
+
+  &--negative {
+    @include btn;
+    background-color: $negative_color;
+  }
+
+  &:hover,
+  &--positive:hover,
+  &--negative:hover {
+    filter: saturate(150%);
+  }
+
+  &:active,
+  &--positive:active,
+  &--negative:active {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 50%;
+  }
+}
+
+// Titles
+.title {
+  @include flexStaCen;
+  margin-bottom: $space_x3;
+
+  &__logo {
+    width: $space_x9;
+    height: $space_x9;
+    fill: $secondary_color;
+  }
+
+  &__text {
+    margin-left: $space_x2;
+  }
+}
+
+// Inputs
+.input {
+  @include colStaSta;
+
+  &__label {
+    @include colStaSta;
+    font-weight: bold;
+    text-shadow: $shadow;
+  }
+
+  &__field {
+    height: $space_x6;
+    margin-top: $space;
+    min-width: 100px;
+    padding: 0 $space_x3;
+    outline-style: none;
+    border: none;
+    border-radius: $space_x2;
+    box-shadow: $shadow;
+    font-size: $text_size;
+    background-color: $back-grey_color;
+  }
+
+  &__field--img {
+    margin-top: $space;
+  }
+
+  &__error {
+    margin-top: $space;
+    color: $negative_color;
+  }
+}
+
+// Tables
+.table {
+  @include card;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  text-align: center;
+
+  &__head {
+    color: $white_color;
+
+    &__row {
+      height: 50px;
+
+      &__cell {
+        background: $primary_color;
+      }
+    }
+  }
+
+  &__body {
+    &__row {
+      height: 60px;
+      cursor: pointer;
+      padding: $space 0;
+      border-bottom: 1px solid $back-grey_color;
+      &__cell {
+        &__user {
+          width: 60px;
+
+          &__image {
+            margin: 0 $space_x2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+        }
+
+        &__options {
+          text-align: end;
+        }
+
+        &__icon {
+          @include tableIcon;
+          fill: $secondary_color;
+
+          &--positive {
+            @include tableIcon;
+            fill: $positive_color;
+          }
+
+          &--negative {
+            @include tableIcon;
+            fill: $negative_color;
+          }
+        }
+      }
+    }
+
+    &__row:hover {
+      background-color: $back-grey_color;
+    }
+  }
+}
+
+// Messages
+.message {
+  @include colCenSta;
+  @include card;
+  width: 360px;
+  padding: $space_x3;
+
+  &__icon--positive {
+    width: 50px;
+    height: 50px;
+    margin-bottom: $space_x3;
+    fill: $positive_color;
+  }
+
+  &__icon--negative {
+    width: 50px;
+    height: 50px;
+    margin-bottom: $space_x3;
+    fill: $negative_color;
+  }
+
+  &__text {
+    font-size: $topic_size;
+    text-align: center;
+  }
+
+  .btn {
+    margin-top: $space_x3;
+  }
+}
+
+// Loader
+.loader {
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+}
+
+.loader:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid $secondary_color;
+  border-color: $secondary_color transparent $secondary_color transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+.loader--white:after {
+  content: ' ';
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid $white_color;
+  border-color: $white_color transparent $white_color transparent;
+  animation: loader 1.2s linear infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lg {
+  width: 100%;
+}
