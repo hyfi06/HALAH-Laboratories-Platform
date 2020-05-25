@@ -5,12 +5,13 @@ function User({ user }) {
   return (
     <div className="user">
       <img
-        className={`user__img ${user.isActive ? '' : 'disabled'}`}
+        className={`user__img${user.isActive ? '' : '--disabled'}`}
         src={user.imageURL || 'https://i.imgur.com/oMJFiLX.jpg'}
         alt="user"
       />
       <div className="user__data">
         <h2 className="user__data__name">{`${user.firstName} ${user.lastName}`}</h2>
+        <strong className="user__data__role">{user.username}</strong>
         <p className="user__data__role">{user.typeOfUser}</p>
       </div>
     </div>
