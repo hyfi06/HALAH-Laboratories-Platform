@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -6,6 +6,19 @@ import '../assets/styles/components/Login.scss';
 import Logo from '../assets/icons/logo.svg';
 
 function Login() {
+  useEffect(() => {
+    try {
+      const session = JSON.parse(
+        document.cookie.replace(
+          /(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/,
+          '$1',
+        ),
+      );
+      Router.push(session.user.defaultPath);
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+  }, []);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const handleLoginSubmit = async (values) => {
