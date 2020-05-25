@@ -19,6 +19,7 @@
   "plugins": ["react"],
   "rules": {
     "no-useless-escape": "off",
+    "no-underscore-dangle": "off",
     "object-curly-newline": "off",
     "react/forbid-prop-types": "off",
     "react/react-in-jsx-scope": "off",

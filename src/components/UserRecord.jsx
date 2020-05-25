@@ -1,9 +1,14 @@
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import UserRecordOptions from './UserRecordOptions';
 
 function UserRecord({ user }) {
+  function userDetail() {
+    Router.push(`/detail/${user._id}`);
+  }
+
   return (
-    <tr className="table__body__row">
+    <tr className="table__body__row" onClick={userDetail}>
       <td className="table__body__row__cell__user">
         <img
           alt="user profile pic"

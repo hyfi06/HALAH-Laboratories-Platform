@@ -61,6 +61,12 @@
   align-items: center;
 }
 
+@mixin flexEveCen {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 @mixin colCenSta {
   display: flex;
   flex-direction: column;

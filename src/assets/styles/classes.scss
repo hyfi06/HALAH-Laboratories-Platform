@@ -103,7 +103,9 @@
   &__body {
     &__row {
       height: 60px;
-
+      cursor: pointer;
+      padding: $space 0;
+      border-bottom: 1px solid $back-grey_color;
       &__cell {
         &__user {
           width: 60px;
@@ -135,6 +137,10 @@
           }
         }
       }
+    }
+
+    &__row:hover {
+      background-color: $back-grey_color;
     }
   }
 }
