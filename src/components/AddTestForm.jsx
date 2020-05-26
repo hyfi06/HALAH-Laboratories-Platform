@@ -29,14 +29,11 @@ function AddTestForm({ imageURL, name, lastName}) {
       </div>
       <div className="add-test-form__form__container">
         <Formik
-          initialValues={{ exam: '', appointment: '' }}
+          initialValues={{ exam: ''}}
           validate={(values) => {
             const errors = {};
             if (!values.exam) {
               errors.exam = 'Required: please select an exam';
-            }
-            if (!values.appointment) {
-              errors.appointment = 'Required: please select an appointment date';
             }
             return errors;
           }}
@@ -67,22 +64,6 @@ function AddTestForm({ imageURL, name, lastName}) {
                     </label>
                     <ErrorMessage
                       name="exam"
-                      component="div"
-                      className="input__error"
-                    />
-                  </div>
-                  <div className="input lg">
-                    <label className="input__label lg">
-                      Appointment date
-                      <Field
-                        className="input__field lg"
-                        type="appointment"
-                        name="appointment"
-                        disabled={isSubmitting}
-                      />
-                    </label>
-                    <ErrorMessage
-                      name="appointment"
                       component="div"
                       className="input__error"
                     />
