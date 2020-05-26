@@ -1,0 +1,14 @@
+@import '../main.scss';
+
+.users-search {
+  @include flexStaSta;
+  margin-bottom: $space_x6;
+
+  .input {
+    margin-right: $space_x3;
+  }
+
+  .btn {
+    margin: 23.67px $space_x3 0;
+  }
+}
