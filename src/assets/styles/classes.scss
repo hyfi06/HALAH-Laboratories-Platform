@@ -116,6 +116,14 @@
             height: 40px;
             border-radius: 50%;
           }
+
+          &__image--disabled {
+            opacity: 50%;
+            margin: 0 $space_x2;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
         }
 
         &__options {

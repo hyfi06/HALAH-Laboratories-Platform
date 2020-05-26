@@ -153,14 +153,12 @@ function UsersTable() {
             <th className="table__head__row__cell">
               <strong>Type</strong>
             </th>
-            <th className="table__head__row__cell" />
-            <th className="table__head__row__cell" />
           </tr>
         </thead>
 
         <tbody className="table__body">
           {response.data.map((user) => (
-            <UserRecord key={user.username} user={user} />
+            <UserRecord key={user._id} user={user} />
           ))}
         </tbody>
       </table>

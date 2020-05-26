@@ -1,6 +1,5 @@
 import Router from 'next/router';
 import PropTypes from 'prop-types';
-import UserRecordOptions from './UserRecordOptions';
 
 function UserRecord({ user }) {
   function userDetail() {
@@ -15,19 +14,20 @@ function UserRecord({ user }) {
           src={
             user.imageURL ? user.imageURL : 'https://i.imgur.com/oMJFiLX.jpg'
           }
-          className="table__body__row__cell__user__image"
+          className={`table__body__row__cell__user__image${
+            user.isActive ? '' : '--disabled'
+          }`}
         />
       </td>
       <td className="table__body__row__cell">
-        <p>{user.username}</p>
+        <span>{user.username}</span>
       </td>
       <td className="table__body__row__cell">
-        <p>{`${user.firstName} ${user.lastName}`}</p>
+        <span>{`${user.firstName} ${user.lastName}`}</span>
       </td>
       <td className="table__body__row__cell">
-        <p>{user.typeOfUser}</p>
+        <span>{user.typeOfUser}</span>
       </td>
-      <UserRecordOptions active={user.isActive} />
     </tr>
   );
 }
