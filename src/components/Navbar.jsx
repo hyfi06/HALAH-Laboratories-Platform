@@ -43,7 +43,7 @@ function Navbar() {
         );
       case 'Patient':
         return (
-          <Link href="/test">
+          <Link href="/tests">
             <li className="navbar__options__item">
               <UsersIcon className="navbar__options__item__icon" />
               <strong className="navbar__options__item__text">Tests</strong>
