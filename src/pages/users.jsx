@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Router from 'next/router';
 import { useEffect } from 'react';
 import { useSession } from '../context/SessionContext';
@@ -15,20 +16,25 @@ function Users() {
   }, [session]);
 
   return (
-    <main className="users">
-      <div className="title">
-        <UsersIcon className="title__logo" />
-        <h1 className="title__text">Users</h1>
-      </div>
-      {session && session.token ? (
-        <>
-          <Filter typeOfUser={session.user.typeOfUser} />
-          <UsersTable />
-        </>
-      ) : (
-        ''
-      )}
-    </main>
+    <>
+      <Head>
+        <title>HALAH Laboratories: Users</title>
+      </Head>
+
+      <main className="users">
+        <div className="title">
+          <UsersIcon className="title__logo" />
+          <h1 className="title__text">Users</h1>
+        </div>
+        {session && session.token ? (
+          <>
+            <UsersTable />
+          </>
+        ) : (
+          ''
+        )}
+      </main>
+    </>
   );
 }
 
