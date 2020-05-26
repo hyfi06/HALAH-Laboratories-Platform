@@ -1,0 +1,47 @@
+@import '../main.scss';
+
+.add-test-form {
+  width: 100%;
+  text-align: center;
+  padding: $space_x2;
+  @include colCenCen;
+
+  &__title {
+    @include flexStaCen;
+    margin-bottom: $space_x3;
+
+    &__icon {
+      width: $space_x9;
+      height: $space_x9; 
+      fill: $secondary_color;
+    }
+  }
+
+  &__user-info {
+    @include flexCenCen;
+    text-align: left;
+    margin-bottom: $space_x3;
+
+    img {
+      width: $space_x10;
+      height: $space_x10;
+      border-radius: $space_x5;
+      margin-right: $space_x2;
+    }
+  }
+
+  &__form {
+
+    .input__label {
+      margin-top: $space_x2;
+    }
+    
+    &__container {
+      width: 100%;
+      
+      .btn {
+        margin-top: $space_x3;
+      }
+    }
+  }
+}

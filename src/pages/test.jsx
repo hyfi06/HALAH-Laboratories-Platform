@@ -1,7 +1,20 @@
-import UserEnable from '../components/UserEnable';
+import { useSession } from '../context/SessionContext';
+import AddTestForm from '../components/AddTestForm';
 
 function Test() {
-  return <UserEnable />;
+  const { session } = useSession();
+
+  return (
+    <>
+      {session && session.token ? (
+        <>
+          <AddTestForm />
+        </>
+      ) : (
+        ''
+      )}
+    </>
+  );
 }
 
 export default Test;
