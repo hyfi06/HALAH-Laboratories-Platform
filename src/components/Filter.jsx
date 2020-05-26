@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import '../assets/styles/components/Filter.scss';
 
-function Filter() {
+function Filter({ typeOfUser }) {
   return (
     <div className="filter">
       <section className="filter__inputs">
@@ -13,26 +14,32 @@ function Filter() {
             className="filter__inputs__item__input input__field"
           />
         </div>
-        <div className="filter__inputs__item">
-          <strong className="filter__inputs__item__label input__label">
-            Type
-          </strong>
-          <select className="filter__inputs__item__input input__field">
-            <option value="administrator">Administrator</option>
-            <option value="patient">Patient</option>
-            <option value="bacteriologist">Bacteriologist</option>
-            <option value="doctor">Doctor</option>
-          </select>
-        </div>
-        <div className="filter__inputs__item">
-          <strong className="filter__inputs__item__label input__label">
-            Status
-          </strong>
-          <select className="filter__inputs__item__input input__field">
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-          </select>
-        </div>
+        { typeOfUser === 'Administrator' ? (
+          <>
+            <div className="filter__inputs__item">
+              <strong className="filter__inputs__item__label input__label">
+                Type
+              </strong>
+              <select className="filter__inputs__item__input input__field">
+                <option value="administrator">Administrator</option>
+                <option value="patient">Patient</option>
+                <option value="bacteriologist">Bacteriologist</option>
+                <option value="doctor">Doctor</option>
+              </select>
+            </div>
+            <div className="filter__inputs__item">
+              <strong className="filter__inputs__item__label input__label">
+                Status
+              </strong>
+              <select className="filter__inputs__item__input input__field">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </>
+        ) : (
+          ''
+        )}
         <button className="btn" type="button">
           Filter
         </button>
@@ -40,5 +47,9 @@ function Filter() {
     </div>
   );
 }
+
+Filter.propTypes = {
+  typeOfUser: PropTypes.string.isRequired,
+};
 
 export default Filter;

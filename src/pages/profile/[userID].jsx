@@ -9,12 +9,6 @@ function Profile() {
   const { userID } = router.query;
   const { session } = useSession();
 
-  useEffect(() => {
-    if (session && session.user.typeOfUser !== 'Administrator') {
-      router.push('/');
-    }
-  }, [session]);
-
   return (
     <>
       <Head>
