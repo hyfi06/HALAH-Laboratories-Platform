@@ -8,13 +8,20 @@ function TestsTable({ username }) {
   const { response, loading, error } = useRequest(
     session.token,
     `${process.env.NEXT_PUBLIC_API_URL}/orders/?username=${username}`,
+    1,
   );
 
   if (loading) {
     return <div className="loader" />;
   }
   if (error) {
-    return <h1>sorry there was an error, please try again</h1>;
+    return (
+      <h3>
+        sorry we could not get your exams...
+        <br />
+        please try again
+      </h3>
+    );
   }
 
   return (
