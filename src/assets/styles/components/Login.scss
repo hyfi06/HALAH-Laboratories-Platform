@@ -31,6 +31,8 @@
     }
 
     .input__label {
+      @include colCenCen;
+      width: 100%;
       text-align: center;
     }
 
