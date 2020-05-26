@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useRequest = (token, url) => {
+const useRequest = (token, url, count) => {
   const [response, setResponse] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     let ignore = false;
-    const getUsers = async () => {
+    const getData = async () => {
       setLoading(true);
       try {
         setError(null);
@@ -22,11 +22,13 @@ const useRequest = (token, url) => {
       }
       setLoading(false);
     };
-    getUsers();
+    if (count) {
+      getData();
+    }
     return () => {
       ignore = true;
     };
-  }, [url]);
+  }, [url, count]);
 
   return { response, loading, error };
 };

@@ -12,8 +12,14 @@
     border-radius: 50%;
     overflow: hidden;
 
-    &.disabled {
+    &--disabled {
       opacity: 50%;
+      width: 75px;
+      height: 75px;
+      padding: 0;
+      margin-right: $space_x6;
+      border-radius: 50%;
+      overflow: hidden;
     }
   }
 }

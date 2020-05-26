@@ -1,0 +1,10 @@
+@import '../main.scss';
+
+.edit-user {
+  &__content {
+    @include card;
+    width: 100%;
+    padding: $space_x6;
+    padding-right: 0;
+  }
+}

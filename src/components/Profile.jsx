@@ -8,7 +8,7 @@ import UserData from './UserData';
 function Profile({ userID }) {
   const { session } = useSession();
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/users/${userID}`;
-  const { response, loading, error } = useRequest(session.token, URL);
+  const { response, loading, error } = useRequest(session.token, URL, 1);
 
   if (loading) {
     return <div className="loader" />;

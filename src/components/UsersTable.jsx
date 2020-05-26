@@ -7,6 +7,7 @@ function UsersTable() {
   const { response, loading, error } = useRequest(
     session.token,
     `${process.env.NEXT_PUBLIC_API_URL}/users/`,
+    1,
   );
 
   if (loading) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import axios from 'axios';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -8,6 +8,20 @@ import Logo from '../assets/icons/logo.svg';
 function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    try {
+      const session = JSON.parse(
+        document.cookie.replace(
+          /(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/,
+          '$1',
+        ),
+      );
+      Router.push(session.user.defaultPath);
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+  }, []);
+
   const handleLoginSubmit = async (values) => {
     setLoading(true);
     const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`;
@@ -33,10 +47,6 @@ function Login() {
     }
     setLoading(false);
   };
-
-  if (error) {
-    return <h1>Error</h1>;
-  }
 
   return (
     <div className="login">

@@ -1,0 +1,70 @@
+@import '../main.scss';
+
+.detail {
+  &__content {
+    @include colStaSta;
+    @include card;
+    width: 100%;
+    padding: $space_x6;
+  }
+
+  &-options {
+    @include flexStaCen;
+    align-self: flex-end;
+    &__item {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      margin-left: $space_x3;
+      fill: $secondary_color;
+
+      &--positive {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        margin-left: $space_x3;
+        fill: $positive_color;
+      }
+
+      &--negative {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        margin-left: $space_x3;
+        fill: $negative_color;
+      }
+    }
+  }
+}
+
+.confirm-update-status {
+  @include colCenSta;
+  @include card;
+  padding: $space_x6;
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+    fill: $secondary_color;
+
+    &--positive {
+      width: 50px;
+      height: 50px;
+      fill: $positive_color;
+    }
+  }
+
+  &__text {
+    margin: $space_x3 0;
+    font-size: $topic_size;
+    text-align: center;
+  }
+
+  &__options {
+    @include flexEveCen;
+    width: 100%;
+    .btn {
+      margin: $space_x2 0;
+    }
+  }
+}
