@@ -6,6 +6,9 @@ import '../assets/styles/components/Login.scss';
 import Logo from '../assets/icons/logo.svg';
 
 function Login() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     try {
       const session = JSON.parse(
@@ -19,8 +22,6 @@ function Login() {
     } catch (err) {}
   }, []);
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const handleLoginSubmit = async (values) => {
     setLoading(true);
     const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`;
@@ -46,10 +47,6 @@ function Login() {
     }
     setLoading(false);
   };
-
-  if (error) {
-    return <h1>Error</h1>;
-  }
 
   return (
     <div className="login">
