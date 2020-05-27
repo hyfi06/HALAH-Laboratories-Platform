@@ -1,17 +1,36 @@
 import PropTypes from 'prop-types';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
 import { useSession } from '../context/SessionContext';
-import useRequest from '../hooks/useRequest'
+import useRequest from '../hooks/useRequest';
 import FileIcon from '../assets/icons/file.svg';
 import '../assets/styles/components/AddTestForm.scss';
 
-function AddTestForm({ imageURL, name, lastName}) {
+function AddTestForm({ userData }) {
   const { session } = useSession();
   const { response, loading, error } = useRequest(
     session.token,
     `${process.env.NEXT_PUBLIC_API_URL}/exams/`,
     1,
   );
+
+  async function addTest(examId) {
+    const postData = {
+      patientId: userData._id,
+      doctorId: session.user._id,
+      examTypeId: examId,
+    };
+    try {
+      const URL = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
+      const config = {
+        headers: { Authorization: `Bearer ${session.token}` },
+      };
+      const res = await axios.post(URL, postData, config);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <main className="add-test-form">
@@ -20,16 +39,16 @@ function AddTestForm({ imageURL, name, lastName}) {
         <h2 className="add-test-form__title__text">Assign a new exam</h2>
       </div>
       <div className="add-test-form__user-info">
-        <img alt="user whose new test is filling" src={imageURL} />
+        <img alt="user whose new test is filling" src={userData.imageURL} />
         <strong>
-          {name}
+          {userData.name}
           <br />
-          {lastName}
+          {userData.lastName}
         </strong>
       </div>
       <div className="add-test-form__form__container">
         <Formik
-          initialValues={{ exam: ''}}
+          initialValues={{ exam: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.exam) {
@@ -38,7 +57,7 @@ function AddTestForm({ imageURL, name, lastName}) {
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            alert(JSON.stringify(values));
+            addTest(values)
             setSubmitting(false);
           }}
         >
@@ -58,7 +77,7 @@ function AddTestForm({ imageURL, name, lastName}) {
                       >
                         {response.data.map((exam) => {
                           console.log(exam.name);
-                          return <option>{exam.name}</option>;
+                          return <option>{exam._id}</option>;
                         })}
                       </Field>
                     </label>
@@ -82,15 +101,7 @@ function AddTestForm({ imageURL, name, lastName}) {
 }
 
 AddTestForm.propTypes = {
-  imageURL: PropTypes.string,
-  name: PropTypes.string,
-  lastName: PropTypes.string,
-};
-
-AddTestForm.defaultProps = {
-  imageURL: 'https://i.imgur.com/oMJFiLX.jpg',
-  name: 'Catalina',
-  lastName: 'Flores',
+  userData: PropTypes.object.isRequired,
 };
 
 export default AddTestForm;

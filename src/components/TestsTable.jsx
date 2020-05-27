@@ -15,13 +15,7 @@ function TestsTable({ username }) {
     return <div className="loader" />;
   }
   if (error) {
-    return (
-      <h3>
-        sorry we could not get your exams...
-        <br />
-        please try again
-      </h3>
-    );
+    return <h3>{error.message}</h3>;
   }
 
   return (
