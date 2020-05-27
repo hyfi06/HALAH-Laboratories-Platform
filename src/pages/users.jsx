@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Router from 'next/router';
 import { useEffect } from 'react';
 import { useSession } from '../context/SessionContext';
-import Filter from '../components/Filter';
 import UsersIcon from '../assets/icons/users.svg';
 import UsersTable from '../components/UsersTable';
 
