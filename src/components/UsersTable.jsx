@@ -6,7 +6,7 @@ import '../assets/styles/components/UsersTable.scss';
 import UserRecord from './UserRecord';
 
 function UsersTable() {
-  const [requestCount, setRequestCount] = useState(0);
+  const [requestCount, setRequestCount] = useState(1);
   const [filter, setFilter] = useState('');
   const { session } = useSession();
   const { response, loading, error } = useRequest(
@@ -57,7 +57,7 @@ function UsersTable() {
             !values.documentID &&
             session.user.typeOfUser !== 'Administrator'
           ) {
-            errors.documentID = 'Enter a document id or name';
+            errors.documentID = 'Enter a document id';
           }
           return errors;
         }}
