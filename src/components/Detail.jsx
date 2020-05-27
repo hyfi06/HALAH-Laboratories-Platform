@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Router from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useRequest from '../hooks/useRequest';
 import { useSession } from '../context/SessionContext';
 import '../assets/styles/components/Detail.scss';
 import ActivateIcon from '../assets/icons/activate.svg';
+import AddIcon from '../assets/icons/add.svg';
 import DeleteIcon from '../assets/icons/delete.svg';
 import EditIcon from '../assets/icons/edit.svg';
 import SuccessIcon from '../assets/icons/success.svg';
@@ -51,6 +52,10 @@ function Detail({ userID }) {
 
   function updateStatus() {
     setOpenModal(true);
+  }
+
+  function addTest() {
+    Router.push(`/add-test/${userID}`);
   }
 
   function editUser() {
@@ -116,30 +121,41 @@ function Detail({ userID }) {
   }
 
   function DetailOptions() {
-    if (response.data.isActive) {
+    if (loading) {
+      return <div className="loader" />;
+    }
+
+    if (session.user.typeOfUser === 'Administrator') {
+      if (response.data.isActive) {
+        return (
+          <div className="detail-options">
+            <EditIcon className="detail-options__item" onClick={editUser} />
+            <DeleteIcon
+              className="detail-options__item--negative"
+              onClick={updateStatus}
+            />
+          </div>
+        );
+      }
       return (
         <div className="detail-options">
-          <EditIcon className="detail-options__item" onClick={editUser} />
-          <DeleteIcon
-            className="detail-options__item--negative"
+          <ActivateIcon
+            className="detail-options__item--positive"
             onClick={updateStatus}
           />
         </div>
       );
     }
 
-    if (loading) {
-      return <div className="loader" />;
+    if (session.user.typeOfUser === 'Doctor' && response.data.isActive) {
+      return (
+        <div className="detail-options">
+          <AddIcon className="detail-options__item" onClick={addTest} />
+        </div>
+      );
     }
 
-    return (
-      <div className="detail-options">
-        <ActivateIcon
-          className="detail-options__item--positive"
-          onClick={updateStatus}
-        />
-      </div>
-    );
+    return '';
   }
 
   return response && response.data ? (
