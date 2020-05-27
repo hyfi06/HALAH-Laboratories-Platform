@@ -40,7 +40,9 @@ function UsersTable() {
         setFilter('');
       }
     } else {
-      setFilter(`?documentID=${values.documentID}&typeOfUser=true`);
+      setFilter(
+        `?documentID=${values.documentID}&typeOfUser=Patient&isActive=true`,
+      );
     }
   }
 
