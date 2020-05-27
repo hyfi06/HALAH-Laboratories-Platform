@@ -41,7 +41,7 @@ function Login() {
       document.cookie = `session=${JSON.stringify(response.data)};max-age=${
         60 * 60 * 24 * 5
       }`;
-      Router.push('/users');
+      Router.push(response.data.user.defaultPath);
     } catch (err) {
       setError(err);
     }
