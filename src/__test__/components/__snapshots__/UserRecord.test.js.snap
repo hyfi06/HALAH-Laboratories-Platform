@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserRecord Component Should render Login component 1`] = `
+<tr
+  className="table__body__row"
+  onClick={[Function]}
+>
+  <td
+    className="table__body__row__cell__user"
+  >
+    <img
+      alt="user profile pic"
+      className="table__body__row__cell__user__image--disabled"
+      src="https://i.imgur.com/oMJFiLX.jpg"
+    />
+  </td>
+  <td
+    className="table__body__row__cell"
+  >
+    <span />
+  </td>
+  <td
+    className="table__body__row__cell"
+  >
+    <span>
+      undefined undefined
+    </span>
+  </td>
+  <td
+    className="table__body__row__cell"
+  >
+    <span />
+  </td>
+</tr>
+`;
