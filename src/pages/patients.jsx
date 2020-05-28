@@ -5,25 +5,27 @@ import { useSession } from '../context/SessionContext';
 import UsersIcon from '../assets/icons/users.svg';
 import UsersTable from '../components/UsersTable';
 
-function Users() {
+function Patients() {
   const { session } = useSession();
 
   useEffect(() => {
-    if (session && session.user.typeOfUser !== 'Administrator') {
-      Router.push('/');
+    if (session && session.user.typeOfUser !== 'Doctor') {
+      if (session.user.typeOfUser !== 'Bacteriologist') {
+        Router.push('/');
+      }
     }
   }, [session]);
 
   return (
     <>
       <Head>
-        <title>HALAH Laboratories: Users</title>
+        <title>HALAH Laboratories: Patients</title>
       </Head>
 
       <main className="users">
         <div className="title">
           <UsersIcon className="title__logo" />
-          <h1 className="title__text">Users</h1>
+          <h1 className="title__text">Patients</h1>
         </div>
         {session && session.token ? (
           <>
@@ -37,4 +39,4 @@ function Users() {
   );
 }
 
-export default Users;
+export default Patients;

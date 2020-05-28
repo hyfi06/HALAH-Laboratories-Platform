@@ -49,6 +49,12 @@
   align-items: flex-end;
 }
 
+@mixin flexEndCen {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @mixin flexCenSta {
   display: flex;
   justify-content: center;

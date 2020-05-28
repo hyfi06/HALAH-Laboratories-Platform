@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Component Should render Layout component 1`] = `
+<div
+  className="layout"
+>
+  <header
+    className="header"
+  >
+    <div
+      className="header__logo"
+    />
+    <strong
+      className="header__text"
+    >
+      HALAH
+      <br />
+      Laboratories
+    </strong>
+  </header>
+  <div
+    className="layout__container"
+  >
+    <div
+      className="loader"
+    />
+    <div
+      className="layout__container__content"
+    />
+  </div>
+</div>
+`;

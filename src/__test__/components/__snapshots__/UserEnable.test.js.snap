@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserEnable Component Should render UserEnable component 1`] = `
+<div
+  className="user-enable"
+>
+  <div
+    className="user-enable__icon"
+  />
+  <h2
+    className="user-enable__text"
+  >
+    Are you sure you want to enable this user?
+  </h2>
+  <div
+    className="user-enable__buttons"
+  >
+    <button
+      className="btn--positive"
+      type="submit"
+    >
+      Confirm
+    </button>
+    <button
+      className="btn--negative"
+      type="submit"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;
