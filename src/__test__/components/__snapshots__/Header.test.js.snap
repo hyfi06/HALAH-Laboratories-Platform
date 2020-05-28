@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Should render Header component 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="header__logo"
+  />
+  <strong
+    className="header__text"
+  >
+    HALAH
+    <br />
+    Laboratories
+  </strong>
+</header>
+`;
