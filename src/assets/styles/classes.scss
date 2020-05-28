@@ -3,6 +3,13 @@
   @include btn;
   background-color: $secondary_color;
 
+  &--disabled {
+    @include btn;
+    cursor: default;
+    opacity: 50%;
+    background-color: $secondary_color;
+  }
+
   &--positive {
     @include btn;
     background-color: $positive_color;
