@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserEnable Component Should render Login component 1`] = `
+exports[`UserEnable Component Should render UserEnable component 1`] = `
 <div
   className="user-enable"
 >

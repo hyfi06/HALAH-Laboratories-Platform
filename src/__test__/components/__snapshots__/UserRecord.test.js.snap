@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserRecord Component Should render Login component 1`] = `
+exports[`UserRecord Component Should render UserRecord component 1`] = `
 <tr
   className="table__body__row"
   onClick={[Function]}
