@@ -12,6 +12,11 @@ import LogoutIcon from '../assets/icons/logout.svg';
 function Navbar() {
   const { session } = useSession();
 
+  function logout() {
+    document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    Router.push('/');
+  }
+
   function TypeOptions({ type }) {
     switch (type) {
       case 'Administrator':
@@ -94,12 +99,10 @@ function Navbar() {
             <strong className="navbar__options__item__text">Profile</strong>
           </li>
           <TypeOptions type={session.user.typeOfUser} />
-          <Link href="/">
-            <li className="navbar__options__item">
-              <LogoutIcon className="navbar__options__item__icon" />
-              <strong className="navbar__options__item__text">Logout</strong>
-            </li>
-          </Link>
+          <li className="navbar__options__item" onClick={logout}>
+            <LogoutIcon className="navbar__options__item__icon" />
+            <strong className="navbar__options__item__text">Logout</strong>
+          </li>
         </ul>
       </section>
     );
