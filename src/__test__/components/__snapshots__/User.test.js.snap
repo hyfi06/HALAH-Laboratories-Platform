@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Component Should render User component 1`] = `
+<div
+  className="user"
+>
+  <img
+    alt="user"
+    className="user__img--disabled"
+    src="https://i.imgur.com/oMJFiLX.jpg"
+  />
+  <div
+    className="user__data"
+  >
+    <h2
+      className="user__data__name"
+    >
+      undefined undefined
+    </h2>
+    <strong
+      className="user__data__role"
+    />
+    <p
+      className="user__data__role"
+    />
+  </div>
+</div>
+`;
