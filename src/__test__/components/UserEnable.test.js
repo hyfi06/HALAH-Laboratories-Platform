@@ -2,7 +2,7 @@ import UserEnable from '../../components/UserEnable';
 import { create } from 'react-test-renderer';
 import { SessionProvider } from '../../context/SessionContext';
 describe('UserEnable Component', () => {
-  test('Should render Login component', () => {
+  test('Should render UserEnable component', () => {
     const component = create(
       <SessionProvider>
         <UserEnable />
