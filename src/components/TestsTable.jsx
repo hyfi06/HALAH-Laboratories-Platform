@@ -15,13 +15,7 @@ function TestsTable({ username }) {
     return <div className="loader" />;
   }
   if (error) {
-    return (
-      <h3>
-        sorry we could not get your exams...
-        <br />
-        please try again
-      </h3>
-    );
+    return <h3>{error.message}</h3>;
   }
 
   return (
@@ -39,7 +33,6 @@ function TestsTable({ username }) {
               <th className="table__head__row__cell">
                 <strong>Appointment Date</strong>
               </th>
-              <th className="table__head__row__cell" />
             </tr>
           </thead>
           <tbody className="table__body">
