@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserData Component Should render UserData component 1`] = `
+<div
+  className="user-data"
+>
+  <h2
+    className="user-data__title"
+  >
+     User Information
+  </h2>
+  <div
+    className="user-data__container"
+  >
+    <div
+      className="user-data__element"
+    >
+      <strong
+        className="user-data__element__title"
+      >
+        Name
+      </strong>
+      <span
+        className="user-data__element_content"
+      />
+    </div>
+    <div
+      className="user-data__element"
+    >
+      <strong
+        className="user-data__element__title"
+      >
+        Last Name
+      </strong>
+      <span
+        className="user-data__element_content"
+      />
+    </div>
+    <div
+      className="user-data__element"
+    >
+      <strong
+        className="user-data__element__title"
+      >
+        Document ID
+      </strong>
+      <span
+        className="user-data__element_content"
+      />
+    </div>
+  </div>
+  <h2
+    className="user-data__title"
+  >
+     Contact
+  </h2>
+  <div
+    className="user-data__container"
+  >
+    <div
+      className="user-data__element"
+    >
+      <strong
+        className="user-data__element__title"
+      >
+        email
+      </strong>
+      <span
+        className="user-data__element_content"
+      />
+    </div>
+    <div
+      className="user-data__element"
+    >
+      <strong
+        className="user-data__element__title"
+      >
+        Phone Number
+      </strong>
+      <span
+        className="user-data__element_content"
+      />
+    </div>
+  </div>
+</div>
+`;
