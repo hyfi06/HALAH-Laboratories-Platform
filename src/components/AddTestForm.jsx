@@ -1,13 +1,54 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import Router from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import { useSession } from '../context/SessionContext';
 import useRequest from '../hooks/useRequest';
 import FileIcon from '../assets/icons/file.svg';
+import ErrorIcon from '../assets/icons/error.svg';
+import SuccessIcon from '../assets/icons/success.svg';
+import Modal from './Modal';
 import '../assets/styles/components/AddTestForm.scss';
 
 function AddTestForm({ userID }) {
   const { session } = useSession();
+  const [openModal, setOpenModal] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+
+  function closeModal() {
+    setOpenModal(false);
+  }
+
+  function AddTestSuccess(message) {
+    return (
+      <div className="message">
+        <SuccessIcon className="message__icon--positive" />
+        <strong className="message__text">{message}</strong>
+        <button
+          className="btn"
+          type="button"
+          onClick={() => {
+            Router.push('/patients');
+          }}
+        >
+          Accept
+        </button>
+      </div>
+    );
+  }
+
+  function AddTestError(message) {
+    return (
+      <div className="message">
+        <ErrorIcon className="message__icon--negative" />
+        <strong className="message__text">{message}</strong>
+        <button className="btn" type="button" onClick={closeModal}>
+          Accept
+        </button>
+      </div>
+    );
+  }
 
   async function addTest(examId) {
     const postData = {
@@ -15,17 +56,19 @@ function AddTestForm({ userID }) {
       doctorId: session.user.id,
       examTypeId: examId.exam,
     };
-    console.log(postData);
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
       const config = {
         headers: { Authorization: `Bearer ${session.token}` },
       };
       const res = await axios.post(URL, postData, config);
-      console.log(res);
+      console.log(res.data.message);
+      setModalContent(AddTestSuccess(res.data.message));
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
+      setModalContent(AddTestError(err.data.message));
     }
+    setOpenModal(true);
   }
 
 
@@ -77,7 +120,6 @@ function AddTestForm({ userID }) {
             }}
             onSubmit={async (values, { setSubmitting }) => {
               addTest(values);
-              console.log(values);
               setSubmitting(false);
             }}
           >
@@ -113,43 +155,51 @@ function AddTestForm({ userID }) {
             )}
           </Formik>
         </div>
-        <table className="table container__test">
-          <thead className="table__head">
-            <tr className="table__head__row">
-              <th className="table__head__row__cell colum__test">
-                <strong>Test ID</strong>
-              </th>
-              <th className="table__head__row__cell colum__test">
-                <strong>Test Name</strong>
-              </th>
-            </tr>
-          </thead>
-          <tbody className="table__body">
-            {response.data.map((exam) => (
-              <tr className="table__body__row">
-                <td className="table__body__row__cell">
-                  <p>{exam._id}</p>
-                </td>
-                <td className="table__body__row__cell">
-                  <p>{exam.name}</p>
-                </td>
+        { !loading && response.data ? (
+          <table className="table container__test">
+            <thead className="table__head">
+              <tr className="table__head__row">
+                <th className="table__head__row__cell colum__test">
+                  <strong>Test ID</strong>
+                </th>
+                <th className="table__head__row__cell colum__test">
+                  <strong>Test Name</strong>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="table__body">
+              {response.data.map((exam) => (
+                <tr className="table__body__row">
+                  <td className="table__body__row__cell">
+                    <p>{exam._id}</p>
+                  </td>
+                  <td className="table__body__row__cell">
+                    <p>{exam.name}</p>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (<div className="loader" />)}
       </>
     );
   }
 
   return (
-    <main className="add-test-form">
-      <div className="add-test-form__title">
-        <FileIcon className="add-test-form__title__icon" />
-        <h2 className="add-test-form__title__text">Assign a new test to:</h2>
-      </div>
-      {getUserData(userID)}
-      {getExams()}
-    </main>
+    <>
+      <main className="add-test-form">
+        <div className="add-test-form__title">
+          <FileIcon className="add-test-form__title__icon" />
+          <h2 className="add-test-form__title__text">Assign a new test to:</h2>
+        </div>
+        {getUserData(userID)}
+        {getExams()}
+      </main>
+
+      <Modal isOpen={openModal} onClose={closeModal}>
+        {modalContent}
+      </Modal>
+    </>
   );
 }
 
