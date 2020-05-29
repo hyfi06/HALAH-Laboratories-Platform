@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import Router from 'next/router';
 import { useSession } from '../context/SessionContext';
 import useRequest from '../hooks/useRequest';
 import AddIcon from '../assets/icons/add.svg';
 import DownloadIcon from '../assets/icons/download.svg';
 
-function TestInfo({ examName }) {
+function TestInfo({ examName, completed, order }) {
   const { session } = useSession();
   const { response, loading, error } = useRequest(
     session.token,
@@ -20,27 +22,41 @@ function TestInfo({ examName }) {
   }
 
   // PENDING UNTIL THE PART OF DOWNLOAD IS DONE
-  async function downloadTest() {}
+  async function downloadTest(orderId) {
+    const orderBody = { orederIds: orderId };
+    try {
+      const URL = `${process.env.NEXT_PUBLIC_API_URL}/pdfs`;
+      const config = {
+        headers: { Authorization: `Bearer ${session.token}` },
+      };
+      const res = await axios.post(URL, orderBody, config);
+      // setTestResponse(res);
+    } catch (err) {
+      // setTestError(err.data.message);
+    }
+  }
   // PENDING UNTIL THE ASSIGN PAGE IS READY
-  function assignResult() {}
+  function assignResult(orderId) {
+    Router.push(`/add-result/${orderId}`);
+  }
 
   return (
     <section className="test-detail__data">
       <div className="test-detail__data__container--principal">
         <h1 className="test-detail__data__title">Test Information</h1>
-        {session.user.typeOfUser === 'Bacteriologist' ? (
+        {!completed && session.user.typeOfUser === 'Bacteriologist' ? (
           <AddIcon
             className="test-detail__data__option"
-            onClick={assignResult}
+            onClick={assignResult(order)}
           />
         ) : (
           <DownloadIcon
             className="test-detail__data__option"
-            onClick={downloadTest}
+            onClick={downloadTest(order)}
           />
         )}
       </div>
-      {response && response.data ? (
+      {completed && response.data ? (
         <>
           {response.data.map((test) => (
             <>
@@ -80,6 +96,8 @@ function TestInfo({ examName }) {
 
 TestInfo.propTypes = {
   examName: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+  order: PropTypes.string.isRequired,
 };
 
 export default TestInfo;

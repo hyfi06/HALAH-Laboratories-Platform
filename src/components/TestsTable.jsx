@@ -25,7 +25,7 @@ function TestsTable({ username }) {
           <thead className="table__head">
             <tr className="table__head__row">
               <th className="table__head__row__cell">
-                <strong>Folio</strong>
+                <strong>Alias</strong>
               </th>
               <th className="table__head__row__cell">
                 <strong>Test</strong>

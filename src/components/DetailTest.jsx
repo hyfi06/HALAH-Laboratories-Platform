@@ -36,7 +36,7 @@ function DetailTest({ testID }) {
               </strong>
             </div>
           </section>
-          <TestInfo examName={response.data.shortName} />
+          <TestInfo examName={response.data.shortName} completed={response.data.isComplete} />
         </>
       ) : (
         ''

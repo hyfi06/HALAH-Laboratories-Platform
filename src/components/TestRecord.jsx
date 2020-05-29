@@ -9,7 +9,7 @@ function TestRecord({ test }) {
   return (
     <tr className="table__body__row" onClick={testDetail}>
       <td className="table__body__row__cell__user">
-        <p>{test._id}</p>
+        <p>{test.shortName}</p>
       </td>
       <td className="table__body__row__cell">
         <p>{test.name}</p>
