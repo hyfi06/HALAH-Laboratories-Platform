@@ -1,0 +1,58 @@
+@import '../main.scss';
+
+.test-detail {
+  text-align: justify;
+  
+  &__title {
+    @include flexStaCen;
+    margin-bottom: $space_x6;
+
+    &__icon {
+      margin-right: $space_x2;
+      fill: $secondary_color;
+      width: $space_x9;
+      height: $space_x9;
+    }
+  }
+
+  &__data {
+    @include card;
+    padding: $space_x6;
+
+    &__option {
+      fill: $secondary_color;
+      width: $space_x6;
+      height: $space_x6;
+      margin-left: auto;
+
+      &:hover {
+        filter: brightness(95%);
+        @include card;
+      }
+    }
+    
+    &__container--principal {
+      @include flexStaSta;
+      margin-bottom: $space_x6;
+    }
+
+    &__container {
+      @include flexStaCen;
+      margin: $space_x6 0px;
+
+      div {
+        margin: 0px;
+
+        &:last-child {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+    }
+
+    &__element {
+      @include colStaSta;
+      margin: $space_x6 0px;
+    }
+  }
+}
