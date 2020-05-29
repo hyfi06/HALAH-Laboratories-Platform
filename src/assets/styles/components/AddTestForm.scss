@@ -2,9 +2,7 @@
 
 .add-test-form {
   width: 100%;
-  text-align: center;
-  padding: $space_x2;
-  @include colCenCen;
+  @include colStaSta;
 
   &__title {
     @include flexStaCen;
@@ -12,7 +10,7 @@
 
     &__icon {
       width: $space_x9;
-      height: $space_x9; 
+      height: $space_x9;
       fill: $secondary_color;
     }
   }
@@ -31,17 +29,30 @@
   }
 
   &__form {
-
+    @include colStaSta;
     .input__label {
       margin-top: $space_x2;
     }
-    
+
+    .input__field {
+      width: 100%;
+    }
+
     &__container {
       width: 100%;
-      
+
       .btn {
+        align-self: flex-end;
         margin-top: $space_x3;
       }
     }
   }
+}
+
+.container__test {
+  margin-top: $space_x3;
+}
+
+.colum__test {
+  width: 50%;
 }

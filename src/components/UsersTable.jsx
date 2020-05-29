@@ -16,8 +16,11 @@ function UsersTable() {
   );
 
   useEffect(() => {
-    if (session.user.typeOfUser === 'Administrator') {
-      setRequestCount(requestCount + 1);
+    if (
+      session.user.typeOfUser === 'Doctor' ||
+      session.user.typeOfUser === 'Bacteriologist'
+    ) {
+      setFilter('?typeOfUser=Patient&isActive=true');
     }
   }, []);
 

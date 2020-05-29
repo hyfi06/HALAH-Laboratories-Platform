@@ -1,65 +1,158 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
 import { useSession } from '../context/SessionContext';
-import useRequest from '../hooks/useRequest'
-import FileIcon from '../assets/icons/file.svg';
+import useRequest from '../hooks/useRequest';
+import ErrorIcon from '../assets/icons/error.svg';
+import SuccessIcon from '../assets/icons/success.svg';
+import Modal from './Modal';
 import '../assets/styles/components/AddTestForm.scss';
 
-function AddTestForm({ imageURL, name, lastName}) {
+function AddTestForm({ userID }) {
   const { session } = useSession();
-  const { response, loading, error } = useRequest(
-    session.token,
-    `${process.env.NEXT_PUBLIC_API_URL}/exams/`,
-    1,
-  );
+  const [openModal, setOpenModal] = useState(false);
+  const [testResponse, setTestResponse] = useState({});
+  const [testLoading, setTestLoading] = useState(false);
+  const [testError, setTestError] = useState(null);
 
-  return (
-    <main className="add-test-form">
-      <div className="add-test-form__title">
-        <FileIcon className="add-test-form__title__icon" />
-        <h2 className="add-test-form__title__text">Assign a new exam</h2>
-      </div>
+  function closeModal() {
+    setOpenModal(false);
+  }
+
+  function ResponseMessage() {
+    if (testLoading) {
+      return (
+        <div className="message">
+          <div className="loader" />
+        </div>
+      );
+    }
+
+    if (testError) {
+      return (
+        <div className="message">
+          <ErrorIcon className="message__icon--negative" />
+          <strong className="message__text">{testError.data.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    if (testResponse) {
+      return (
+        <div className="message">
+          <SuccessIcon className="message__icon--positive" />
+          <strong className="message__text">{testResponse.data.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    return '';
+  }
+
+  async function addTest(examId) {
+    const postData = {
+      patientId: userID,
+      doctorId: session.user.id,
+      examTypeId: examId.exam,
+    };
+    setTestLoading(true);
+    setOpenModal(true);
+    setTestError(null);
+    try {
+      const URL = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
+      const config = {
+        headers: { Authorization: `Bearer ${session.token}` },
+      };
+      const res = await axios.post(URL, postData, config);
+      setTestResponse(res);
+    } catch (err) {
+      setTestError(err.data.message);
+    }
+    setTestLoading(false);
+  }
+
+  function getUserData(patientId) {
+    const { response, loading, error } = useRequest(
+      session.token,
+      `${process.env.NEXT_PUBLIC_API_URL}/users/${patientId}`,
+      1,
+    );
+    if (error) {
+      return <h3>{error.message}</h3>;
+    }
+    return (
       <div className="add-test-form__user-info">
-        <img alt="user whose new test is filling" src={imageURL} />
-        <strong>
-          {name}
-          <br />
-          {lastName}
-        </strong>
+        {!loading && response.data ? (
+          <>
+            <img
+              alt="user whose new test is filling"
+              src={response.data.imageURL}
+            />
+            <strong>
+              {response.data.firstName}
+              <br />
+              {response.data.lastName}
+            </strong>
+          </>
+        ) : (
+          <div className="loader" />
+        )}
       </div>
+    );
+  }
+
+  function getExams() {
+    const { response, loading, error } = useRequest(
+      session.token,
+      `${process.env.NEXT_PUBLIC_API_URL}/exams/`,
+      1,
+    );
+    if (error) {
+      return <h3>{error.message}</h3>;
+    }
+    return (
       <div className="add-test-form__form__container">
         <Formik
-          initialValues={{ exam: ''}}
+          initialValues={{ examId: '', examName: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.exam) {
-              errors.exam = 'Required: please select an exam';
+              errors.exam = 'Please select a test';
             }
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            alert(JSON.stringify(values));
+            addTest(values);
             setSubmitting(false);
           }}
         >
           {({ isSubmitting }) => (
             <>
-              { !loading && response.data ? (
-                <Form className="add-test-form__form lg">
-                  <div className="input lg">
-                    <label className="input__label lg">
-                      Select an exam
+              {!loading && response.data ? (
+                <Form className="add-test-form__form">
+                  <div className="input">
+                    <label className="input__label">
+                      Select a test:
                       <Field
                         as="select"
-                        className="input__field lg"
+                        className="input__field"
                         type="exam"
                         name="exam"
                         disabled={isSubmitting}
                       >
-                        {response.data.map((exam) => {
-                          console.log(exam.name);
-                          return <option>{exam.name}</option>;
-                        })}
+                        <option defaultValue="" />
+                        {response.data.map((exam) => (
+                          <option key={exam._id} value={exam._id}>
+                            {exam.name}
+                          </option>
+                        ))}
                       </Field>
                     </label>
                     <ErrorMessage
@@ -68,29 +161,36 @@ function AddTestForm({ imageURL, name, lastName}) {
                       className="input__error"
                     />
                   </div>
-                  <button className="btn lg" type="submit" disabled={isSubmitting}>
+                  <button className="btn" type="submit" disabled={isSubmitting}>
                     Add new test
                   </button>
                 </Form>
-              ) : (<div className="loader" />)}
+              ) : (
+                <div className="loader" />
+              )}
             </>
           )}
         </Formik>
       </div>
-    </main>
+    );
+  }
+
+  return (
+    <>
+      <main className="add-test-form">
+        {getUserData(userID)}
+        {getExams()}
+      </main>
+
+      <Modal isOpen={openModal}>
+        <ResponseMessage />
+      </Modal>
+    </>
   );
 }
 
 AddTestForm.propTypes = {
-  imageURL: PropTypes.string,
-  name: PropTypes.string,
-  lastName: PropTypes.string,
-};
-
-AddTestForm.defaultProps = {
-  imageURL: 'https://i.imgur.com/oMJFiLX.jpg',
-  name: 'Catalina',
-  lastName: 'Flores',
+  userID: PropTypes.string.isRequired,
 };
 
 export default AddTestForm;
