@@ -1,0 +1,17 @@
+@import '../main.scss';
+
+.tests-download {
+  @include colStaSta;
+
+  &__options {
+    @include flexEndCen;
+    width: 100%;
+    margin-bottom: $space_x3;
+  }
+
+  .btn,
+  .btn--disabled {
+    align-self: flex-end;
+    margin-left: $space_x6;
+  }
+}

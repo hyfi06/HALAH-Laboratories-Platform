@@ -55,6 +55,12 @@
   align-items: center;
 }
 
+@mixin flexEndSta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
 @mixin flexCenSta {
   display: flex;
   justify-content: center;
