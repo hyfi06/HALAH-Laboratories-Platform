@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserTable Component Should render UserTable component 1`] = `
+Array [
+  <form
+    action="#"
+    className="users-search"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="input"
+    >
+      <label
+        className="input__label"
+      >
+        Document ID
+        <input
+          className="input__field"
+          disabled={false}
+          name="documentID"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </label>
+    </div>
+    
+    <button
+      className="btn"
+      disabled={false}
+      type="submit"
+    >
+      Search
+    </button>
+    
+  </form>,
+  "",
+]
+`;

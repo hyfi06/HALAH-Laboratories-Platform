@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestRecord Component Should render TestRecord component 1`] = `
+<tr
+  className="table__body__row"
+>
+  <td
+    className="table__body__row__cell__user"
+  >
+    <p>
+      5ecda8f2e67da2531795ceb6
+    </p>
+  </td>
+  <td
+    className="table__body__row__cell"
+  >
+    <p>
+      1,25-Dihydroxyvitamin D, Serum
+    </p>
+  </td>
+  <td
+    className="table__body__row__cell"
+  >
+    <p>
+      2020-05-27T23:40:34.096Z
+    </p>
+  </td>
+</tr>
+`;
