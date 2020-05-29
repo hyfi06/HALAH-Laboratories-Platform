@@ -14,4 +14,12 @@
     align-self: flex-end;
     margin-left: $space_x6;
   }
+
+  .message {
+    .btn,
+    .btn--disabled {
+      align-self: center;
+      margin-left: 0;
+    }
+  }
 }

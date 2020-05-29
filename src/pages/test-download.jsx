@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import Router from 'next/router';
 import Head from 'next/head';
 import { useSession } from '../context/SessionContext';
 import '../assets/styles/pages/TestDownload.scss';
@@ -6,6 +8,12 @@ import TestDownloadComponent from '../components/TestsDownload';
 
 function TestDownload() {
   const { session } = useSession();
+
+  useEffect(() => {
+    if (session && session.user.typeOfUser !== 'Patient') {
+      Router.push(session.user.defaultPath);
+    }
+  }, [session]);
 
   return (
     <>

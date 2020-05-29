@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import Router from 'next/router';
 import axios from 'axios';
 import { useSession } from '../context/SessionContext';
 import useRequest from '../hooks/useRequest';
 import '../assets/styles/components/TestsDownload.scss';
+import ErrorIcon from '../assets/icons/error.svg';
+import SuccessIcon from '../assets/icons/success.svg';
+import Modal from './Modal';
 
 function TestsDownload() {
   const { session } = useSession();
+  const [openModal, setOpenModal] = useState(false);
   const [errorArray, setErrorArray] = useState(false);
   const [loadingTests, setLoadingTests] = useState(false);
   const [tests, setTests] = useState({});
@@ -30,6 +35,7 @@ function TestsDownload() {
     if (!testSelected.length) {
       setErrorArray(true);
     } else {
+      setOpenModal(true);
       setErrorArray(false);
       setLoadingTests(true);
       setErrorTests(null);
@@ -40,18 +46,69 @@ function TestsDownload() {
         };
         const config = {
           headers: { Authorization: `Bearer ${session.token}` },
+          responseType: 'blob',
         };
         const res = await axios.post(URL, object, config);
-        setTests(res);
+        setTests(true);
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'file.pdf');
+        document.body.appendChild(link);
+        link.click();
       } catch (err) {
-        setErrorTests(err);
+        setErrorTests(err.response.data);
       }
       setLoadingTests(false);
     }
   }
 
+  function closeModal() {
+    Router.reload();
+  }
+
+  function ResponseMessage() {
+    if (loadingTests) {
+      return (
+        <div className="message">
+          <div className="loader" />
+        </div>
+      );
+    }
+
+    if (errorTests) {
+      return (
+        <div className="message">
+          <ErrorIcon className="message__icon--negative" />
+          <strong className="message__text">{errorTests.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    if (tests) {
+      return (
+        <div className="message">
+          <SuccessIcon className="message__icon--positive" />
+          <strong className="message__text">Results downloaded</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    return '';
+  }
+
   if (loading) {
     return <div className="loader" />;
+  }
+
+  if (error) {
+    return <h3>{error.response.data.message}</h3>;
   }
 
   return (
@@ -107,6 +164,9 @@ function TestsDownload() {
               ))}
             </tbody>
           </table>
+          <Modal isOpen={openModal}>
+            <ResponseMessage />
+          </Modal>
         </div>
       ) : (
         ''
