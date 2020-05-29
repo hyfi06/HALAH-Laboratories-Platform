@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddUsersForm Component Should render AddUsersForm component 1`] = `
+<div
+  className="add-users-form"
+>
+  <form
+    action="#"
+    className="add-users-form__container lg"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="add-users-form__content input gl"
+    >
+      <strong
+        className="add-users-form__title  input__label"
+      >
+        Select a CSV file:
+      </strong>
+      <input
+        className=" add-users-form__input input__field lg"
+        onBlur={[Function]}
+        onChange={[Function]}
+      />
+    </div>
+    <button
+      className="add-users-form__button"
+      type="submit"
+    >
+      Upload
+    </button>
+  </form>
+</div>
+`;
