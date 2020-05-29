@@ -103,6 +103,7 @@
 
       &__cell {
         background: $primary_color;
+        padding: 0 $space_x4;
       }
     }
   }
@@ -114,6 +115,7 @@
       padding: $space 0;
       border-bottom: 1px solid $back-grey_color;
       &__cell {
+        padding: 0 $space_x4;
         &__user {
           width: 60px;
 

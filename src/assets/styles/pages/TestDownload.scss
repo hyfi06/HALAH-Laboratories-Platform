@@ -1,0 +1,7 @@
+@import '../main.scss';
+
+.test-download__content {
+  @include card;
+  @include colStaSta;
+  padding: $space_x6;
+}
