@@ -9,6 +9,7 @@ import ActivateIcon from '../assets/icons/activate.svg';
 import AddIcon from '../assets/icons/add.svg';
 import DeleteIcon from '../assets/icons/delete.svg';
 import EditIcon from '../assets/icons/edit.svg';
+import ErrorIcon from '../assets/icons/error.svg';
 import SuccessIcon from '../assets/icons/success.svg';
 import WarningIcon from '../assets/icons/warning.svg';
 import User from './User';
@@ -82,10 +83,26 @@ function Detail({ userID }) {
       );
     }
 
+    if (statusError) {
+      return (
+        <div className="confirm-update-status">
+          <ErrorIcon className="confirm-update-status__icon--negative" />
+          <strong className="confirm-update-status__text">
+            {statusError.response.data.message}
+          </strong>
+          <div className="confirm-update-status__options">
+            <button type="button" className="btn" onClick={getNewData}>
+              Accept
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     if (statusResponse) {
       return (
         <div className="confirm-update-status">
-          <SuccessIcon className="confirm-update-status__icon" />
+          <SuccessIcon className="confirm-update-status__icon--positive" />
           <strong className="confirm-update-status__text">
             {response.data.isActive
               ? 'User successfully removed'
@@ -123,6 +140,10 @@ function Detail({ userID }) {
   function DetailOptions() {
     if (loading) {
       return <div className="loader" />;
+    }
+
+    if (error) {
+      return <h3>{error.response.data.message}</h3>;
     }
 
     if (session.user.typeOfUser === 'Administrator') {
