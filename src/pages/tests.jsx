@@ -1,7 +1,7 @@
 import Router from 'next/router';
 import { useEffect } from 'react';
 import { useSession } from '../context/SessionContext';
-import FileIcon from '../assets/icons/file.svg';
+import FileIcon from '../assets/icons/exam.svg';
 import TestsTable from '../components/TestsTable';
 import '../assets/styles/pages/tests.scss';
 

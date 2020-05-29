@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSession } from '../context/SessionContext';
 import useRequest from '../hooks/useRequest';
-import TestIcon from '../assets/icons/file.svg';
+import TestIcon from '../assets/icons/exam.svg';
 import AddIcon from '../assets/icons/add.svg';
 import DownloadIcon from '../assets/icons/download.svg';
 import TestInfo from './TestInfo';
@@ -23,24 +23,26 @@ function DetailTest({ testID }) {
   }
 
   // PENDING UNTIL THE PART OF DOWNLOAD IS DONE
-  function downloadTest() {
-
-  }
+  function downloadTest() {}
   // PENDING UNTIL THE ASSIGN PAGE IS READY
-  function assignResult() {
-
-  }
+  function assignResult() {}
 
   function displayOptions() {
     if (session.user.typeOfUser === 'Bacteriologist') {
       if (response.data.isComplete) {
         return (
-          <AddIcon className="test-detail__data__option" onClick={assignResult} />
+          <AddIcon
+            className="test-detail__data__option"
+            onClick={assignResult}
+          />
         );
       }
     }
     return (
-      <DownloadIcon className="test-detail__data__option" onClick={downloadTest} />
+      <DownloadIcon
+        className="test-detail__data__option"
+        onClick={downloadTest}
+      />
     );
   }
 
@@ -49,8 +51,12 @@ function DetailTest({ testID }) {
       <section className="test-detail__title">
         <TestIcon className="test-detail__title__icon" />
         <div className="test-detail__title__text">
-          <h2 className="test-detail__title__text__name">{response.data.name}</h2>
-          <strong className="test-detail__title__text__shortName">{response.data.shortName}</strong>
+          <h2 className="test-detail__title__text__name">
+            {response.data.name}
+          </h2>
+          <strong className="test-detail__title__text__shortName">
+            {response.data.shortName}
+          </strong>
         </div>
       </section>
       <TestInfo option={displayOptions} />
