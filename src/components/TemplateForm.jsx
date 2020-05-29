@@ -46,7 +46,7 @@ function ScheduleForm({ examName }) {
                     <Field
                       className="input__field"
                       type="value"
-                      name="value"
+                      name={`${field.fieldName}`}
                       disabled={isSubmitting}
                     />
                   </label>
