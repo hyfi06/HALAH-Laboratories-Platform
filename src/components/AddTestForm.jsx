@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import Router from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
 import { useSession } from '../context/SessionContext';
 import useRequest from '../hooks/useRequest';
-import FileIcon from '../assets/icons/file.svg';
 import ErrorIcon from '../assets/icons/error.svg';
 import SuccessIcon from '../assets/icons/success.svg';
 import Modal from './Modal';
@@ -14,40 +12,48 @@ import '../assets/styles/components/AddTestForm.scss';
 function AddTestForm({ userID }) {
   const { session } = useSession();
   const [openModal, setOpenModal] = useState(false);
-  const [modalContent, setModalContent] = useState('');
+  const [testResponse, setTestResponse] = useState({});
+  const [testLoading, setTestLoading] = useState(false);
+  const [testError, setTestError] = useState(null);
 
   function closeModal() {
     setOpenModal(false);
   }
 
-  function AddTestSuccess(message) {
-    return (
-      <div className="message">
-        <SuccessIcon className="message__icon--positive" />
-        <strong className="message__text">{message}</strong>
-        <button
-          className="btn"
-          type="button"
-          onClick={() => {
-            Router.push('/patients');
-          }}
-        >
-          Accept
-        </button>
-      </div>
-    );
-  }
+  function ResponseMessage() {
+    if (testLoading) {
+      return (
+        <div className="message">
+          <div className="loader" />
+        </div>
+      );
+    }
 
-  function AddTestError(message) {
-    return (
-      <div className="message">
-        <ErrorIcon className="message__icon--negative" />
-        <strong className="message__text">{message}</strong>
-        <button className="btn" type="button" onClick={closeModal}>
-          Accept
-        </button>
-      </div>
-    );
+    if (testError) {
+      return (
+        <div className="message">
+          <ErrorIcon className="message__icon--negative" />
+          <strong className="message__text">{testError.data.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    if (testResponse) {
+      return (
+        <div className="message">
+          <SuccessIcon className="message__icon--positive" />
+          <strong className="message__text">{testResponse.data.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    return '';
   }
 
   async function addTest(examId) {
@@ -56,21 +62,21 @@ function AddTestForm({ userID }) {
       doctorId: session.user.id,
       examTypeId: examId.exam,
     };
+    setTestLoading(true);
+    setOpenModal(true);
+    setTestError(null);
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/orders`;
       const config = {
         headers: { Authorization: `Bearer ${session.token}` },
       };
       const res = await axios.post(URL, postData, config);
-      console.log(res.data.message);
-      setModalContent(AddTestSuccess(res.data.message));
+      setTestResponse(res);
     } catch (err) {
-      console.log(err.message);
-      setModalContent(AddTestError(err.data.message));
+      setTestError(err.data.message);
     }
-    setOpenModal(true);
+    setTestLoading(false);
   }
-
 
   function getUserData(patientId) {
     const { response, loading, error } = useRequest(
@@ -83,16 +89,21 @@ function AddTestForm({ userID }) {
     }
     return (
       <div className="add-test-form__user-info">
-        { !loading && response.data ? (
+        {!loading && response.data ? (
           <>
-            <img alt="user whose new test is filling" src={response.data.imageURL} />
+            <img
+              alt="user whose new test is filling"
+              src={response.data.imageURL}
+            />
             <strong>
               {response.data.firstName}
               <br />
               {response.data.lastName}
             </strong>
           </>
-        ) : (<div className="loader" />)}
+        ) : (
+          <div className="loader" />
+        )}
       </div>
     );
   }
@@ -107,97 +118,72 @@ function AddTestForm({ userID }) {
       return <h3>{error.message}</h3>;
     }
     return (
-      <>
-        <div className="add-test-form__form__container">
-          <Formik
-            initialValues={{ examId: '', examName: '' }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.exam) {
-                errors.exam = 'Required: please select an exam';
-              }
-              return errors;
-            }}
-            onSubmit={async (values, { setSubmitting }) => {
-              addTest(values);
-              setSubmitting(false);
-            }}
-          >
-            {({ isSubmitting }) => (
-              <>
-                { !loading && response.data ? (
-                  <Form className="add-test-form__form lg">
-                    <div className="input lg">
-                      <label className="input__label lg">
-                        Select an test by their ID:
-                        <Field
-                          as="select"
-                          className="input__field lg"
-                          type="exam"
-                          name="exam"
-                          disabled={isSubmitting}
-                        >
-                          {response.data.map((exam) => <option>{exam._id}</option>)}
-                        </Field>
-                      </label>
-                      <ErrorMessage
+      <div className="add-test-form__form__container">
+        <Formik
+          initialValues={{ examId: '', examName: '' }}
+          validate={(values) => {
+            const errors = {};
+            if (!values.exam) {
+              errors.exam = 'Please select a test';
+            }
+            return errors;
+          }}
+          onSubmit={async (values, { setSubmitting }) => {
+            addTest(values);
+            setSubmitting(false);
+          }}
+        >
+          {({ isSubmitting }) => (
+            <>
+              {!loading && response.data ? (
+                <Form className="add-test-form__form">
+                  <div className="input">
+                    <label className="input__label">
+                      Select a test:
+                      <Field
+                        as="select"
+                        className="input__field"
+                        type="exam"
                         name="exam"
-                        component="div"
-                        className="input__error"
-                      />
-                    </div>
-                    <button className="btn lg" type="submit" disabled={isSubmitting}>
-                      Add new test
-                    </button>
-                  </Form>
-                ) : (<div className="loader" />)}
-              </>
-            )}
-          </Formik>
-        </div>
-        { !loading && response.data ? (
-          <table className="table container__test">
-            <thead className="table__head">
-              <tr className="table__head__row">
-                <th className="table__head__row__cell colum__test">
-                  <strong>Test ID</strong>
-                </th>
-                <th className="table__head__row__cell colum__test">
-                  <strong>Test Name</strong>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="table__body">
-              {response.data.map((exam) => (
-                <tr className="table__body__row">
-                  <td className="table__body__row__cell">
-                    <p>{exam._id}</p>
-                  </td>
-                  <td className="table__body__row__cell">
-                    <p>{exam.name}</p>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (<div className="loader" />)}
-      </>
+                        disabled={isSubmitting}
+                      >
+                        <option defaultValue="" />
+                        {response.data.map((exam) => (
+                          <option key={exam._id} value={exam._id}>
+                            {exam.name}
+                          </option>
+                        ))}
+                      </Field>
+                    </label>
+                    <ErrorMessage
+                      name="exam"
+                      component="div"
+                      className="input__error"
+                    />
+                  </div>
+                  <button className="btn" type="submit" disabled={isSubmitting}>
+                    Add new test
+                  </button>
+                </Form>
+              ) : (
+                <div className="loader" />
+              )}
+            </>
+          )}
+        </Formik>
+      </div>
     );
   }
 
   return (
     <>
       <main className="add-test-form">
-        <div className="add-test-form__title">
-          <FileIcon className="add-test-form__title__icon" />
-          <h2 className="add-test-form__title__text">Assign a new test to:</h2>
-        </div>
         {getUserData(userID)}
         {getExams()}
       </main>
 
-      <Modal isOpen={openModal} onClose={closeModal}>
-        {modalContent}
+      <Modal isOpen={openModal}>
+        <ResponseMessage />
       </Modal>
     </>
   );
