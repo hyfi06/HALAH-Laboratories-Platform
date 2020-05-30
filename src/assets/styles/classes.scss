@@ -169,6 +169,13 @@
   width: 360px;
   padding: $space_x3;
 
+  &__icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: $space_x3;
+    fill: $secondary_color;
+  }
+
   &__icon--positive {
     width: 50px;
     height: 50px;
