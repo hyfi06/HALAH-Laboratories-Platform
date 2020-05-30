@@ -1,10 +1,11 @@
-import UserEdit from '../../components/UserEdit';
+import Navbar from '../../components/Navbar';
 import { create } from 'react-test-renderer';
-import { SessionProvider } from '../../context/SessionContext';
 import Router from 'next/router';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-describe('UserEdit Component', () => {
+import { SessionProvider } from '../../context/SessionContext';
+
+describe('Navbar as Doctor Component', () => {
   const mockedRouter = { push: () => {} };
   Router.router = mockedRouter;
   const obj = {
@@ -23,21 +24,13 @@ describe('UserEdit Component', () => {
       }
     }
   };
-  test('Should Snapshot UserEdit component', () => {
+
+  test('Should render Navbar component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <UserEdit />
+        <Navbar />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
-  });
-  test('Should rendered of  component', () => {
-    const userEdit = render(
-      <SessionProvider value={obj}>
-        <UserEdit />
-      </SessionProvider>
-    );
-
-    expect(userEdit.getByTestId('user-edit')).toBeInTheDocument();
   });
 });

@@ -14,8 +14,8 @@ function Login() {
       const session = JSON.parse(
         document.cookie.replace(
           /(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/,
-          '$1',
-        ),
+          '$1'
+        )
       );
       Router.push(session.user.defaultPath);
       // eslint-disable-next-line no-empty
@@ -29,14 +29,14 @@ function Login() {
       const response = await axios.post(
         URL,
         {
-          apiKeyToken: process.env.NEXT_PUBLIC_API_KEY,
+          apiKeyToken: process.env.NEXT_PUBLIC_API_KEY
         },
         {
           auth: {
             username: values.username,
-            password: values.password,
-          },
-        },
+            password: values.password
+          }
+        }
       );
       document.cookie = `session=${JSON.stringify(response.data)};max-age=${
         60 * 60 * 24 * 5
@@ -49,12 +49,12 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <figure className="login__logo">
+    <div data-testid='login-form' className='login'>
+      <figure className='login__logo'>
         {loading ? (
-          <div className="loader loader--white" />
+          <div className='loader loader--white' />
         ) : (
-          <Logo className="login__logo__icon" />
+          <Logo className='login__logo__icon' />
         )}
       </figure>
       <Formik
@@ -75,40 +75,46 @@ function Login() {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="login__form lg">
-            <div className="input lg">
-              <label className="input__label">
+          <Form className='login__form lg'>
+            <div className='input lg'>
+              <label className='input__label'>
                 Username / email
                 <Field
-                  className="input__field lg"
-                  type="username"
-                  name="username"
+                  className='input__field lg'
+                  type='username'
+                  data-testid='username'
+                  name='username'
                   disabled={isSubmitting}
                 />
               </label>
               <ErrorMessage
-                name="username"
-                component="div"
-                className="input__error"
+                name='username'
+                component='div'
+                className='input__error'
               />
             </div>
-            <div className="input lg">
-              <label className="input__label">
+            <div className='input lg'>
+              <label className='input__label'>
                 Password
                 <Field
-                  className="input__field lg"
-                  type="password"
-                  name="password"
+                  className='input__field lg'
+                  type='password'
+                  name='password'
                   disabled={isSubmitting}
                 />
               </label>
               <ErrorMessage
-                name="password"
-                component="div"
-                className="input__error"
+                name='password'
+                component='div'
+                className='input__error'
               />
             </div>
-            <button className="btn lg" type="submit" disabled={isSubmitting}>
+            <button
+              data-testid='button-sign'
+              className='btn lg'
+              type='submit'
+              disabled={isSubmitting}
+            >
               Login
             </button>
           </Form>

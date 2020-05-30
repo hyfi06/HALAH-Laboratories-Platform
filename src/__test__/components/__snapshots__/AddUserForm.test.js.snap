@@ -4,6 +4,7 @@ exports[`AddUserForm Component Should render AddUserForm component 1`] = `
 Array [
   <form
     className="avatar-form"
+    data-testid="addAvatar"
   >
     <figure
       className="avatar-form__preview"
@@ -33,6 +34,7 @@ Array [
   <form
     action="#"
     className="user-add-form"
+    data-testid="add-form"
     onReset={[Function]}
     onSubmit={[Function]}
   >
@@ -193,6 +195,7 @@ Array [
     </section>
     <button
       className="btn"
+      data-testid="button-submit"
       disabled={false}
       type="submit"
     >

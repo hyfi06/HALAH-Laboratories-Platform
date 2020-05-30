@@ -8,7 +8,7 @@ function UserEdit() {
   let [status, setStatus] = useState({
     loading: false,
     error: false,
-    success: false,
+    success: false
   });
 
   if (status.loading) {
@@ -24,10 +24,10 @@ function UserEdit() {
   }
 
   return (
-    <div className="user-edit">
-      <div className="user-edit__title">
-        <UserIcon className="user-edit__title__icon" />
-        <h2 className="user-edit__title__text">Edit User</h2>
+    <div data-testid='user-edit' className='user-edit'>
+      <div className='user-edit__title'>
+        <UserIcon className='user-edit__title__icon' />
+        <h2 className='user-edit__title__text'>Edit User</h2>
       </div>
       <Formik
         initialValues={{ profileImage: '', email: '', phoneNumber: '' }}
@@ -50,73 +50,86 @@ function UserEdit() {
               res(values);
             }, 400);
           });
-          result.then((data) => {
-            alert(JSON.stringify(data, null, 2));
-            setSubmitting(false);
-            setStatus(status = {
-              loading: false,
-              error: false,
-              success: true,
-            });
-          })
+          result
+            .then((data) => {
+              alert(JSON.stringify(data, null, 2));
+              setSubmitting(false);
+              setStatus(
+                (status = {
+                  loading: false,
+                  error: false,
+                  success: true
+                })
+              );
+            })
             .catch(() => {
-              setStatus(status = {
-                loading: false,
-                error: true,
-                success: false,
-              });
+              setStatus(
+                (status = {
+                  loading: false,
+                  error: true,
+                  success: false
+                })
+              );
             });
-          setStatus(status = {
-            loading: true,
-            error: false,
-            success: false,
-          });
+          setStatus(
+            (status = {
+              loading: true,
+              error: false,
+              success: false
+            })
+          );
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="user-edit__form">
-            <div className="user-edit__form__input input lg">
-              <strong className="user-edit__form__input__text input__label">Profile Image</strong>
+          <Form className='user-edit__form'>
+            <div className='user-edit__form__input input lg'>
+              <strong className='user-edit__form__input__text input__label'>
+                Profile Image
+              </strong>
               <Field
-                className="user-edit__form__input__field input__field lg"
-                type="profileImage"
-                name="profileImage"
+                className='user-edit__form__input__field input__field lg'
+                type='profileImage'
+                name='profileImage'
               />
               <ErrorMessage
-                className="user-edit__form__input__error input__error"
-                component="div"
-                name="profileImage"
+                className='user-edit__form__input__error input__error'
+                component='div'
+                name='profileImage'
               />
             </div>
-            <div className="user-edit__form__input input lg">
-              <strong className="user-edit__form__input__text input__label">Email</strong>
+            <div className='user-edit__form__input input lg'>
+              <strong className='user-edit__form__input__text input__label'>
+                Email
+              </strong>
               <Field
-                className="user-edit__form__input__field input__field lg"
-                type="email"
-                name="email"
+                className='user-edit__form__input__field input__field lg'
+                type='email'
+                name='email'
               />
               <ErrorMessage
-                className="user-edit__form__input__error input__error"
-                component="div"
-                name="email"
+                className='user-edit__form__input__error input__error'
+                component='div'
+                name='email'
               />
             </div>
-            <div className="user-edit__form__input input lg">
-              <strong className="user-edit__form__input__text input__label">Phone Number</strong>
+            <div className='user-edit__form__input input lg'>
+              <strong className='user-edit__form__input__text input__label'>
+                Phone Number
+              </strong>
               <Field
-                className="user-edit__form__input__field input__field lg"
-                type="phoneNumber"
-                name="phoneNumber"
+                className='user-edit__form__input__field input__field lg'
+                type='phoneNumber'
+                name='phoneNumber'
               />
               <ErrorMessage
-                className="user-edit__form__input__error input__error"
-                component="div"
-                name="phoneNumber"
+                className='user-edit__form__input__error input__error'
+                component='div'
+                name='phoneNumber'
               />
             </div>
             <button
-              className="user-edit__form__button btn lg"
-              type="submit"
+              className='user-edit__form__button btn lg'
+              type='submit'
               disabled={isSubmitting}
             >
               Update user

@@ -26,21 +26,21 @@ function Detail({ userID }) {
   const { response, loading, error } = useRequest(
     session.token,
     URL,
-    requestCount,
+    requestCount
   );
 
   async function setUpdateStatus() {
     setStatusLoading(true);
     try {
       const config = {
-        headers: { Authorization: `Bearer ${session.token}` },
+        headers: { Authorization: `Bearer ${session.token}` }
       };
       const res = await axios.patch(
         URL,
         {
-          isActive: !response.data.isActive,
+          isActive: !response.data.isActive
         },
-        config,
+        config
       );
       setStatusResponse(res);
     } catch (err) {
@@ -76,23 +76,23 @@ function Detail({ userID }) {
   function ConfirmUpdateStatus() {
     if (statusLoading) {
       return (
-        <div className="confirm-update-status">
-          <div className="loader" />
+        <div className='confirm-update-status'>
+          <div className='loader' />
         </div>
       );
     }
 
     if (statusResponse) {
       return (
-        <div className="confirm-update-status">
-          <SuccessIcon className="confirm-update-status__icon" />
-          <strong className="confirm-update-status__text">
+        <div className='confirm-update-status'>
+          <SuccessIcon className='confirm-update-status__icon' />
+          <strong className='confirm-update-status__text'>
             {response.data.isActive
               ? 'User successfully removed'
               : 'User successfully reactivated'}
           </strong>
-          <div className="confirm-update-status__options">
-            <button type="button" className="btn" onClick={getNewData}>
+          <div className='confirm-update-status__options'>
+            <button type='button' className='btn' onClick={getNewData}>
               Accept
             </button>
           </div>
@@ -101,18 +101,18 @@ function Detail({ userID }) {
     }
 
     return (
-      <div className="confirm-update-status">
-        <WarningIcon className="confirm-update-status__icon" />
-        <strong className="confirm-update-status__text">
+      <div className='confirm-update-status'>
+        <WarningIcon className='confirm-update-status__icon' />
+        <strong className='confirm-update-status__text'>
           {response.data.isActive
             ? 'Are you sure to delete the user?'
             : 'Are you sure to reactivate the user?'}
         </strong>
-        <div className="confirm-update-status__options">
-          <button type="button" className="btn--negative" onClick={closeModal}>
+        <div className='confirm-update-status__options'>
+          <button type='button' className='btn--negative' onClick={closeModal}>
             Cancel
           </button>
-          <button type="button" className="btn" onClick={setUpdateStatus}>
+          <button type='button' className='btn' onClick={setUpdateStatus}>
             Accept
           </button>
         </div>
@@ -122,25 +122,25 @@ function Detail({ userID }) {
 
   function DetailOptions() {
     if (loading) {
-      return <div className="loader" />;
+      return <div className='loader' />;
     }
 
     if (session.user.typeOfUser === 'Administrator') {
       if (response.data.isActive) {
         return (
-          <div className="detail-options">
-            <EditIcon className="detail-options__item" onClick={editUser} />
+          <div className='detail-options'>
+            <EditIcon className='detail-options__item' onClick={editUser} />
             <DeleteIcon
-              className="detail-options__item--negative"
+              className='detail-options__item--negative'
               onClick={updateStatus}
             />
           </div>
         );
       }
       return (
-        <div className="detail-options">
+        <div className='detail-options'>
           <ActivateIcon
-            className="detail-options__item--positive"
+            className='detail-options__item--positive'
             onClick={updateStatus}
           />
         </div>
@@ -149,8 +149,8 @@ function Detail({ userID }) {
 
     if (session.user.typeOfUser === 'Doctor' && response.data.isActive) {
       return (
-        <div className="detail-options">
-          <AddIcon className="detail-options__item" onClick={addTest} />
+        <div className='detail-options'>
+          <AddIcon className='detail-options__item' onClick={addTest} />
         </div>
       );
     }
@@ -159,9 +159,9 @@ function Detail({ userID }) {
   }
 
   return response && response.data ? (
-    <div className="detail">
+    <div className='detail'>
       <User user={response.data} />
-      <section className="detail__content">
+      <section className='detail__content'>
         <DetailOptions />
         <UserData user={response.data} />
       </section>
@@ -175,7 +175,7 @@ function Detail({ userID }) {
 }
 
 Detail.propTypes = {
-  userID: PropTypes.string.isRequired,
+  userID: PropTypes.string.isRequired
 };
 
 export default Detail;

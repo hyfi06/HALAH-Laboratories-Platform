@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar as Doctor Component Should render Navbar component 1`] = `
+<section
+  className="navbar"
+>
+  <div
+    className="navbar__user"
+  >
+    <figure
+      className="navbar__user__photo"
+    >
+      <img
+        alt="user"
+        className="navbar__user__photo__img"
+        src="http://dummyimage.com/200x200.jpg/dddddd/000000"
+      />
+    </figure>
+    <strong
+      className="navbar__user__name"
+    >
+      Morse Cavendish
+    </strong>
+    <span
+      className="navbar__user__type"
+    >
+      Bacteriologist
+    </span>
+  </div>
+  <ul
+    className="navbar__options"
+  >
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Profile
+      </strong>
+    </li>
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Patients
+      </strong>
+    </li>
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Logout
+      </strong>
+    </li>
+  </ul>
+</section>
+`;

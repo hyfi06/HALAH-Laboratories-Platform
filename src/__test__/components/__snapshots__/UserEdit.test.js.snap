@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserEdit Component Should render UserEdit component 1`] = `
+exports[`UserEdit Component Should Snapshot UserEdit component 1`] = `
 <div
   className="user-edit"
+  data-testid="user-edit"
 >
   <div
     className="user-edit__title"

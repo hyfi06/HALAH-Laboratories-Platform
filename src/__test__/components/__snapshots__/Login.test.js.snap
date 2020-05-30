@@ -3,6 +3,7 @@
 exports[`Login Component Should render Login component 1`] = `
 <div
   className="login"
+  data-testid="login-form"
 >
   <figure
     className="login__logo"
@@ -26,6 +27,7 @@ exports[`Login Component Should render Login component 1`] = `
         Username / email
         <input
           className="input__field lg"
+          data-testid="username"
           disabled={false}
           name="username"
           onBlur={[Function]}
@@ -55,6 +57,7 @@ exports[`Login Component Should render Login component 1`] = `
     </div>
     <button
       className="btn lg"
+      data-testid="button-sign"
       disabled={false}
       type="submit"
     >

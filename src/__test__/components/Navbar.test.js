@@ -24,14 +24,6 @@ describe('Navbar Component', () => {
       }
     }
   };
-  // test('Render del componente Navbar', () => {
-  //   const navbar = render(
-  //     <SessionProvider>
-  //       <Navbar />
-  //     </SessionProvider>
-  //   );
-  //   expect(navbar.length).toEqual(1);
-  // });
 
   test('Should render Navbar component', () => {
     const component = create(
