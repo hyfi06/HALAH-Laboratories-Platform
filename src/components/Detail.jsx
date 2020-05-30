@@ -15,6 +15,7 @@ import WarningIcon from '../assets/icons/warning.svg';
 import User from './User';
 import UserData from './UserData';
 import Modal from './Modal';
+import TestsTable from './TestsTable';
 
 function Detail({ userID }) {
   const { session } = useSession();
@@ -179,12 +180,26 @@ function Detail({ userID }) {
     return '';
   }
 
+  function MedicalHistory() {
+    if (session.user.typeOfUser !== 'Administrator') {
+      return (
+        <>
+          <h2 className="detail__title">Medical history</h2>
+          <TestsTable username={response.data.username} className="detail__table" />
+        </>
+      );
+    }
+
+    return '';
+  }
+
   return response && response.data ? (
     <div className="detail">
       <User user={response.data} />
       <section className="detail__content">
         <DetailOptions />
         <UserData user={response.data} />
+        <MedicalHistory />
       </section>
       <Modal isOpen={openModal}>
         <ConfirmUpdateStatus />

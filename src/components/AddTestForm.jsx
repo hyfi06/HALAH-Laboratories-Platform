@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
@@ -18,6 +19,11 @@ function AddTestForm({ userID }) {
 
   function closeModal() {
     setOpenModal(false);
+  }
+
+  function redirectModal() {
+    closeModal();
+    Router.push(`/detail/${userID}`);
   }
 
   function ResponseMessage() {
@@ -46,7 +52,7 @@ function AddTestForm({ userID }) {
         <div className="message">
           <SuccessIcon className="message__icon--positive" />
           <strong className="message__text">{testResponse.data.message}</strong>
-          <button className="btn" type="button" onClick={closeModal}>
+          <button className="btn" type="button" onClick={redirectModal}>
             Accept
           </button>
         </div>
