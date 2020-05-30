@@ -14,6 +14,10 @@ function Profile({ userID }) {
     return <div className="loader" />;
   }
 
+  if (error) {
+    return <h3>{error.response.data.message}</h3>;
+  }
+
   return response && response.data ? (
     <div className="profile">
       <User user={response.data} />

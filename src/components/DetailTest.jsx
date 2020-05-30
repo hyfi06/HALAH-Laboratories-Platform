@@ -28,12 +28,7 @@ function DetailTest({ testID }) {
           <section className="test-detail__title">
             <TestIcon className="test-detail__title__icon" />
             <div className="test-detail__title__text">
-              <h2 className="test-detail__title__text__name">
-                {response.data.name}
-              </h2>
-              <strong className="test-detail__title__text__shortName">
-                {response.data.shortName}
-              </strong>
+              <h2 className="test-detail__title__text__name">Test Detail</h2>
             </div>
           </section>
           <TestInfo

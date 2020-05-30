@@ -70,7 +70,6 @@ function TestInfo({ examName, completed, order }) {
     return <h3>{error.message}</h3>;
   }
 
-  // PENDING UNTIL THE PART OF DOWNLOAD IS DONE
   async function downloadTest() {
     const orderBody = { orderIds: [order] };
     setOpenModal(true);
@@ -95,7 +94,7 @@ function TestInfo({ examName, completed, order }) {
     }
     setResultLoading(false);
   }
-  // PENDING UNTIL THE ASSIGN PAGE IS READY
+
   function assignResult() {
     Router.push(`/add-result/${order}`);
   }
