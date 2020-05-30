@@ -30,10 +30,10 @@
 
 @media screen and (max-width: 425px) {
   .layout {
-    min-width: 100vh;
+    @include colStaSta;
     &__container {
-      @include colCenSta;
       flex-direction: column-reverse;
+      min-height: 100vh;
       width: 100%;
       padding: 0;
       padding-top: $space_x6;
