@@ -12,3 +12,24 @@
     margin: 23.67px $space_x3 0;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .users-search {
+    flex-wrap: wrap;
+
+    .input,
+    .btn {
+      width: 100%;
+      margin: 0;
+      margin-top: $space_x3;
+    }
+
+    .input {
+      &__label,
+      &__field,
+      &__error {
+        width: 100%;
+      }
+    }
+  }
+}

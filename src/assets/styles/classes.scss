@@ -162,6 +162,85 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .table {
+    @include card;
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: center;
+
+    &__head {
+      color: $white_color;
+
+      &__row {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+
+        &__cell {
+          background: $primary_color;
+          padding: 0 $space_x4;
+        }
+      }
+    }
+
+    &__body {
+      &__row {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        margin-bottom: $space_x2;
+
+        &__cell {
+          padding: 0 $space_x4;
+          &__user {
+            width: 100%;
+
+            &__image {
+              margin: 0 $space_x2;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+            }
+
+            &__image--disabled {
+              opacity: 50%;
+              margin: 0 $space_x2;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+            }
+          }
+
+          &__options {
+            text-align: end;
+          }
+
+          &__icon {
+            @include tableIcon;
+            fill: $secondary_color;
+
+            &--positive {
+              @include tableIcon;
+              fill: $positive_color;
+            }
+
+            &--negative {
+              @include tableIcon;
+              fill: $negative_color;
+            }
+          }
+        }
+      }
+
+      &__row:hover {
+        background-color: $back-grey_color;
+      }
+    }
+  }
+}
+
 // Messages
 .message {
   @include colCenSta;

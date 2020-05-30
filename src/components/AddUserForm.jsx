@@ -21,6 +21,7 @@ function AddUserForm() {
   const [modalContent, setModalContent] = useState('');
 
   async function createUser(userData) {
+    setOpenModal(true);
     setLoading(true);
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/users`;
@@ -28,14 +29,11 @@ function AddUserForm() {
         headers: { Authorization: `Bearer ${session.token}` },
       };
       const res = await axios.post(URL, userData, config);
-      setResponse(res);
-      setModalContent(<AddUserSuccess />);
+      setResponse(res.data);
     } catch (err) {
-      setError(err);
-      setModalContent(<AddUserError />);
+      setError(err.data);
     }
     setLoading(false);
-    setOpenModal(true);
   }
 
   async function uploadImg() {
@@ -61,36 +59,46 @@ function AddUserForm() {
     setOpenModal(false);
   }
 
-  function AddUserSuccess() {
-    return (
-      <div className="message">
-        <SuccessIcon className="message__icon--positive" />
-        <strong className="message__text">User added successfully</strong>
-        <button
-          className="btn"
-          type="button"
-          onClick={() => {
-            Router.push('/users');
-          }}
-        >
-          Accept
-        </button>
-      </div>
-    );
-  }
+  function AddMessage() {
+    if (loading) {
+      return (
+        <div className="message">
+          <div className="loader" />
+        </div>
+      );
+    }
 
-  function AddUserError() {
-    return (
-      <div className="message">
-        <ErrorIcon className="message__icon--negative" />
-        <strong className="message__text">
-          An error occurred while adding the user
-        </strong>
-        <button className="btn" type="button" onClick={closeModal}>
-          Accept
-        </button>
-      </div>
-    );
+    if (error) {
+      return (
+        <div className="message">
+          <ErrorIcon className="message__icon--negative" />
+          <strong className="message__text">{error.message}</strong>
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    if (response) {
+      return (
+        <div className="message">
+          <SuccessIcon className="message__icon--positive" />
+          <strong className="message__text">{response.message}</strong>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => {
+              Router.push(`/detail/${response.data._id}`);
+            }}
+          >
+            Accept
+          </button>
+        </div>
+      );
+    }
+
+    return '';
   }
 
   function AvatarForm() {
@@ -296,7 +304,7 @@ function AddUserForm() {
       <AvatarForm />
       <UserForm />
       <Modal isOpen={openModal} onClose={closeModal}>
-        {modalContent}
+        <AddMessage />
       </Modal>
     </>
   );
