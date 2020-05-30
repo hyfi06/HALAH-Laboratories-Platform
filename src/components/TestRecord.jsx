@@ -17,6 +17,9 @@ function TestRecord({ test }) {
       <td className="table__body__row__cell">
         <p>{test.appointmentDate}</p>
       </td>
+      <td>
+        <p>{test.isComplete ? 'Completed' : 'Pending'}</p>
+      </td>
     </tr>
   );
 }

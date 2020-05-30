@@ -33,6 +33,9 @@ function TestsTable({ username }) {
               <th className="table__head__row__cell">
                 <strong>Appointment Date</strong>
               </th>
+              <th className="table__head__row__cell">
+                <strong>Status</strong>
+              </th>
             </tr>
           </thead>
           <tbody className="table__body">
