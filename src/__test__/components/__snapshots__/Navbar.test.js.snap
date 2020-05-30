@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Component Should render Navbar component 1`] = `
+<section
+  className="navbar"
+>
+  <div
+    className="navbar__user"
+  >
+    <figure
+      className="navbar__user__photo"
+    >
+      <img
+        alt="user"
+        className="navbar__user__photo__img"
+        src="http://dummyimage.com/200x200.png/ff4444/ffffff"
+      />
+    </figure>
+    <strong
+      className="navbar__user__name"
+    >
+      Mayne Snasel
+    </strong>
+    <span
+      className="navbar__user__type"
+    >
+      Patient
+    </span>
+  </div>
+  <ul
+    className="navbar__options"
+  >
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Profile
+      </strong>
+    </li>
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Tests
+      </strong>
+    </li>
+    <li
+      className="navbar__options__item"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="navbar__options__item__icon"
+      />
+      <strong
+        className="navbar__options__item__text"
+      >
+        Logout
+      </strong>
+    </li>
+  </ul>
+</section>
+`;

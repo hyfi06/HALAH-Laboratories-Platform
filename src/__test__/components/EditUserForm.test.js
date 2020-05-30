@@ -1,7 +1,7 @@
-import UsersTable from '../../components/UsersTable';
+import EditUserForm from '../../components/EditUserForm';
 import { create } from 'react-test-renderer';
 import { SessionProvider } from '../../context/SessionContext';
-describe('UserTable Component', () => {
+describe('EditUserForm Component', () => {
   const obj = {
     session: {
       token:
@@ -18,10 +18,10 @@ describe('UserTable Component', () => {
       }
     }
   };
-  test('Should render UserTable component', () => {
+  test('Should render EditUserForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <UsersTable />
+        <EditUserForm />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
