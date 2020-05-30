@@ -27,3 +27,20 @@
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  .layout {
+    &__container {
+      @include colCenSta;
+      flex-direction: column-reverse;
+      width: 100%;
+      padding: 0;
+      padding-top: $space_x6;
+
+      &__content {
+        width: 90%;
+        padding-bottom: $space_x6;
+      }
+    }
+  }
+}
