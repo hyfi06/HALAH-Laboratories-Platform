@@ -1,6 +1,6 @@
 // Button
 @mixin btn {
-  height: $space_x6;
+  min-height: $space_x6;
   min-width: 100px;
   padding: 0 $space_x3;
   cursor: pointer;

@@ -9,3 +9,17 @@
     margin-bottom: $space_x3;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .input,
+  .btn {
+    width: 100%;
+  }
+
+  .input {
+    &__label,
+    &__field {
+      width: 100%;
+    }
+  }
+}
