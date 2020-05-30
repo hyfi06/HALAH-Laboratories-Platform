@@ -85,7 +85,7 @@ function EditUserForm({ userID }) {
       <div className="message">
         <ErrorIcon className="message__icon--negative" />
         <strong className="message__text">
-          An error occurred while updating the user
+          {updateError.response.data.message}
         </strong>
         <button className="btn" type="button" onClick={closeModal}>
           Accept
@@ -208,6 +208,14 @@ function EditUserForm({ userID }) {
   EditUserForm.propTypes = {
     userID: PropTypes.string.isRequired,
   };
+
+  if (loading) {
+    return <div className="loader" />;
+  }
+
+  if (error) {
+    return <h3>{error.response.data.message}</h3>;
+  }
 
   return (
     <>
