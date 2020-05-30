@@ -21,8 +21,11 @@ function AddResultForm({ orderId }) {
 
   return (
     <div className="add-result">
-      <h2 className="add-result__title">Fill the respective fields with their values</h2>
-      {response && response.data ? <TemplateForm examName={response.data.shortName} /> : ''}
+      {response && response.data ? (
+        <TemplateForm examName={response.data.shortName} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }
