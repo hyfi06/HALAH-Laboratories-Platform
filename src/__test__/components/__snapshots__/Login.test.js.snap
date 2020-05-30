@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Component Should render Login component 1`] = `
+<div
+  className="login"
+>
+  <figure
+    className="login__logo"
+  >
+    <div
+      className="login__logo__icon"
+    />
+  </figure>
+  <form
+    action="#"
+    className="login__form lg"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="input lg"
+    >
+      <label
+        className="input__label"
+      >
+        Username / email
+        <input
+          className="input__field lg"
+          disabled={false}
+          name="username"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="username"
+          value=""
+        />
+      </label>
+    </div>
+    <div
+      className="input lg"
+    >
+      <label
+        className="input__label"
+      >
+        Password
+        <input
+          className="input__field lg"
+          disabled={false}
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="password"
+          value=""
+        />
+      </label>
+    </div>
+    <button
+      className="btn lg"
+      disabled={false}
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Component Should render Modal component 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__container"
+  >
+    <div />
+  </div>
+</div>
+`;
