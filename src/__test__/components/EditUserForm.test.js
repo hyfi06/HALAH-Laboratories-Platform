@@ -1,13 +1,7 @@
-import Navbar from '../../components/Navbar';
+import EditUserForm from '../../components/EditUserForm';
 import { create } from 'react-test-renderer';
-import Router from 'next/router';
-import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
-
-describe('Navbar Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
+describe('EditUserForm Component', () => {
   const obj = {
     session: {
       token:
@@ -24,19 +18,10 @@ describe('Navbar Component', () => {
       }
     }
   };
-  // test('Render del componente Navbar', () => {
-  //   const navbar = render(
-  //     <SessionProvider>
-  //       <Navbar />
-  //     </SessionProvider>
-  //   );
-  //   expect(navbar.length).toEqual(1);
-  // });
-
-  test('Should render Navbar component', () => {
+  test('Should render EditUserForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <Navbar />
+        <EditUserForm />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

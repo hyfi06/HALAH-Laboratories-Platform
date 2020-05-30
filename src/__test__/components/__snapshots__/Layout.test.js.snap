@@ -26,7 +26,9 @@ exports[`Layout Component Should render Layout component 1`] = `
     />
     <div
       className="layout__container__content"
-    />
+     >
+      <div />
+    </div>
   </div>
 </div>
 `;
