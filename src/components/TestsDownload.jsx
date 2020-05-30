@@ -64,7 +64,7 @@ function TestsDownload() {
   }
 
   function closeModal() {
-    Router.reload();
+    Router.push('/tests');
   }
 
   function ResponseMessage() {

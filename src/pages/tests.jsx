@@ -14,6 +14,10 @@ function Test() {
     }
   }, [session]);
 
+  function downloadsPage() {
+    Router.push('/test-download');
+  }
+
   return (
     <main className="exams">
       <div className="title">
@@ -23,7 +27,7 @@ function Test() {
       {session && session.token ? (
         <>
           <div className="downloads">
-            <button type="submit" className="btn">
+            <button type="submit" className="btn" onClick={downloadsPage}>
               <strong>Download multiple tests</strong>
             </button>
           </div>
