@@ -13,3 +13,36 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .layout {
+    &__container {
+      @include colCenSta;
+      width: 100%;
+      padding: $space_x9 $space_x12;
+
+      &__content {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .layout {
+    @include colStaSta;
+    &__container {
+      flex-direction: column-reverse;
+      justify-content: space-between;
+      min-height: 100vh;
+      width: 100%;
+      padding: 0;
+      padding-top: $space_x6;
+
+      &__content {
+        width: 90%;
+        padding-bottom: $space_x6;
+      }
+    }
+  }
+}

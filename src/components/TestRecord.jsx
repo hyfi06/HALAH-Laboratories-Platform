@@ -1,53 +1,15 @@
-/* eslint-disable no-underscore-dangle */
+import Router from 'next/router';
 import PropTypes from 'prop-types';
-import { useSession } from '../context/SessionContext';
-import AddIcon from '../assets/icons/add.svg';
-import DownloadIcon from '../assets/icons/download.svg';
 
 function TestRecord({ test }) {
-  const { session } = useSession();
-
-  // eslint-disable-next-line consistent-return
-  function displayOptions() {
-    if (session && session.user.typeOfUser === 'Administrator') {
-      return (
-        <td className="table__body__row__cell__options">
-          <AddIcon className="table__body__row__cell__icon" />
-          <DownloadIcon className="table__body__row__cell__icon" />
-        </td>
-      );
-    }
-
-    if (session && session.user.typeOfUser === 'Doctor') {
-      return (
-        <td className="table__body__row__cell__options">
-          <DownloadIcon className="table__body__row__cell__icon" />
-        </td>
-      );
-    }
-
-    if (session && session.user.typeOfUser === 'Bacteriologist') {
-      return (
-        <td className="table__body__row__cell__options">
-          <AddIcon className="table__body__row__cell__icon" />
-        </td>
-      );
-    }
-
-    if (session && session.user.typeOfUser === 'Patient') {
-      return (
-        <td className="table__body__row__cell__options">
-          <DownloadIcon className="table__body__row__cell__icon" />
-        </td>
-      );
-    }
+  function testDetail() {
+    Router.push(`/testDetail/${test._id}`);
   }
-  const TestRecordOptions = displayOptions();
 
   return (
-    <tr className="table__body__row">
+    <tr className="table__body__row" onClick={testDetail}>
       <td className="table__body__row__cell__user">
-        <p>{test._id}</p>
+        <p>{test.shortName}</p>
       </td>
       <td className="table__body__row__cell">
         <p>{test.name}</p>
@@ -55,7 +17,9 @@ function TestRecord({ test }) {
       <td className="table__body__row__cell">
         <p>{test.appointmentDate}</p>
       </td>
-      {TestRecordOptions}
+      <td>
+        <p>{test.isComplete ? 'Completed' : 'Pending'}</p>
+      </td>
     </tr>
   );
 }

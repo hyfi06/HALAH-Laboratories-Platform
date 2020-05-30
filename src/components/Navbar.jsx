@@ -8,9 +8,15 @@ import UsersIcon from '../assets/icons/users.svg';
 import UserAddIcon from '../assets/icons/user-add.svg';
 import UsersAddIcon from '../assets/icons/users-add.svg';
 import LogoutIcon from '../assets/icons/logout.svg';
+import TestIcon from '../assets/icons/exam.svg';
 
 function Navbar() {
   const { session } = useSession();
+
+  function logout() {
+    document.cookie = 'session=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    Router.push('/');
+  }
 
   function TypeOptions({ type }) {
     switch (type) {
@@ -45,7 +51,7 @@ function Navbar() {
         return (
           <Link href="/tests">
             <li className="navbar__options__item">
-              <UsersIcon className="navbar__options__item__icon" />
+              <TestIcon className="navbar__options__item__icon" />
               <strong className="navbar__options__item__text">Tests</strong>
             </li>
           </Link>
@@ -80,8 +86,12 @@ function Navbar() {
               alt="user"
             />
           </figure>
-          <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
-          <span className="navbar__user__type">{session.user.typeOfUser}</span>
+          <div className="navbar__user__info">
+            <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
+            <span className="navbar__user__type">
+              {session.user.typeOfUser}
+            </span>
+          </div>
         </div>
         <ul className="navbar__options">
           <li
@@ -94,12 +104,10 @@ function Navbar() {
             <strong className="navbar__options__item__text">Profile</strong>
           </li>
           <TypeOptions type={session.user.typeOfUser} />
-          <Link href="/">
-            <li className="navbar__options__item">
-              <LogoutIcon className="navbar__options__item__icon" />
-              <strong className="navbar__options__item__text">Logout</strong>
-            </li>
-          </Link>
+          <li className="navbar__options__item" onClick={logout}>
+            <LogoutIcon className="navbar__options__item__icon" />
+            <strong className="navbar__options__item__text">Logout</strong>
+          </li>
         </ul>
       </section>
     );

@@ -1,6 +1,6 @@
 // Button
 @mixin btn {
-  height: $space_x6;
+  min-height: $space_x6;
   min-width: 100px;
   padding: 0 $space_x3;
   cursor: pointer;
@@ -31,6 +31,12 @@
 }
 
 // Displays
+@mixin flexBetCen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin flexStaSta {
   display: flex;
   justify-content: flex-start;
@@ -53,6 +59,12 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+@mixin flexEndSta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 @mixin flexCenSta {

@@ -23,3 +23,26 @@
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  .user {
+    &__img {
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      margin-right: $space_x6;
+      border-radius: 50%;
+      overflow: hidden;
+
+      &--disabled {
+        opacity: 50%;
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        margin-right: $space_x6;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    }
+  }
+}

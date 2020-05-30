@@ -8,3 +8,13 @@
     padding-right: 0;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .add-user {
+    &__content {
+      @include card;
+      width: 100%;
+      padding: 5%;
+    }
+  }
+}

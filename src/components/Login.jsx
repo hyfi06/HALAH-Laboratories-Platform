@@ -24,6 +24,7 @@ function Login() {
 
   const handleLoginSubmit = async (values) => {
     setLoading(true);
+    setError(null);
     const URL = `${process.env.NEXT_PUBLIC_API_URL}/auth/sign-in`;
     try {
       const response = await axios.post(
@@ -43,7 +44,7 @@ function Login() {
       }`;
       Router.push(response.data.user.defaultPath);
     } catch (err) {
-      setError(err);
+      setError(err.response.data);
     }
     setLoading(false);
   };
@@ -57,15 +58,16 @@ function Login() {
           <Logo className='login__logo__icon' />
         )}
       </figure>
+      {error ? <span className="input__error">{error.message}</span> : ''}
       <Formik
         initialValues={{ username: '', password: '' }}
         validate={(values) => {
           const errors = {};
           if (!values.username) {
-            errors.username = 'Required';
+            errors.username = 'Enter your username';
           }
           if (!values.password) {
-            errors.password = 'Required';
+            errors.password = 'Enter your password';
           }
           return errors;
         }}

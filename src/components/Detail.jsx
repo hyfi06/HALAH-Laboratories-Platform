@@ -9,11 +9,13 @@ import ActivateIcon from '../assets/icons/activate.svg';
 import AddIcon from '../assets/icons/add.svg';
 import DeleteIcon from '../assets/icons/delete.svg';
 import EditIcon from '../assets/icons/edit.svg';
+import ErrorIcon from '../assets/icons/error.svg';
 import SuccessIcon from '../assets/icons/success.svg';
 import WarningIcon from '../assets/icons/warning.svg';
 import User from './User';
 import UserData from './UserData';
 import Modal from './Modal';
+import TestsTable from './TestsTable';
 
 function Detail({ userID }) {
   const { session } = useSession();
@@ -82,10 +84,26 @@ function Detail({ userID }) {
       );
     }
 
+    if (statusError) {
+      return (
+        <div className='confirm-update-status'>
+          <ErrorIcon className='confirm-update-status__icon--negative' />
+          <strong className='confirm-update-status__text'>
+            {statusError.response.data.message}
+          </strong>
+          <div className='confirm-update-status__options'>
+            <button type='button' className='btn' onClick={getNewData}>
+              Accept
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     if (statusResponse) {
       return (
         <div className='confirm-update-status'>
-          <SuccessIcon className='confirm-update-status__icon' />
+          <SuccessIcon className='confirm-update-status__icon--positive' />
           <strong className='confirm-update-status__text'>
             {response.data.isActive
               ? 'User successfully removed'
@@ -125,6 +143,10 @@ function Detail({ userID }) {
       return <div className='loader' />;
     }
 
+    if (error) {
+      return <h3>{error.response.data.message}</h3>;
+    }
+
     if (session.user.typeOfUser === 'Administrator') {
       if (response.data.isActive) {
         return (
@@ -158,12 +180,29 @@ function Detail({ userID }) {
     return '';
   }
 
+  function MedicalHistory() {
+    if (session.user.typeOfUser !== 'Administrator') {
+      return (
+        <>
+          <h2 className='detail__title'>Medical history</h2>
+          <TestsTable
+            username={response.data.username}
+            className='detail__table'
+          />
+        </>
+      );
+    }
+
+    return '';
+  }
+
   return response && response.data ? (
     <div className='detail'>
       <User user={response.data} />
       <section className='detail__content'>
         <DetailOptions />
         <UserData user={response.data} />
+        <MedicalHistory />
       </section>
       <Modal isOpen={openModal}>
         <ConfirmUpdateStatus />

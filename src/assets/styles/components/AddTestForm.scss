@@ -56,3 +56,22 @@
 .colum__test {
   width: 50%;
 }
+
+@media screen and (max-width: 425px) {
+  .add-test-form {
+    width: 100%;
+    @include colCenSta;
+
+    &__form {
+      @include colCenSta;
+
+      &__container {
+        .btn {
+          width: 100%;
+          align-self: center;
+          margin-top: $space_x3;
+        }
+      }
+    }
+  }
+}
