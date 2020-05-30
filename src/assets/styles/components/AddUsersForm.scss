@@ -15,3 +15,15 @@
     margin-top: $space_x3;
   }
 }
+
+@media screen and (max-width: 425px) {
+  .add-users-form {
+    padding: 5%;
+
+    .btn,
+    .btn--disabled {
+      width: 100%;
+      margin-top: $space_x3;
+    }
+  }
+}

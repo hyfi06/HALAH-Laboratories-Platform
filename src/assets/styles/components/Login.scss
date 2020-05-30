@@ -41,3 +41,11 @@
     }
   }
 }
+
+@media screen and (max-width: 425px) {
+  .login {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
