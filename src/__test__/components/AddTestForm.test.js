@@ -1,7 +1,7 @@
-import Detail from '../../components/Detail';
+import AddTestForm from '../../components/AddTestForm';
 import { create } from 'react-test-renderer';
 import { SessionProvider } from '../../context/SessionContext';
-describe('Detail Component', () => {
+describe('AddTestForm Component', () => {
   const obj = {
     session: {
       token:
@@ -18,10 +18,10 @@ describe('Detail Component', () => {
       }
     }
   };
-  test('Should render Detail component', () => {
+  test('Should render AddTestForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <Detail userID={''} />
+        <AddTestForm userID={''} />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
