@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Component Should render Navbar component 1`] = `
+<div
+  className="loader"
+/>
+`;
