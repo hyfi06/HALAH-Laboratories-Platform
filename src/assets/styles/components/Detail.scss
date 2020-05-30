@@ -35,6 +35,10 @@
       }
     }
   }
+
+  &__title {
+    margin-bottom: $space_x3;
+  }
 }
 
 .confirm-update-status {
