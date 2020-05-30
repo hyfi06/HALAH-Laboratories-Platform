@@ -26,6 +26,11 @@
       }
     }
 
+    &__info {
+      @include colCenSta;
+      width: 100%;
+    }
+
     &__name {
       text-align: center;
       font-size: $topic_size;
@@ -51,6 +56,54 @@
         height: 20px;
         margin-right: 5px;
         fill: $secondary_color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar {
+    @include flexBetCen;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+    margin-bottom: $space_x6;
+
+    &__user {
+      @include flexStaCen;
+      flex-direction: row;
+      margin: 0;
+
+      &__info {
+        @include flexCenSta;
+        width: 125px;
+        margin-left: $space_x2;
+      }
+
+      &__photo {
+        width: 75px;
+        height: 75px;
+        margin: 0;
+      }
+
+      &__name {
+        text-align: start;
+      }
+
+      &__type {
+        text-align: start;
+        text-transform: capitalize;
+      }
+    }
+
+    &__options {
+      @include flexStaCen;
+      flex-direction: row;
+      height: 75px;
+
+      &__item {
+        margin: 0;
+        margin-right: $space_x2;
       }
     }
   }
