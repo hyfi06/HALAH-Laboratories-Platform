@@ -5,7 +5,9 @@ describe('Layout Component', () => {
   test('Should render Layout component', () => {
     const component = create(
       <SessionProvider>
-        <Layout />
+        <Layout>
+          <div></div>
+        </Layout>
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

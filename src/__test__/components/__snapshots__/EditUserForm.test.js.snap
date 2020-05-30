@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditUserForm Component Should render EditUserForm component 1`] = `
+Array [
+  "",
+  "",
+]
+`;

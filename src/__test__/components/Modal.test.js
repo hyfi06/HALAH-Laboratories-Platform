@@ -5,7 +5,9 @@ describe('Modal Component', () => {
   test('Should render Modal component', () => {
     const component = create(
       <SessionProvider>
-        <Modal />
+        <Modal isOpen={true}>
+          <div></div>
+        </Modal>
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

@@ -8,6 +8,7 @@ import UsersIcon from '../assets/icons/users.svg';
 import UserAddIcon from '../assets/icons/user-add.svg';
 import UsersAddIcon from '../assets/icons/users-add.svg';
 import LogoutIcon from '../assets/icons/logout.svg';
+import TestIcon from '../assets/icons/exam.svg';
 
 function Navbar() {
   const { session } = useSession();
@@ -50,7 +51,7 @@ function Navbar() {
         return (
           <Link href="/tests">
             <li className="navbar__options__item">
-              <UsersIcon className="navbar__options__item__icon" />
+              <TestIcon className="navbar__options__item__icon" />
               <strong className="navbar__options__item__text">Tests</strong>
             </li>
           </Link>
@@ -85,8 +86,12 @@ function Navbar() {
               alt="user"
             />
           </figure>
-          <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
-          <span className="navbar__user__type">{session.user.typeOfUser}</span>
+          <div className="navbar__user__info">
+            <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
+            <span className="navbar__user__type">
+              {session.user.typeOfUser}
+            </span>
+          </div>
         </div>
         <ul className="navbar__options">
           <li
