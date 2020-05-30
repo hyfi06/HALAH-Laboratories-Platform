@@ -87,8 +87,12 @@ function Navbar() {
               alt="user"
             />
           </figure>
-          <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
-          <span className="navbar__user__type">{session.user.typeOfUser}</span>
+          <div className="navbar__user__info">
+            <strong className="navbar__user__name">{`${session.user.firstName} ${session.user.lastName}`}</strong>
+            <span className="navbar__user__type">
+              {session.user.typeOfUser}
+            </span>
+          </div>
         </div>
         <ul className="navbar__options">
           <li

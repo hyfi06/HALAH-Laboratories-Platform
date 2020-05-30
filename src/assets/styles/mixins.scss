@@ -31,6 +31,12 @@
 }
 
 // Displays
+@mixin flexBetCen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @mixin flexStaSta {
   display: flex;
   justify-content: flex-start;
