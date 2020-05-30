@@ -2,7 +2,7 @@
 
 .test-detail {
   text-align: justify;
-  
+
   &__title {
     @include flexStaCen;
     margin-bottom: $space_x6;
@@ -29,10 +29,10 @@
     }
 
     &__option {
+      cursor: pointer;
       fill: $secondary_color;
       width: $space_x6;
       height: $space_x6;
-
 
       &--done {
         fill: $positive_color;
@@ -42,7 +42,9 @@
       }
 
       &--notReady {
-        fill: $negative_color;
+        cursor: default;
+        opacity: 50%;
+        fill: $secondary_color;
         width: $space_x6;
         height: $space_x6;
         margin-left: auto;
@@ -53,19 +55,19 @@
         @include card;
       }
     }
-    
+
     &__container--principal {
       @include flexStaSta;
       margin-bottom: $space_x6;
     }
-    
+
     &__container {
       @include flexStaCen;
       margin: $space_x6 0px;
-      
+
       div {
         margin: 0px;
-        
+
         &:last-child {
           margin-left: auto;
           margin-right: auto;

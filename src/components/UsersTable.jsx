@@ -28,7 +28,7 @@ function UsersTable() {
     setRequestCount(requestCount + 1);
     if (session.user.typeOfUser === 'Administrator' && values.type) {
       if (isNaN(parseInt(values.documentID, 10)) && values.documentID) {
-        setFilter(`?firstName=${values.documentID}&typeOfUser=${values.type}`);
+        setFilter(`?name=${values.documentID}&typeOfUser=${values.type}`);
       } else if (values.type && values.documentID) {
         setFilter(`?documentID=${values.documentID}&typeOfUser=${values.type}`);
       } else if (values.type) {
@@ -36,7 +36,7 @@ function UsersTable() {
       }
     } else if (session.user.typeOfUser === 'Administrator') {
       if (values.documentID && isNaN(parseInt(values.documentID, 10))) {
-        setFilter(`?firstName=${values.documentID}`);
+        setFilter(`?name=${values.documentID}`);
       } else if (values.documentID) {
         setFilter(`?documentID=${values.documentID}`);
       } else {
@@ -142,6 +142,10 @@ function UsersTable() {
   function Table() {
     if (loading) {
       return <div className="loader" />;
+    }
+
+    if (error) {
+      return <h3>{error.response.data.message}</h3>;
     }
 
     return (
