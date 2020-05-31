@@ -18,7 +18,6 @@ function AddUserForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [modalContent, setModalContent] = useState('');
 
   async function createUser(userData) {
     setOpenModal(true);

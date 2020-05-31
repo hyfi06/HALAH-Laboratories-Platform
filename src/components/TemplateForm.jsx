@@ -56,7 +56,6 @@ function ScheduleForm({ examName }) {
       const config = {
         headers: { Authorization: `Bearer ${session.token}` },
       };
-      console.log(objBody);
       const res = await axios.post(URL, objBody, config);
       setResultResponse(res.data);
     } catch (err) {
