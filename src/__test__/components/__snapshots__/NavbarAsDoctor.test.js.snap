@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar Component Should render Navbar component 1`] = `
+exports[`Navbar as Doctor Component Should render Navbar component 1`] = `
 <section
   className="navbar"
 >
@@ -13,7 +13,7 @@ exports[`Navbar Component Should render Navbar component 1`] = `
       <img
         alt="user"
         className="navbar__user__photo__img"
-        src="http://dummyimage.com/200x200.png/ff4444/ffffff"
+        src="http://dummyimage.com/200x200.jpg/5fa2dd/ffffff"
       />
     </figure>
     <div
@@ -22,12 +22,12 @@ exports[`Navbar Component Should render Navbar component 1`] = `
       <strong
         className="navbar__user__name"
       >
-        Mayne Snasel
+        Cathie Toffaloni
       </strong>
       <span
         className="navbar__user__type"
       >
-        Patient
+        Doctor
       </span>
     </div>
   </div>
@@ -58,7 +58,7 @@ exports[`Navbar Component Should render Navbar component 1`] = `
       <strong
         className="navbar__options__item__text"
       >
-        Tests
+        Patients
       </strong>
     </li>
     <li

@@ -1,7 +1,7 @@
-import UsersTable from '../../components/UsersTable';
+import DetailTest from '../../components/DetailTest';
 import { create } from 'react-test-renderer';
 import { SessionProvider } from '../../context/SessionContext';
-describe('UserTable Component', () => {
+describe('DetailTest Component', () => {
   const obj = {
     session: {
       token:
@@ -18,10 +18,10 @@ describe('UserTable Component', () => {
       }
     }
   };
-  test('Should render UserTable component', () => {
+  test('Should render DetailTest component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <UsersTable />
+        <DetailTest userID={''} testID={''} />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

@@ -1,13 +1,15 @@
-import Navbar from '../../components/Navbar';
+import TemplateForm from '../../components/TemplateForm';
 import { create } from 'react-test-renderer';
-import Router from 'next/router';
-import { render, fireEvent, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
-
-describe('Navbar Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
+import * as nextRouter from 'next/router';
+describe('TemplateForm Component', () => {
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({
+    route: '/',
+    query: {
+      orderID: '5ecda76661b17e50c87721ab'
+    }
+  }));
   const obj = {
     session: {
       token:
@@ -25,10 +27,10 @@ describe('Navbar Component', () => {
     }
   };
 
-  test('Should render Navbar component', () => {
+  test('Should render TemplateForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <Navbar />
+        <TemplateForm examName='' />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

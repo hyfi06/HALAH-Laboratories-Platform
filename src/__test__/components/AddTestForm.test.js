@@ -1,13 +1,12 @@
-import Detail from '../../components/Detail';
+import AddTestForm from '../../components/AddTestForm';
 import { create } from 'react-test-renderer';
-import { render, cleanup } from '@testing-library/react';
+import { shallow, mount } from 'enzyme';
 import Router from 'next/router';
-import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
-describe('Detail Component', () => {
-  afterEach(cleanup);
+describe('AddTestForm Component', () => {
   const mockedRouter = { push: () => {} };
   Router.router = mockedRouter;
+
   const obj = {
     session: {
       token: '',
@@ -23,12 +22,20 @@ describe('Detail Component', () => {
       }
     }
   };
-  test('Should render Detail component', () => {
+  test('Should render AddTestForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <Detail userID={''} />
+        <AddTestForm userID={''} />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
+  });
+  test('Should shallow AddTestForm component ', () => {
+    const component = mount(
+      <SessionProvider value={obj}>
+        <AddTestForm userID={''} />
+      </SessionProvider>
+    ).render();
+    expect(component.length).toEqual(1);
   });
 });

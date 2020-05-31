@@ -1,7 +1,13 @@
-import UsersTable from '../../components/UsersTable';
+import Navbar from '../../components/Navbar';
 import { create } from 'react-test-renderer';
+import Router from 'next/router';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
-describe('UserTable Component', () => {
+
+describe('Navbar as Doctor Component', () => {
+  const mockedRouter = { push: () => {} };
+  Router.router = mockedRouter;
   const obj = {
     session: {
       token:
@@ -18,10 +24,11 @@ describe('UserTable Component', () => {
       }
     }
   };
-  test('Should render UserTable component', () => {
+
+  test('Should render Navbar component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <UsersTable />
+        <Navbar />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();

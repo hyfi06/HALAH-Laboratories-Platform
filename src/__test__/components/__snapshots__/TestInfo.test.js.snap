@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestInfo Component Should render TestInfo component 1`] = `
+<section
+  className="test-detail__data"
+>
+  <div
+    className="test-detail__data__container--principal"
+  >
+    <h1
+      className="test-detail__data__title"
+    >
+      Test Information
+    </h1>
+    <button
+      className="test-detail__data__option--button"
+      onClick={[Function]}
+      type="button"
+    >
+      <div
+        className="test-detail__data__option"
+      />
+    </button>
+  </div>
+  
+</section>
+`;

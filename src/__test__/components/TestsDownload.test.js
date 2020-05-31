@@ -1,11 +1,11 @@
-import Navbar from '../../components/Navbar';
+import TestsDownload from '../../components/TestsDownload';
 import { create } from 'react-test-renderer';
 import Router from 'next/router';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
 
-describe('Navbar Component', () => {
+describe('TestsDownload Component', () => {
   const mockedRouter = { push: () => {} };
   Router.router = mockedRouter;
   const obj = {
@@ -25,10 +25,10 @@ describe('Navbar Component', () => {
     }
   };
 
-  test('Should render Navbar component', () => {
+  test('Should render TestsDownload component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <Navbar />
+        <TestsDownload />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
