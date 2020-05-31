@@ -156,7 +156,7 @@
         flex-wrap: wrap;
 
         div {
-          margin: 0px;
+          margin: $space_x3 0;
 
           &:last-child {
             margin: 0;
@@ -168,6 +168,7 @@
         @include colStaSta;
         margin: $space_x6 0px;
         width: 100%;
+        max-width: none;
       }
 
       .large {
