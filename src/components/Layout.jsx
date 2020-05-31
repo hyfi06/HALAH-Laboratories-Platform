@@ -20,6 +20,7 @@ function Layout({ children }) {
 
   // eslint-disable-next-line consistent-return
   async function openModalMessage() {
+    console.log('times');
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/messages?patientId=${session.user.id}`;
       const config = {
@@ -40,11 +41,9 @@ function Layout({ children }) {
       // eslint-disable-next-line consistent-return
       setInterval(() => {
         openModalMessage();
-        console.log('times');
-      }, 5000);
+      }, 10000);
     }
-    console.log(messageResponse);
-  }, []);
+  });
 
   return (
     <>
@@ -56,17 +55,15 @@ function Layout({ children }) {
         </div>
       </div>
       <Modal isOpen={message}>
-        {
-          messageResponse.map((res) => (
-            <div className="message">
-              <MessageIcon className="message__icon" />
-              <strong className="message__text">{res.messageText}</strong>
-              <button className="btn" type="button" onClick={closeModal}>
-                Accept
-              </button>
-            </div>
-          ))
-        }
+        <div className="message">
+          <MessageIcon className="message__icon" />
+          { messageResponse.map((res) => (
+            <strong className="message__text">{res.messageText}</strong>
+          ))}
+          <button className="btn" type="button" onClick={closeModal}>
+            Accept
+          </button>
+        </div>
       </Modal>
     </>
   );
