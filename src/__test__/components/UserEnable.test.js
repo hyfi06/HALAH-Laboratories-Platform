@@ -1,5 +1,6 @@
 import UserEnable from '../../components/UserEnable';
 import { create } from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { SessionProvider } from '../../context/SessionContext';
 describe('UserEnable Component', () => {
   test('Should render UserEnable component', () => {
@@ -9,5 +10,13 @@ describe('UserEnable Component', () => {
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
+  });
+  it('<UserEnable />', () => {
+    const component = mount(
+      <SessionProvider>
+        <UserEnable />
+      </SessionProvider>
+    );
+    expect(component.length).toEqual(1);
   });
 });

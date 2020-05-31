@@ -1,14 +1,16 @@
-import EditUserForm from '../../components/EditUserForm';
+import TemplateForm from '../../components/TemplateForm';
+import { mount } from 'enzyme';
 import { create } from 'react-test-renderer';
-import { render, fireEvent, act, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Router from 'next/router';
-import { shallow, mount } from 'enzyme';
 import { SessionProvider } from '../../context/SessionContext';
-describe('EditUserForm Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
-  afterEach(cleanup);
+import * as nextRouter from 'next/router';
+describe('TemplateForm Component', () => {
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({
+    route: '/',
+    query: {
+      orderID: '5ecda76661b17e50c87721ab'
+    }
+  }));
   const obj = {
     session: {
       token: '',
@@ -24,18 +26,19 @@ describe('EditUserForm Component', () => {
       }
     }
   };
-  test('Should render EditUserForm component', () => {
+
+  test('Should render TemplateForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <TemplateForm examName='' />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
-  it('<EditUserForm />', () => {
+  it('<TemplateForm />', () => {
     const component = mount(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <TemplateForm examName='' />
       </SessionProvider>
     );
     expect(component.length).toEqual(1);

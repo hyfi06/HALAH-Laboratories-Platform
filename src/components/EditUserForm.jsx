@@ -26,7 +26,7 @@ function EditUserForm({ userID }) {
     setUpdateLoading(true);
     try {
       const config = {
-        headers: { Authorization: `Bearer ${session.token}` },
+        headers: { Authorization: `Bearer ${session.token}` }
       };
       const res = await axios.patch(URL, userData, config);
       setUpdateResponse(res);
@@ -48,7 +48,7 @@ function EditUserForm({ userID }) {
       formData.append('upload_preset', 'alexisapp');
       const res = await axios.post(
         'https://api.cloudinary.com/v1_1/alexisaraujoapp1/image/upload',
-        formData,
+        formData
       );
       const { data } = res;
       setPrevImg(data.secure_url);
@@ -64,12 +64,12 @@ function EditUserForm({ userID }) {
 
   function AddUserSuccess() {
     return (
-      <div className="message">
-        <SuccessIcon className="message__icon--positive" />
-        <strong className="message__text">User updated successfully</strong>
+      <div className='message'>
+        <SuccessIcon className='message__icon--positive' />
+        <strong className='message__text'>User updated successfully</strong>
         <button
-          className="btn"
-          type="button"
+          className='btn'
+          type='button'
           onClick={() => {
             Router.push(`/detail/${userID}`);
           }}
@@ -82,12 +82,12 @@ function EditUserForm({ userID }) {
 
   function AddUserError() {
     return (
-      <div className="message">
-        <ErrorIcon className="message__icon--negative" />
-        <strong className="message__text">
+      <div className='message'>
+        <ErrorIcon className='message__icon--negative' />
+        <strong className='message__text'>
           {updateError.response.data.message}
         </strong>
-        <button className="btn" type="button" onClick={closeModal}>
+        <button className='btn' type='button' onClick={closeModal}>
           Accept
         </button>
       </div>
@@ -96,28 +96,28 @@ function EditUserForm({ userID }) {
 
   function AvatarForm() {
     return response && response.data ? (
-      <form className="avatar-form">
+      <form className='avatar-form'>
         {response.data.imageURL ? (
-          <figure className="avatar-form__preview">
+          <figure className='avatar-form__preview'>
             <img
-              className="avatar-form__preview__img"
+              className='avatar-form__preview__img'
               src={prevImg || response.data.imageURL}
-              alt="Avatar"
+              alt='Avatar'
             />
           </figure>
         ) : (
           ''
         )}
-        <div className="input">
-          <label className="input__label">
+        <div className='input'>
+          <label className='input__label'>
             Profile Image
             <input
-              className="input__field--img"
-              type="file"
+              className='input__field--img'
+              type='file'
               onChange={uploadImg}
             />
           </label>
-          {errorImg ? <span className="input__error">{errorImg}</span> : ''}
+          {errorImg ? <span className='input__error'>{errorImg}</span> : ''}
         </div>
       </form>
     ) : (
@@ -131,7 +131,7 @@ function EditUserForm({ userID }) {
         initialValues={{
           imageURL: prevImg || response.data.imageURL,
           email: response.data.email,
-          contactNumber: response.data.contactNumber,
+          contactNumber: response.data.contactNumber
         }}
         validate={(values) => {
           const errors = {};
@@ -153,47 +153,52 @@ function EditUserForm({ userID }) {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="edit-user-form">
-            <h2 className="edit-user-form__title">Contact</h2>
-            <section className="edit-user-form__section">
-              <div className="input">
-                <label className="input__label">
+          <Form data-testid='useredit' className='edit-user-form'>
+            <h2 className='edit-user-form__title'>Contact</h2>
+            <section className='edit-user-form__section'>
+              <div className='input'>
+                <label className='input__label'>
                   email
                   <Field
-                    className="input__field"
-                    type="email"
-                    name="email"
+                    className='input__field'
+                    type='email'
+                    name='email'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="email"
-                  component="span"
-                  className="input__error"
+                  name='email'
+                  component='span'
+                  className='input__error'
                 />
               </div>
-              <div className="input">
-                <label className="input__label">
+              <div className='input'>
+                <label className='input__label'>
                   Phone Number
                   <Field
-                    className="input__field"
-                    type="number"
-                    name="contactNumber"
+                    className='input__field'
+                    type='number'
+                    name='contactNumber'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="contactNumber"
-                  component="span"
-                  className="input__error"
+                  name='contactNumber'
+                  component='span'
+                  className='input__error'
                 />
               </div>
             </section>
-            <button className="btn" type="submit" disabled={isSubmitting}>
+            <button
+              data-testid='button-submited'
+              className='btn'
+              type='submit'
+              disabled={isSubmitting}
+            >
               Update User
             </button>
             {updateLoading ? (
-              <span className="edit-user-form__load">Updating user...</span>
+              <span className='edit-user-form__load'>Updating user...</span>
             ) : (
               ''
             )}
@@ -206,11 +211,11 @@ function EditUserForm({ userID }) {
   }
 
   EditUserForm.propTypes = {
-    userID: PropTypes.string.isRequired,
+    userID: PropTypes.string.isRequired
   };
 
   if (loading) {
-    return <div className="loader" />;
+    return <div className='loader' />;
   }
 
   if (error) {

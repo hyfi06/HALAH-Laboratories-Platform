@@ -1,5 +1,6 @@
 import TestRecord from '../../components/TestRecord';
 import { create } from 'react-test-renderer';
+import { mount } from 'enzyme';
 import { SessionProvider } from '../../context/SessionContext';
 describe('TestRecord Component', () => {
   const mock = {
@@ -19,5 +20,13 @@ describe('TestRecord Component', () => {
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
+  });
+  it('<TestRecord />', () => {
+    const component = mount(
+      <SessionProvider>
+        <TestRecord test={mock} />
+      </SessionProvider>
+    );
+    expect(component.length).toEqual(1);
   });
 });

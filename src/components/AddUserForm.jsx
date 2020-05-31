@@ -11,7 +11,7 @@ import Modal from './Modal';
 function AddUserForm() {
   const { session } = useSession();
   const [prevImg, setPrevImg] = useState(
-    'https://res.cloudinary.com/alexisaraujoapp1/image/upload/v1590279706/alexisapp/ou8drr0g7poddnoqprmb.jpg',
+    'https://res.cloudinary.com/alexisaraujoapp1/image/upload/v1590279706/alexisapp/ou8drr0g7poddnoqprmb.jpg'
   );
   const [errorImg, setErrorImg] = useState(null);
   const [response, setResponse] = useState({});
@@ -25,7 +25,7 @@ function AddUserForm() {
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/users`;
       const config = {
-        headers: { Authorization: `Bearer ${session.token}` },
+        headers: { Authorization: `Bearer ${session.token}` }
       };
       const res = await axios.post(URL, userData, config);
       setResponse(res.data);
@@ -44,7 +44,7 @@ function AddUserForm() {
       formData.append('upload_preset', 'alexisapp');
       const res = await axios.post(
         'https://api.cloudinary.com/v1_1/alexisaraujoapp1/image/upload',
-        formData,
+        formData
       );
       const { data } = res;
       setPrevImg(data.secure_url);
@@ -61,18 +61,18 @@ function AddUserForm() {
   function AddMessage() {
     if (loading) {
       return (
-        <div className="message">
-          <div className="loader" />
+        <div className='message'>
+          <div className='loader' />
         </div>
       );
     }
 
     if (error) {
       return (
-        <div className="message">
-          <ErrorIcon className="message__icon--negative" />
-          <strong className="message__text">{error.message}</strong>
-          <button className="btn" type="button" onClick={closeModal}>
+        <div className='message'>
+          <ErrorIcon className='message__icon--negative' />
+          <strong className='message__text'>{error.message}</strong>
+          <button className='btn' type='button' onClick={closeModal}>
             Accept
           </button>
         </div>
@@ -81,12 +81,12 @@ function AddUserForm() {
 
     if (response) {
       return (
-        <div className="message">
-          <SuccessIcon className="message__icon--positive" />
-          <strong className="message__text">{response.message}</strong>
+        <div className='message'>
+          <SuccessIcon className='message__icon--positive' />
+          <strong className='message__text'>{response.message}</strong>
           <button
-            className="btn"
-            type="button"
+            className='btn'
+            type='button'
             onClick={() => {
               Router.push(`/detail/${response.data._id}`);
             }}
@@ -102,28 +102,28 @@ function AddUserForm() {
 
   function AvatarForm() {
     return (
-      <form className="avatar-form">
+      <form data-testid='addAvatar' className='avatar-form'>
         {prevImg ? (
-          <figure className="avatar-form__preview">
+          <figure className='avatar-form__preview'>
             <img
-              className="avatar-form__preview__img"
+              className='avatar-form__preview__img'
               src={prevImg}
-              alt="Avatar"
+              alt='Avatar'
             />
           </figure>
         ) : (
           ''
         )}
-        <div className="input">
-          <label className="input__label">
+        <div className='input'>
+          <label className='input__label'>
             Profile Image
             <input
-              className="input__field--img"
-              type="file"
+              className='input__field--img'
+              type='file'
               onChange={uploadImg}
             />
           </label>
-          {errorImg ? <span className="input__error">{errorImg}</span> : ''}
+          {errorImg ? <span className='input__error'>{errorImg}</span> : ''}
         </div>
       </form>
     );
@@ -139,7 +139,7 @@ function AddUserForm() {
           lastName: '',
           documentID: '',
           email: '',
-          contactNumber: '',
+          contactNumber: ''
         }}
         validate={(values) => {
           const errors = {};
@@ -173,122 +173,127 @@ function AddUserForm() {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="user-add-form">
-            <section className="user-add-form__section">
-              <div className="input">
-                <label className="input__label">
+          <Form data-testid='add-form' className='user-add-form'>
+            <section className='user-add-form__section'>
+              <div className='input'>
+                <label className='input__label'>
                   Type
                   <Field
-                    className="input__field"
-                    as="select"
-                    name="typeOfUser"
+                    className='input__field'
+                    as='select'
+                    name='typeOfUser'
                     disabled={isSubmitting}
                   >
-                    <option disabled="disabled">Choose a type</option>
-                    <option value="Patient">Patient</option>
-                    <option value="Doctor">Doctor</option>
-                    <option value="Bacteriologist">Bacteriologist</option>
-                    <option value="Administrator">Administrator</option>
+                    <option disabled='disabled'>Choose a type</option>
+                    <option value='Patient'>Patient</option>
+                    <option value='Doctor'>Doctor</option>
+                    <option value='Bacteriologist'>Bacteriologist</option>
+                    <option value='Administrator'>Administrator</option>
                   </Field>
                 </label>
                 <ErrorMessage
-                  name="typeOfUser"
-                  component="span"
-                  className="input__error"
+                  name='typeOfUser'
+                  component='span'
+                  className='input__error'
                 />
               </div>
             </section>
-            <h2 className="user-add-form__title">User Information</h2>
-            <section className="user-add-form__section">
-              <div className="input">
-                <label className="input__label">
+            <h2 className='user-add-form__title'>User Information</h2>
+            <section className='user-add-form__section'>
+              <div className='input'>
+                <label className='input__label'>
                   First Name
                   <Field
-                    className="input__field"
-                    type="text"
-                    name="firstName"
+                    className='input__field'
+                    type='text'
+                    name='firstName'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="firstName"
-                  component="span"
-                  className="input__error"
+                  name='firstName'
+                  component='span'
+                  className='input__error'
                 />
               </div>
-              <div className="input">
-                <label className="input__label">
+              <div className='input'>
+                <label className='input__label'>
                   Last Name
                   <Field
-                    className="input__field"
-                    type="text"
-                    name="lastName"
+                    className='input__field'
+                    type='text'
+                    name='lastName'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="lastName"
-                  component="span"
-                  className="input__error"
+                  name='lastName'
+                  component='span'
+                  className='input__error'
                 />
               </div>
-              <div className="input">
-                <label className="input__label">
+              <div className='input'>
+                <label className='input__label'>
                   Document ID
                   <Field
-                    className="input__field"
-                    type="number"
-                    name="documentID"
+                    className='input__field'
+                    type='number'
+                    name='documentID'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="documentID"
-                  component="span"
-                  className="input__error"
+                  name='documentID'
+                  component='span'
+                  className='input__error'
                 />
               </div>
             </section>
-            <h2 className="user-add-form__title">Contact</h2>
-            <section className="user-add-form__section">
-              <div className="input">
-                <label className="input__label">
+            <h2 className='user-add-form__title'>Contact</h2>
+            <section className='user-add-form__section'>
+              <div className='input'>
+                <label className='input__label'>
                   email
                   <Field
-                    className="input__field"
-                    type="email"
-                    name="email"
+                    className='input__field'
+                    type='email'
+                    name='email'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="email"
-                  component="span"
-                  className="input__error"
+                  name='email'
+                  component='span'
+                  className='input__error'
                 />
               </div>
-              <div className="input">
-                <label className="input__label">
+              <div className='input'>
+                <label className='input__label'>
                   Phone Number
                   <Field
-                    className="input__field"
-                    type="number"
-                    name="contactNumber"
+                    className='input__field'
+                    type='number'
+                    name='contactNumber'
                     disabled={isSubmitting}
                   />
                 </label>
                 <ErrorMessage
-                  name="contactNumber"
-                  component="span"
-                  className="input__error"
+                  name='contactNumber'
+                  component='span'
+                  className='input__error'
                 />
               </div>
             </section>
-            <button className="btn" type="submit" disabled={isSubmitting}>
+            <button
+              data-testid='button-submit'
+              className='btn'
+              type='submit'
+              disabled={isSubmitting}
+            >
               Add User
             </button>
             {loading ? (
-              <span className="user-add-form__load">Creating user...</span>
+              <span className='user-add-form__load'>Creating user...</span>
             ) : (
               ''
             )}

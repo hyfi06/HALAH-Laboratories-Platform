@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTestForm Component Should render AddTestForm component 1`] = `
+<main
+  className="add-test-form"
+>
+  <div
+    className="add-test-form__user-info"
+  >
+    <div
+      className="loader"
+    />
+  </div>
+  <div
+    className="add-test-form__form__container"
+  >
+    <div
+      className="loader"
+    />
+  </div>
+</main>
+`;

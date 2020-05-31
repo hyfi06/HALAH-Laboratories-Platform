@@ -1,14 +1,8 @@
-import EditUserForm from '../../components/EditUserForm';
+import UsersTable from '../../components/UsersTable';
 import { create } from 'react-test-renderer';
-import { render, fireEvent, act, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Router from 'next/router';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { SessionProvider } from '../../context/SessionContext';
-describe('EditUserForm Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
-  afterEach(cleanup);
+describe('UserTable Component', () => {
   const obj = {
     session: {
       token: '',
@@ -24,18 +18,18 @@ describe('EditUserForm Component', () => {
       }
     }
   };
-  test('Should render EditUserForm component', () => {
+  test('Should render UserTable component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <UsersTable />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
-  it('<EditUserForm />', () => {
+  it('<UsersTable />', () => {
     const component = mount(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <UsersTable />
       </SessionProvider>
     );
     expect(component.length).toEqual(1);

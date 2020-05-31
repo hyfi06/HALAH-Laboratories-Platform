@@ -1,14 +1,8 @@
-import EditUserForm from '../../components/EditUserForm';
+import AddResultForm from '../../components/AddResultForm';
 import { create } from 'react-test-renderer';
-import { render, fireEvent, act, cleanup } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
-import Router from 'next/router';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { SessionProvider } from '../../context/SessionContext';
-describe('EditUserForm Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
-  afterEach(cleanup);
+describe('AddResultForm Component', () => {
   const obj = {
     session: {
       token: '',
@@ -24,18 +18,18 @@ describe('EditUserForm Component', () => {
       }
     }
   };
-  test('Should render EditUserForm component', () => {
+  test('Should render AddResultForm component', () => {
     const component = create(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <AddResultForm userID={''} orderId={''} />
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
-  it('<EditUserForm />', () => {
+  it('<AddResultForm />', () => {
     const component = mount(
       <SessionProvider value={obj}>
-        <EditUserForm setUpdateLoading={true} userID='freddy.van.1009' />
+        <AddResultForm userID={''} orderId={''} />
       </SessionProvider>
     );
     expect(component.length).toEqual(1);

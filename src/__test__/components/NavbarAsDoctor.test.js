@@ -1,25 +1,25 @@
 import Navbar from '../../components/Navbar';
 import { create } from 'react-test-renderer';
 import Router from 'next/router';
-import { mount } from 'enzyme';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
 
-describe('Navbar Component', () => {
+describe('Navbar as Doctor Component', () => {
   const mockedRouter = { push: () => {} };
   Router.router = mockedRouter;
   const obj = {
     session: {
       token: '',
       user: {
-        id: '5ecda76661b17e50c87721ab',
-        username: 'mayne.snasel.4171',
-        typeOfUser: 'Patient',
+        id: '5ec5ce16fc13ae1506000066',
+        username: 'cathie.toffaloni.8907',
+        typeOfUser: 'Doctor',
         isActive: true,
-        imageURL: 'http://dummyimage.com/200x200.png/ff4444/ffffff',
-        firstName: 'Mayne',
-        lastName: 'Snasel',
-        defaultPath: '/tests'
+        imageURL: 'http://dummyimage.com/200x200.jpg/5fa2dd/ffffff',
+        firstName: 'Cathie',
+        lastName: 'Toffaloni',
+        defaultPath: '/patients'
       }
     }
   };
@@ -31,13 +31,5 @@ describe('Navbar Component', () => {
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
-  });
-  it('<Navbar />', () => {
-    const component = mount(
-      <SessionProvider value={obj}>
-        <Navbar />
-      </SessionProvider>
-    );
-    expect(component.length).toEqual(1);
   });
 });
