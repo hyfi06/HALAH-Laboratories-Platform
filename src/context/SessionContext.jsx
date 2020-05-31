@@ -7,14 +7,7 @@ export function SessionProvider(props) {
 
   useEffect(() => {
     try {
-      setSession(
-        JSON.parse(
-          document.cookie.replace(
-            /(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/,
-            '$1',
-          ),
-        ),
-      );
+      setSession(JSON.parse(localStorage.getItem('session')));
     } catch (error) {
       Router.push('/');
     }
