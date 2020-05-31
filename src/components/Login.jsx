@@ -11,12 +11,7 @@ function Login() {
 
   useEffect(() => {
     try {
-      const session = JSON.parse(
-        document.cookie.replace(
-          /(?:(?:^|.*;\s*)session\s*\=\s*([^;]*).*$)|^.*$/,
-          '$1',
-        ),
-      );
+      const session = JSON.parse(localStorage.getItem('session'));
       Router.push(session.user.defaultPath);
       // eslint-disable-next-line no-empty
     } catch (err) {}
@@ -39,9 +34,7 @@ function Login() {
           },
         },
       );
-      document.cookie = `session=${JSON.stringify(response.data)};max-age=${
-        60 * 60 * 24 * 5
-      }`;
+      localStorage.setItem('session', JSON.stringify(response.data));
       Router.push(response.data.user.defaultPath);
     } catch (err) {
       setError(err.response.data);
