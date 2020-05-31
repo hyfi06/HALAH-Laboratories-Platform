@@ -160,7 +160,7 @@ function Detail({ userID }) {
         );
       }
       return (
-        <div className='detail-options'>
+        <div data-testid='detail' className='detail-options'>
           <ActivateIcon
             className='detail-options__item--positive'
             onClick={updateStatus}

@@ -58,7 +58,7 @@ function Login() {
           <Logo className='login__logo__icon' />
         )}
       </figure>
-      {error ? <span className="input__error">{error.message}</span> : ''}
+      {error ? <span className='input__error'>{error.message}</span> : ''}
       <Formik
         initialValues={{ username: '', password: '' }}
         validate={(values) => {
