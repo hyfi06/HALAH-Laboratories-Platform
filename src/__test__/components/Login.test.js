@@ -17,7 +17,7 @@ describe('Login Component', () => {
       user: {
         id: '',
         username: '',
-        typeOfUser: 'Patient',
+        typeOfUser: '',
         isActive: true,
         imageURL: '',
         firstName: '',
@@ -27,7 +27,7 @@ describe('Login Component', () => {
     }
   };
 
-  test('Should Snapshot Login component', () => {
+  test('Should render Login component', () => {
     const component = create(
       <SessionProvider value={obj}>
         <Login />
@@ -36,28 +36,28 @@ describe('Login Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('withFormik true input username renders fine', () => {
-    const rendered = render(
+  it('Should Login username renders fine', () => {
+    const component = render(
       <SessionProvider value={obj}>
         <Login />
       </SessionProvider>
     );
-    expect(rendered.getByTestId('username')).toBeInTheDocument();
+    expect(component.getByTestId('username')).toBeInTheDocument();
   });
-  it('withFormik true button renders fine', () => {
-    const rendered = render(
+  it('Should button submit render fine', () => {
+    const component = render(
       <SessionProvider value={obj}>
         <Login />
       </SessionProvider>
     );
-    expect(rendered.getByTestId('button-sign')).toBeInTheDocument();
+    expect(component.getByTestId('button-sign')).toBeInTheDocument();
   });
-  it('Mount of Login Component', () => {
-    const login = mount(<Login />);
-    expect(login.length).toEqual(1);
-  });
-  it('Mount of Login Component', () => {
-    const login = shallow(<Login />);
-    expect(login.length).toEqual(1);
+  it('<Login />', () => {
+    const component = mount(
+      <SessionProvider value={obj}>
+        <Login />
+      </SessionProvider>
+    );
+    expect(component.length).toEqual(1);
   });
 });

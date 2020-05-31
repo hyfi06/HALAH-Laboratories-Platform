@@ -1,9 +1,8 @@
 import AddUserForm from '../../components/AddUserForm';
 import { create } from 'react-test-renderer';
-import { render, fireEvent, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { mount } from 'enzyme';
-import Router from 'next/router';
 import * as nextRouter from 'next/router';
 import { SessionProvider } from '../../context/SessionContext';
 describe('AddUserForm Component', () => {
@@ -38,7 +37,7 @@ describe('AddUserForm Component', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('withFormik true AddUserForm username renders fine', () => {
+  it('Should AddUserForm button renders fine', () => {
     const component = render(
       <SessionProvider value={obj}>
         <AddUserForm />
@@ -46,12 +45,12 @@ describe('AddUserForm Component', () => {
     );
     expect(component.getByTestId('button-submit')).toBeInTheDocument();
   });
-  it('Render del componente AddUserForm', () => {
-    const addUserForm = mount(
+  it('<AddUserForm />', () => {
+    const component = mount(
       <SessionProvider value={obj}>
         <AddUserForm />
       </SessionProvider>
     );
-    expect(addUserForm.length).toEqual(1);
+    expect(component.length).toEqual(1);
   });
 });

@@ -30,8 +30,14 @@
 
   &__form {
     @include colStaSta;
+
+    .input {
+      width: 100%;
+    }
+
     .input__label {
       margin-top: $space_x2;
+      width: 100%;
     }
 
     .input__field {
