@@ -4,10 +4,16 @@ import { render, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import { mount } from 'enzyme';
 import Router from 'next/router';
+import * as nextRouter from 'next/router';
 import { SessionProvider } from '../../context/SessionContext';
 describe('AddUserForm Component', () => {
-  const mockedRouter = { push: () => {} };
-  Router.router = mockedRouter;
+  nextRouter.useRouter = jest.fn();
+  nextRouter.useRouter.mockImplementation(() => ({
+    route: '/',
+    query: {
+      orderID: '5ecda76661b17e50c87721ab'
+    }
+  }));
   const obj = {
     session: {
       token: '',
