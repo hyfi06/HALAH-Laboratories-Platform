@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login Component Should render Login component 1`] = `
+exports[`Login Component Should Snapshot Login component 1`] = `
 <div
   className="login"
   data-testid="login-form"
@@ -12,6 +12,7 @@ exports[`Login Component Should render Login component 1`] = `
       className="login__logo__icon"
     />
   </figure>
+  
   <form
     action="#"
     className="login__form lg"

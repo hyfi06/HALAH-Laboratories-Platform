@@ -16,16 +16,20 @@ exports[`Navbar as Doctor Component Should render Navbar component 1`] = `
         src="http://dummyimage.com/200x200.jpg/ff4444/ffffff"
       />
     </figure>
-    <strong
-      className="navbar__user__name"
+    <div
+      className="navbar__user__info"
     >
-      Tiff Kender
-    </strong>
-    <span
-      className="navbar__user__type"
-    >
-      Administrator
-    </span>
+      <strong
+        className="navbar__user__name"
+      >
+        Tiff Kender
+      </strong>
+      <span
+        className="navbar__user__type"
+      >
+        Administrator
+      </span>
+    </div>
   </div>
   <ul
     className="navbar__options"
@@ -88,7 +92,6 @@ exports[`Navbar as Doctor Component Should render Navbar component 1`] = `
     <li
       className="navbar__options__item"
       onClick={[Function]}
-      onMouseEnter={[Function]}
     >
       <div
         className="navbar__options__item__icon"

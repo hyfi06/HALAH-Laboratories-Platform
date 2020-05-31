@@ -11,17 +11,18 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@jest/globals": "^26.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
     "formik": "^2.1.4",
+    "jest-cli": "^25.1.0",
+    "jest-localstorage-mock": "^2.4.0",
     "next": "9.4.1",
     "node-sass": "^4.14.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-test-renderer": "^16.13.1",
-    "jest-cli": "^25.1.0",
-    "jest-localstorage-mock": "^2.4.0"
+    "react-test-renderer": "^16.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
