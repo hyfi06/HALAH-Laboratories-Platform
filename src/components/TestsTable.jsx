@@ -15,7 +15,7 @@ function TestsTable({ username }) {
     return <div className="loader" />;
   }
   if (error) {
-    return <h3>{error.message}</h3>;
+    return <h3>{ error.message ? 'There isn´t test for this patient' : 'Sorry we have a problem getting your tests'}</h3>;
   }
 
   return (
