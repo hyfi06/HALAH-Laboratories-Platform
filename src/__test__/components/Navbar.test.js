@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar';
 import { create } from 'react-test-renderer';
 import Router from 'next/router';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { mount } from 'enzyme';
 import '@testing-library/jest-dom';
 import { SessionProvider } from '../../context/SessionContext';
 
@@ -10,8 +10,7 @@ describe('Navbar Component', () => {
   Router.router = mockedRouter;
   const obj = {
     session: {
-      token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWNkYTc2NjYxYjE3ZTUwYzg3NzIxYWIiLCJ1c2VybmFtZSI6Im1heW5lLnNuYXNlbC40MTcxIiwic2NvcGVzIjpbInNpZ25pbjphdXRoIiwic2lnbnVwOmF1dGgiLCJyZWFkOm1vdmllcyIsInJlYWQ6dXNlci1tb3ZpZXMiLCJjcmVhdGU6dXNlci1tb3ZpZXMiLCJkZWxldGU6dXNlci1tb3ZpZXMiXSwiaWF0IjoxNTkwNzI1MTIwLCJleHAiOjE1OTExNTcxMjB9.UjjAPEHWbqyPEwX6qcs2UhLvQ6rAeQIL-ME1LDnWBRo',
+      token: '',
       user: {
         id: '5ecda76661b17e50c87721ab',
         username: 'mayne.snasel.4171',
@@ -32,5 +31,13 @@ describe('Navbar Component', () => {
       </SessionProvider>
     );
     expect(component.toJSON()).toMatchSnapshot();
+  });
+  it('<Navbar />', () => {
+    const component = mount(
+      <SessionProvider value={obj}>
+        <Navbar />
+      </SessionProvider>
+    );
+    expect(component.length).toEqual(1);
   });
 });

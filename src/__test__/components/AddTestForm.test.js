@@ -1,6 +1,6 @@
 import AddTestForm from '../../components/AddTestForm';
 import { create } from 'react-test-renderer';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import Router from 'next/router';
 import { SessionProvider } from '../../context/SessionContext';
 describe('AddTestForm Component', () => {
@@ -30,12 +30,12 @@ describe('AddTestForm Component', () => {
     );
     expect(component.toJSON()).toMatchSnapshot();
   });
-  test('Should shallow AddTestForm component ', () => {
+  it('<AddTestForm />', () => {
     const component = mount(
       <SessionProvider value={obj}>
         <AddTestForm userID={''} />
       </SessionProvider>
-    ).render();
+    );
     expect(component.length).toEqual(1);
   });
 });
