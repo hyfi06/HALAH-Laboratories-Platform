@@ -20,7 +20,6 @@ function Layout({ children }) {
 
   // eslint-disable-next-line consistent-return
   async function openModalMessage() {
-    console.log('times');
     try {
       const URL = `${process.env.NEXT_PUBLIC_API_URL}/messages?patientId=${session.user.id}`;
       const config = {
@@ -57,7 +56,7 @@ function Layout({ children }) {
       <Modal isOpen={message}>
         <div className="message">
           <MessageIcon className="message__icon" />
-          { messageResponse.map((res) => (
+          {messageResponse.map((res) => (
             <strong className="message__text">{res.messageText}</strong>
           ))}
           <button className="btn" type="button" onClick={closeModal}>
