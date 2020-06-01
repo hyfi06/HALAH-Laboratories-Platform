@@ -7,7 +7,12 @@ export function SessionProvider(props) {
 
   useEffect(() => {
     try {
-      setSession(JSON.parse(localStorage.getItem('session')));
+      const sessionData = JSON.parse(localStorage.getItem('session'));
+      if (sessionData) {
+        setSession(sessionData);
+      } else {
+        Router.push('/');
+      }
     } catch (error) {
       Router.push('/');
     }
