@@ -12,16 +12,19 @@
 
 HALAH Laboratories is a laboratory that offers clinical analysis, through its platform makes it easier to avoid human contact when conducting clinical tests.
 
-## Frontend
+## Documentation
+
+- [Organization](https://www.notion.so/Sistema-Gestor-de-Ex-menes-para-Laboratorios-Cl-nicos-df11ce944b2a4dc1adac33d4df519a5b)
+
+### Frontend
 
 - [Deploy](https://www.halahlaboratories.com/)
 - [Mockups & Prototypes](https://www.figma.com/file/xdQcnzQayyiFqZ7U4bxQNw/HALAH-labs?node-id=51%3A1470)
 - [Features](https://www.canva.com/design/DAD95DNJxrs/jbyIuU6OdT7pCPTtfdXZrA/view?utm_content=DAD95DNJxrs&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 - [Responsibilities](https://www.canva.com/design/DAD95IXSiv0/4rpYm5FeBeBNtRc9qWxzVw/view?utm_content=DAD95IXSiv0&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
 - [Admin Manual](https://www.canva.com/design/DAD9ffb9EzQ/UmLjPGq_RDSJn2cXKjaIoQ/view?utm_content=DAD9ffb9EzQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton)
-- [Organization](https://www.notion.so/Sistema-Gestor-de-Ex-menes-para-Laboratorios-Cl-nicos-df11ce944b2a4dc1adac33d4df519a5b)
 
-## Backend
+### Backend
 
 - [Deploy](https://api.halahlaboratories.com/)
 - [Repository](https://github.com/hyfi06/platzi-master-end-game-backend)
@@ -31,27 +34,27 @@ HALAH Laboratories is a laboratory that offers clinical analysis, through its pl
 
 ## Frontend repository of HALAH Laboratories
 
-# Views
+### Views
 
-## Desktop
+#### Desktop
 
  <img width='280' src="https://hyfi06.s3.us-east-2.amazonaws.com/halahlaboratories/www.halahlaboratories.com_users_desktop.png" alt='View of Desktop about HALAH laboratories'/>
 
-## Mobile
+#### Mobile
 
 <img width='140' src="https://hyfi06.s3.us-east-2.amazonaws.com/halahlaboratories/www.halahlaboratories.com_users_mobile.png" alt='View of Mobile about HALAH laboratories'/>
 
-## Tablet
+#### Tablet
 
 <img width='200' src="https://hyfi06.s3.us-east-2.amazonaws.com/halahlaboratories/www.halahlaboratories.com_users_ipad.png" alt='View of Table about HALAH laboratories'/>
 
-## Installation
+### Installation
 
 ```bash
 npm install
 ```
 
-## Run Development Server
+### Run Development Server
 
 Open in localhost:3000
 
@@ -59,13 +62,13 @@ Open in localhost:3000
 npm run dev
 ```
 
-## Build App
+### Build App
 
 ```bash
 npm run build
 ```
 
-## Testing
+### Testing
 
 ```bash
 npm run test
