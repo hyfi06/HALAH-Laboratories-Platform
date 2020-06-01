@@ -32,6 +32,10 @@ npm run dev
 npm run build
 ```
 
+## License
+
+Licensed under the [MIT License](/LICENSE).
+
 ## Authors
 
 - [Alexis Araujo](https://github.com/ealexisaraujo)
