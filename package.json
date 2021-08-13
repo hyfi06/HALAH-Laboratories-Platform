@@ -17,7 +17,7 @@
     "formik": "^2.1.4",
     "jest-cli": "^25.1.0",
     "jest-localstorage-mock": "^2.4.0",
-    "next": "9.4.1",
+    "next": "11.1.0",
     "node-sass": "^4.14.0",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
